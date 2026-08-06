@@ -22,9 +22,12 @@
     "drizzle-orm": "^0.45.2"
   },
   "devDependencies": {
+    "@types/better-sqlite3": "^9.6.0",
     "@types/node": "^26.1.2",
+    "better-sqlite3": "^13.0.3",
     "drizzle-kit": "^0.31.10",
     "tsx": "^4.23.8",
-    "typescript": "^7.0.2"
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.10"
   }
 }
