@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Girl Store POS - User Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#ffffff",
+                        "error-container": "#fff1f1",
+                        "background": "#ffffff",
+                        "surface": "#ffffff",
+                        "inverse-primary": "#78a9ff",
+                        "on-tertiary-fixed-variant": "#044317",
+                        "on-surface-variant": "#525252",
+                        "on-primary-container": "#161616",
+                        "on-secondary-fixed-variant": "#525252",
+                        "surface-dim": "#e0e0e0",
+                        "inverse-surface": "#393939",
+                        "primary-container": "#d0e2ff",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#f4f4f4",
+                        "primary-fixed-dim": "#78a9ff",
+                        "tertiary-fixed-dim": "#42be65",
+                        "on-tertiary-fixed": "#022d0d",
+                        "on-primary-fixed-variant": "#0043ce",
+                        "tertiary-fixed": "#a7f0ba",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#e0e0e0",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#001d6c",
+                        "on-tertiary-container": "#044317",
+                        "surface-container-high": "#e0e0e0",
+                        "surface-tint": "#0f62fe",
+                        "on-error": "#ffffff",
+                        "on-error-container": "#750e13",
+                        "secondary": "#6f6f6f",
+                        "on-secondary-container": "#525252",
+                        "on-surface": "#161616",
+                        "surface-container-highest": "#c6c6c6",
+                        "surface-container-lowest": "#ffffff",
+                        "primary": "#0f62fe",
+                        "on-secondary-fixed": "#161616",
+                        "primary-fixed": "#d0e2ff",
+                        "outline": "#8d8d8d",
+                        "error": "#da1e28",
+                        "surface-container-low": "#f4f4f4",
+                        "tertiary": "#198038",
+                        "secondary-container": "#e0e0e0",
+                        "secondary-fixed-dim": "#c6c6c6",
+                        "inverse-on-surface": "#f4f4f4",
+                        "tertiary-container": "#a7f0ba",
+                        "surface-variant": "#f4f4f4",
+                        "on-background": "#161616",
+                        "outline-variant": "#e0e0e0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {},
+                    "fontFamily": {
+                        "headline": ["IBM Plex Sans", "sans-serif"],
+                        "display": ["IBM Plex Sans", "sans-serif"],
+                        "body": ["IBM Plex Sans", "sans-serif"],
+                        "label": ["IBM Plex Sans", "sans-serif"]
+                    },
+                    "fontSize": {}
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'IBM Plex Sans', sans-serif;
+            background-color: #f4f4f4;
+            color: #161616;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden bg-surface-container text-on-surface font-body">
+<!-- SideNavBar -->
+<nav class="h-screen w-64 flex-shrink-0 bg-surface-container border-r border-outline-variant flex flex-col h-full py-4 hidden md:flex">
+<div class="px-6 mb-8 flex items-center gap-3">
+<img alt="Store Manager Profile" class="w-8 h-8 rounded" data-alt="A clean, minimalist logo for a premium retail point of sale system. The logo features a sleek, abstract geometric shape representing a shopping bag or stylized storefront, rendered in a crisp, vibrant IBM blue against a stark white background. The design is modern, enterprise-grade, and highly legible, embodying a light-mode aesthetic focused on productive clarity and professional retail management." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbvO9tlN1VDyKM6PuqrJyBSVu0TQuNh_5XuSOuzik7t8imT5Efy0a_1XkABDoyh9edQ9r_0PsAJ22t6f40NV9C639XU0TDDh_QbZF5BwBl43aTeUHfpJ8mjcutNNVZYVDHr2ENAbADZScXDhXHLIVX3kGu-JSOOauYpWlCjBpD-zkq22qbSgd0QS8dDQVT-1t_kJJ7N93yz-Q3Id4uYnJ0CwalSb_JEx6MbWqXMUYldV03M9Fv7OLE"/>
+<div>
+<h1 class="text-xl font-headline font-semibold text-primary">Girl Store POS</h1>
+<p class="text-xs text-on-surface-variant font-label">Admin Terminal</p>
+</div>
+</div>
+<div class="px-4 mb-6">
+<button class="w-full bg-primary hover:bg-primary/90 text-on-primary font-semibold py-2 px-4 rounded transition-colors duration-200 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">add</span>
+                New Sale
+            </button>
+</div>
+<ul class="flex-1 overflow-y-auto px-2 space-y-1">
+<li><a class="flex items-center gap-3 px-4 py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#"><span class="material-symbols-outlined">dashboard</span> <span class="font-body text-sm">Dashboard</span></a></li>
+<li><a class="flex items-center gap-3 px-4 py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#"><span class="material-symbols-outlined">point_of_sale</span> <span class="font-body text-sm">POS</span></a></li>
+<li><a class="flex items-center gap-3 px-4 py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#"><span class="material-symbols-outlined">inventory_2</span> <span class="font-body text-sm">Products</span></a></li>
+<li><a class="flex items-center gap-3 px-4 py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#"><span class="material-symbols-outlined">inventory</span> <span class="font-body text-sm">Inventory</span></a></li>
+<li><a class="flex items-center gap-3 px-4 py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#"><span class="material-symbols-outlined">group</span> <span class="font-body text-sm">Customers</span></a></li>
+<li><a class="flex items-center gap-3 px-4 py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#"><span class="material-symbols-outlined">receipt_long</span> <span class="font-body text-sm">Sales</span></a></li>
+<li><a class="flex items-center gap-3 px-4 py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#"><span class="material-symbols-outlined">payments</span> <span class="font-body text-sm">Expenses</span></a></li>
+<li><a class="flex items-center gap-3 px-4 py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#"><span class="material-symbols-outlined">assessment</span> <span class="font-body text-sm">Reports</span></a></li>
+<li><a class="flex items-center gap-3 px-4 py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#"><span class="material-symbols-outlined">analytics</span> <span class="font-body text-sm">Analytics</span></a></li>
+<li><a class="flex items-center gap-3 px-4 py-2 rounded text-primary font-semibold border-r-2 border-primary bg-primary-container/10 opacity-80 transition-all" href="#"><span class="material-symbols-outlined icon-filled">manage_accounts</span> <span class="font-body text-sm">User Management</span></a></li>
+<li><a class="flex items-center gap-3 px-4 py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#"><span class="material-symbols-outlined">settings</span> <span class="font-body text-sm">Settings</span></a></li>
+</ul>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col min-w-0 bg-surface">
+<!-- TopAppBar (Mobile & Web Context) -->
+<header class="flex justify-between items-center h-16 w-full px-6 bg-surface border-b border-outline-variant md:hidden">
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:bg-surface-container-low transition-all p-2 rounded scale-95 active:scale-90"><span class="material-symbols-outlined">menu</span></button>
+<span class="font-body text-label-md font-bold text-on-surface">User Management</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="text-on-surface-variant hover:bg-surface-container-low transition-all p-2 rounded scale-95 active:scale-90"><span class="material-symbols-outlined">notifications</span></button>
+<img alt="User Avatar" class="w-8 h-8 rounded-full bg-surface-container-high" data-alt="A small circular avatar placeholder image showing a generic, professional silhouette profile picture against a light grey background. Designed to look clean, minimal, and suitable for an enterprise administration interface in a light-mode UI context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1i9KGNkhh4KXB7zIPo3Iwu64HFCG7RUGEHIF9SuJpD1xhlf6n-8dl07bx_Jhup2emAZEnPjAVPAmma6-voPl3tNlux_syWhF-MQ3weDMUoiu717MAWFc8xTmBOQbmH9BRnYXr_rTRmkWDJra2P0PINLI9yPoZEHeQgWfes5meE6TnqSxs7Hk8oMS5Yje2vX45ZR1Oep4LCNIJCqdBJCQ2_06QTW6ISl-Mpg7sKNqBhVM7VJDpEify"/>
+</div>
+</header>
+<!-- Page Header -->
+<div class="px-8 py-6 border-b border-outline-variant bg-surface flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h2 class="text-2xl font-headline font-semibold text-on-surface tracking-tight">Staff &amp; Roles</h2>
+<p class="text-sm text-on-surface-variant mt-1">Manage employee access and operational permissions.</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-on-surface-variant text-sm">search</span>
+<input class="pl-9 pr-4 py-2 bg-surface-container border-b border-outline-variant focus:border-primary focus:ring-0 text-sm w-64 rounded-t" placeholder="Search staff..." type="text"/>
+</div>
+<button class="bg-primary text-on-primary px-4 py-2 font-semibold text-sm rounded flex items-center gap-2 hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined text-sm">person_add</span> Add Staff
+                </button>
+</div>
+</div>
+<!-- Scrollable Canvas -->
+<main class="flex-1 overflow-y-auto p-8 bg-surface-container-lowest">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Staff List Panel -->
+<div class="lg:col-span-2 bg-surface rounded shadow-sm border border-outline-variant overflow-hidden">
+<div class="px-6 py-4 border-b border-outline-variant flex justify-between items-center bg-surface-container-lowest">
+<h3 class="font-semibold text-on-surface">Staff Members</h3>
+<button class="text-sm text-primary font-medium hover:underline flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">filter_list</span> Filter
+                        </button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left text-sm whitespace-nowrap">
+<thead class="bg-surface-container text-on-surface-variant font-semibold border-b border-outline-variant">
+<tr>
+<th class="px-6 py-3">Name</th>
+<th class="px-6 py-3">Role</th>
+<th class="px-6 py-3">Status</th>
+<th class="px-6 py-3">Last Active</th>
+<th class="px-6 py-3 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-6 py-4 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-container text-primary flex items-center justify-center font-bold text-xs">SJ</div>
+<div>
+<div class="font-medium text-on-surface">Sarah Jenkins</div>
+<div class="text-xs text-on-surface-variant">sarah.j@girlstore.com</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-surface-container-highest text-on-surface">Manager</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 text-tertiary">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span> Active
+                                        </span>
+</td>
+<td class="px-6 py-4 text-on-surface-variant">Today, 09:41 AM</td>
+<td class="px-6 py-4 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-1"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="text-on-surface-variant hover:text-error transition-colors p-1"><span class="material-symbols-outlined text-[20px]">more_vert</span></button>
+</td>
+</tr>
+<tr class="bg-surface-container hover:bg-surface-container-low transition-colors">
+<td class="px-6 py-4 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center font-bold text-xs">MC</div>
+<div>
+<div class="font-medium text-on-surface">Michael Chen</div>
+<div class="text-xs text-on-surface-variant">michael.c@girlstore.com</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-surface-container-highest text-on-surface">Cashier</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 text-tertiary">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span> Active
+                                        </span>
+</td>
+<td class="px-6 py-4 text-on-surface-variant">Today, 08:30 AM</td>
+<td class="px-6 py-4 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-1"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="text-on-surface-variant hover:text-error transition-colors p-1"><span class="material-symbols-outlined text-[20px]">more_vert</span></button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-6 py-4 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center font-bold text-xs">AT</div>
+<div>
+<div class="font-medium text-on-surface">Amanda Torres</div>
+<div class="text-xs text-on-surface-variant">amanda.t@girlstore.com</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-surface-container-highest text-on-surface">Admin</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 text-tertiary">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span> Active
+                                        </span>
+</td>
+<td class="px-6 py-4 text-on-surface-variant">Yesterday</td>
+<td class="px-6 py-4 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-1"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="text-on-surface-variant hover:text-error transition-colors p-1"><span class="material-symbols-outlined text-[20px]">more_vert</span></button>
+</td>
+</tr>
+<tr class="bg-surface-container hover:bg-surface-container-low transition-colors opacity-75">
+<td class="px-6 py-4 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center font-bold text-xs">RB</div>
+<div>
+<div class="font-medium text-on-surface-variant">Robert Black</div>
+<div class="text-xs text-on-surface-variant">robert.b@girlstore.com</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-surface-container-highest text-on-surface-variant">Cashier</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-outline"></span> Inactive
+                                        </span>
+</td>
+<td class="px-6 py-4 text-on-surface-variant">Oct 12, 2023</td>
+<td class="px-6 py-4 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-1"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="text-on-surface-variant hover:text-error transition-colors p-1"><span class="material-symbols-outlined text-[20px]">more_vert</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Roles & Permissions Matrix -->
+<div class="lg:col-span-1 flex flex-col gap-6">
+<div class="bg-surface rounded shadow-sm border border-outline-variant p-6">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-semibold text-on-surface">Role Capabilities</h3>
+<button class="text-primary hover:bg-primary-container/20 p-1.5 rounded transition-colors">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+</div>
+<div class="space-y-6">
+<!-- Matrix Group -->
+<div>
+<h4 class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-3">Transactions</h4>
+<div class="space-y-3 text-sm">
+<div class="flex justify-between items-center">
+<span class="text-on-surface">Process Refunds</span>
+<div class="flex gap-2">
+<span class="w-6 h-6 rounded bg-primary-container text-primary flex items-center justify-center cursor-help" title="Admin"><span class="material-symbols-outlined text-[14px]">check</span></span>
+<span class="w-6 h-6 rounded bg-primary-container text-primary flex items-center justify-center cursor-help" title="Manager"><span class="material-symbols-outlined text-[14px]">check</span></span>
+<span class="w-6 h-6 rounded bg-surface-container-highest text-on-surface-variant flex items-center justify-center cursor-help" title="Cashier"><span class="material-symbols-outlined text-[14px]">close</span></span>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface">Apply Custom Discounts</span>
+<div class="flex gap-2">
+<span class="w-6 h-6 rounded bg-primary-container text-primary flex items-center justify-center"><span class="material-symbols-outlined text-[14px]">check</span></span>
+<span class="w-6 h-6 rounded bg-primary-container text-primary flex items-center justify-center"><span class="material-symbols-outlined text-[14px]">check</span></span>
+<span class="w-6 h-6 rounded bg-surface-container-highest text-on-surface-variant flex items-center justify-center"><span class="material-symbols-outlined text-[14px]">close</span></span>
+</div>
+</div>
+</div>
+</div>
+<!-- Matrix Group -->
+<div>
+<h4 class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-3">Inventory</h4>
+<div class="space-y-3 text-sm">
+<div class="flex justify-between items-center">
+<span class="text-on-surface">Edit Stock Levels</span>
+<div class="flex gap-2">
+<span class="w-6 h-6 rounded bg-primary-container text-primary flex items-center justify-center"><span class="material-symbols-outlined text-[14px]">check</span></span>
+<span class="w-6 h-6 rounded bg-primary-container text-primary flex items-center justify-center"><span class="material-symbols-outlined text-[14px]">check</span></span>
+<span class="w-6 h-6 rounded bg-surface-container-highest text-on-surface-variant flex items-center justify-center"><span class="material-symbols-outlined text-[14px]">close</span></span>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface">Add New Products</span>
+<div class="flex gap-2">
+<span class="w-6 h-6 rounded bg-primary-container text-primary flex items-center justify-center"><span class="material-symbols-outlined text-[14px]">check</span></span>
+<span class="w-6 h-6 rounded bg-surface-container-highest text-on-surface-variant flex items-center justify-center"><span class="material-symbols-outlined text-[14px]">close</span></span>
+<span class="w-6 h-6 rounded bg-surface-container-highest text-on-surface-variant flex items-center justify-center"><span class="material-symbols-outlined text-[14px]">close</span></span>
+</div>
+</div>
+</div>
+</div>
+<div class="pt-4 border-t border-outline-variant text-xs text-on-surface-variant flex justify-between items-center">
+<span>Legend:</span>
+<div class="flex gap-4">
+<span class="flex items-center gap-1"><span class="w-2 h-2 bg-primary rounded-full"></span> Admin</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 bg-surface-dim rounded-full"></span> Mngr</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 bg-surface-container-highest rounded-full"></span> Cshr</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

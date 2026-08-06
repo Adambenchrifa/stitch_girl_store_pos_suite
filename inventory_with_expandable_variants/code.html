@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-surface-container" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Inventory &amp; Stock Management - Girl Store POS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#ffffff",
+                    "error-container": "#fff1f1",
+                    "background": "#ffffff",
+                    "surface": "#ffffff",
+                    "inverse-primary": "#78a9ff",
+                    "on-tertiary-fixed-variant": "#044317",
+                    "on-surface-variant": "#525252",
+                    "on-primary-container": "#161616",
+                    "on-secondary-fixed-variant": "#525252",
+                    "surface-dim": "#e0e0e0",
+                    "inverse-surface": "#393939",
+                    "primary-container": "#d0e2ff",
+                    "on-primary": "#ffffff",
+                    "surface-container": "#f4f4f4",
+                    "primary-fixed-dim": "#78a9ff",
+                    "tertiary-fixed-dim": "#42be65",
+                    "on-tertiary-fixed": "#022d0d",
+                    "on-primary-fixed-variant": "#0043ce",
+                    "tertiary-fixed": "#a7f0ba",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed": "#e0e0e0",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed": "#001d6c",
+                    "on-tertiary-container": "#044317",
+                    "surface-container-high": "#e0e0e0",
+                    "surface-tint": "#0f62fe",
+                    "on-error": "#ffffff",
+                    "on-error-container": "#750e13",
+                    "secondary": "#6f6f6f",
+                    "on-secondary-container": "#525252",
+                    "on-surface": "#161616",
+                    "surface-container-highest": "#c6c6c6",
+                    "surface-container-lowest": "#ffffff",
+                    "primary": "#0f62fe",
+                    "on-secondary-fixed": "#161616",
+                    "primary-fixed": "#d0e2ff",
+                    "outline": "#8d8d8d",
+                    "error": "#da1e28",
+                    "surface-container-low": "#f4f4f4",
+                    "tertiary": "#198038",
+                    "secondary-container": "#e0e0e0",
+                    "secondary-fixed-dim": "#c6c6c6",
+                    "inverse-on-surface": "#f4f4f4",
+                    "tertiary-container": "#a7f0ba",
+                    "surface-variant": "#f4f4f4",
+                    "on-background": "#161616",
+                    "outline-variant": "#e0e0e0"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["IBM Plex Sans", "sans-serif"],
+                    "display": ["IBM Plex Sans", "sans-serif"],
+                    "body": ["IBM Plex Sans", "sans-serif"],
+                    "label": ["IBM Plex Sans", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'IBM Plex Sans', sans-serif; }
+    </style>
+</head>
+<body class="h-full flex text-on-surface bg-surface-container">
+<!-- SideNavBar -->
+<nav class="bg-surface-container dark:bg-surface-container font-body text-label-sm font-normal h-screen w-64 flex-shrink-0 border-r border-outline-variant flex flex-col h-full py-4 hidden md:flex">
+<div class="px-6 mb-8 flex flex-col gap-2">
+<h1 class="text-xl font-headline font-semibold text-primary dark:text-primary">Girl Store POS</h1>
+<p class="text-xs text-on-surface-variant uppercase tracking-wider font-semibold">Admin Terminal</p>
+</div>
+<div class="px-4 mb-6">
+<button class="w-full flex items-center justify-center gap-2 bg-primary text-on-primary py-3 px-4 font-semibold hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-sm" data-icon="add" style="font-variation-settings: 'FILL' 1;">add</span>
+                New Sale
+            </button>
+</div>
+<ul class="flex-1 overflow-y-auto px-3 space-y-1">
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                    Dashboard
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="point_of_sale">point_of_sale</span>
+                    POS
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+                    Products
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-primary font-semibold border-r-2 border-primary bg-primary-container/10 Active: opacity-80 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="inventory" style="font-variation-settings: 'FILL' 1;">inventory</span>
+                    Inventory
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+                    Customers
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+                    Sales
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+                    Expenses
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="assessment">assessment</span>
+                    Reports
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+                    Analytics
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="manage_accounts">manage_accounts</span>
+                    User Management
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                    Settings
+                </a>
+</li>
+</ul>
+<div class="px-6 mt-auto pt-4 border-t border-outline-variant flex items-center gap-3">
+<img class="w-8 h-8 object-cover rounded-full bg-surface-variant" data-alt="A small, professional avatar of a retail store manager, featuring a young woman with a friendly but focused expression in a brightly lit, modern environment with soft white and subtle blue enterprise color tones. Head and shoulders crop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-uRE-MfEBEz9ugQmzrt8eVHBiLNibWJUzF_DQBzsgJdt_O3AXu0wXWk5OImrtov--sPaKvapiKD5EBeoEZncLLM0Yg7bYF_pxe3WaDmt2DWbhu4wFEe5-g59MSAes51AgFF70lBYxAwMYzyUzuOzcL4Xy47sfvoNexKXTeZXmXRWiaUjZqPPwittmFc-mMgQegdfEmBmzKdsYXUnHBt1J2P3lUVEnT2wJmFosLuFbqP3jYWJPTVXL"/>
+<span class="text-sm font-semibold">Store Manager Profile</span>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col h-screen overflow-hidden">
+<!-- TopAppBar (Mobile Only) -->
+<header class="bg-surface dark:bg-surface font-body text-label-md docked full-width top-0 border-b border-outline-variant flex justify-between items-center h-16 w-full px-6 md:hidden">
+<button class="text-on-surface-variant hover:bg-surface-container-low transition-all p-2 rounded-full scale-95 active:scale-90">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="text-lg font-headline font-bold text-primary dark:text-primary hidden">Girl Store POS</h1>
+<span class="text-primary font-bold">Inventory</span>
+<div class="flex items-center gap-2">
+<button class="text-on-surface-variant hover:bg-surface-container-low transition-all p-2 scale-95 active:scale-90">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<img class="w-8 h-8 rounded-full object-cover" data-alt="User Avatar for mobile top app bar. Clean, high contrast, professional retail manager avatar in light mode enterprise setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAndnHzv4dd5o3Vg2DBpjx6eL9OsBVPrkLAVl2gVu_BYvaWgc9U0dxVKNAUq7OoXZnD9qclZ4KOnz3B-zdBdFpd1upfXWBLrJMqj4to4w2nZDTiqG_nkgXexSIcssuHSkrqi4RDrp6hIFXAgek7UQi0_l7ki3QeP5588yzono3aVU8hfJmL550X9FCS5g5bO2Uh0zkCg7AXnwn5fMvZ5ARmv1e-0hFkVGQrBNP6QnYZ5DPlY9qhH-cK"/>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="flex-1 overflow-y-auto p-4 md:p-8 bg-surface-container">
+<div class="max-w-7xl mx-auto space-y-6">
+<!-- Page Header & Actions -->
+<div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-2">
+<div>
+<h2 class="text-2xl font-headline font-semibold text-on-surface mb-1">Inventory Management</h2>
+<p class="text-sm text-on-surface-variant">Monitor stock levels, reorder alerts, and supplier status.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 px-4 py-2 border border-primary text-primary hover:bg-primary-container/20 transition-colors text-sm font-semibold">
+<span class="material-symbols-outlined text-sm" data-icon="download">download</span>
+                            Export Report
+                        </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary text-on-primary hover:opacity-90 transition-opacity text-sm font-semibold">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                            Add Item
+                        </button>
+</div>
+</div>
+<!-- Summary Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="bg-surface p-6 border-b-2 border-primary shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-sm font-semibold text-on-surface-variant uppercase tracking-wide">Total Items</h3>
+<span class="material-symbols-outlined text-primary bg-primary-container p-2 rounded-full" data-icon="inventory_2">inventory_2</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-headline font-bold text-on-surface">2,451</span>
+<span class="text-xs text-tertiary font-medium flex items-center">
+<span class="material-symbols-outlined text-[14px]" data-icon="arrow_upward">arrow_upward</span> 12%
+                            </span>
+</div>
+<p class="text-xs text-on-surface-variant mt-1">Across 14 categories</p>
+</div>
+<div class="bg-surface p-6 border-b-2 border-outline-variant shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-sm font-semibold text-on-surface-variant uppercase tracking-wide">Low Stock Alert</h3>
+<span class="material-symbols-outlined text-on-surface bg-surface-container-highest p-2 rounded-full" data-icon="warning">warning</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-headline font-bold text-on-surface">42</span>
+<span class="text-xs text-on-surface-variant font-medium">items</span>
+</div>
+<p class="text-xs text-on-surface-variant mt-1">Nearing reorder threshold</p>
+</div>
+<div class="bg-surface p-6 border-b-2 border-error shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-sm font-semibold text-error uppercase tracking-wide">Out of Stock</h3>
+<span class="material-symbols-outlined text-error bg-error-container p-2 rounded-full" data-icon="error">error</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-headline font-bold text-error">8</span>
+<span class="text-xs text-on-surface-variant font-medium">items</span>
+</div>
+<p class="text-xs text-on-surface-variant mt-1">Immediate action required</p>
+</div>
+</div>
+<!-- Filter Bar -->
+<div class="bg-surface p-4 flex flex-col md:flex-row gap-4 items-center justify-between border-b border-outline-variant">
+<div class="relative w-full md:w-96">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container border-b border-outline-variant focus:border-primary focus:ring-0 text-sm placeholder-on-surface-variant transition-colors outline-none" placeholder="Search by SKU, Name, or Supplier..." type="text"/>
+</div>
+<div class="flex w-full md:w-auto gap-3">
+<select class="flex-1 md:w-40 py-2 px-3 bg-surface-container border-b border-outline-variant text-sm focus:border-primary outline-none cursor-pointer">
+<option>All Categories</option>
+<option>Apparel</option>
+<option>Accessories</option>
+<option>Footwear</option>
+</select>
+<select class="flex-1 md:w-40 py-2 px-3 bg-surface-container border-b border-outline-variant text-sm focus:border-primary outline-none cursor-pointer">
+<option>All Suppliers</option>
+<option>Luxe Brands Co.</option>
+<option>Urban Threads</option>
+<option>Global Imports</option>
+</select>
+<button class="p-2 border border-outline-variant text-on-surface-variant hover:bg-surface-container-low transition-colors" title="More Filters">
+<span class="material-symbols-outlined" data-icon="tune">tune</span>
+</button>
+</div>
+</div>
+<!-- Data Table -->
+<div class="bg-surface overflow-x-auto shadow-sm">
+<table class="w-full text-left border-collapse min-w-[800px]">
+<thead>
+<tr class="bg-surface-container-low border-b-2 border-outline-variant">
+<th class="p-4 text-xs font-semibold text-on-surface-variant uppercase tracking-wider w-12">
+<input class="rounded-none border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+</th>
+<th class="p-4 text-xs font-semibold text-on-surface-variant uppercase tracking-wider cursor-pointer group">
+                                    Product Info <span class="material-symbols-outlined text-[14px] align-middle opacity-0 group-hover:opacity-100" data-icon="arrow_downward">arrow_downward</span>
+</th>
+<th class="p-4 text-xs font-semibold text-on-surface-variant uppercase tracking-wider">SKU</th>
+<th class="p-4 text-xs font-semibold text-on-surface-variant uppercase tracking-wider">Category</th>
+<th class="p-4 text-xs font-semibold text-on-surface-variant uppercase tracking-wider text-right">Current Stock</th>
+<th class="p-4 text-xs font-semibold text-on-surface-variant uppercase tracking-wider text-right">Reorder Level</th>
+<th class="p-4 text-xs font-semibold text-on-surface-variant uppercase tracking-wider text-center">Status</th>
+<th class="p-4 text-xs font-semibold text-on-surface-variant uppercase tracking-wider text-center">Action</th>
+</tr>
+</thead>
+<tbody class="text-sm">
+<!-- Row 1: Healthy -->
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors group">
+<td class="p-4"><input class="rounded-none border-outline-variant text-primary focus:ring-primary" type="checkbox"/></td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="checkroom">checkroom</span>
+</div>
+<div>
+<p class="font-semibold text-on-surface group-hover:text-primary transition-colors">Classic Cotton T-Shirt</p>
+<p class="text-xs text-on-surface-variant">Urban Threads</p>
+</div>
+</div>
+</td>
+<td class="p-4 font-mono text-on-surface-variant text-xs">TSH-001-WHT</td>
+<td class="p-4 text-on-surface-variant">Apparel</td>
+<td class="p-4 text-right font-semibold">145</td>
+<td class="p-4 text-right text-on-surface-variant">50</td>
+<td class="p-4 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-1 bg-tertiary-container/30 text-tertiary text-xs font-semibold rounded-none border border-tertiary/20">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> In Stock
+                                    </span>
+</td>
+<td class="p-4 text-center">
+<button class="p-1 text-on-surface-variant hover:text-primary transition-colors" title="Edit">
+<span class="material-symbols-outlined text-[18px]" data-icon="edit">edit</span>
+</button>
+</td>
+</tr>
+<!-- Row 2: Low Stock (Highlighted) -->
+<tr class="border-b border-outline-variant bg-error-container/10 hover:bg-error-container/20 transition-colors group">
+<td class="p-4"><input class="rounded-none border-outline-variant text-primary focus:ring-primary" type="checkbox"/></td>
+<td class="p-4">
+<div class="flex items-center gap-3"><button aria-label="Expand variants" class="p-1 -ml-2 text-on-surface-variant hover:text-primary transition-colors cursor-pointer"><span class="material-symbols-outlined text-[20px]">keyboard_arrow_down</span></button>
+<div class="w-10 h-10 bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="local_mall">local_mall</span>
+</div>
+<div>
+<p class="font-semibold text-on-surface group-hover:text-primary transition-colors">Leather Crossbody Bag</p>
+<p class="text-xs text-on-surface-variant">Luxe Brands Co.</p>
+</div>
+</div>
+</td>
+<td class="p-4 font-mono text-on-surface-variant text-xs">BAG-LXB-BLK</td>
+<td class="p-4 text-on-surface-variant">Accessories</td>
+<td class="p-4 text-right font-semibold text-error">12</td>
+<td class="p-4 text-right text-on-surface-variant">20</td>
+<td class="p-4 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-1 bg-error-container text-error text-xs font-semibold rounded-none border border-error/20">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span> Low Stock
+                                    </span>
+</td>
+<td class="p-4 text-center">
+<button class="px-3 py-1 bg-surface border border-outline-variant text-primary text-xs font-semibold hover:border-primary hover:bg-primary-container/10 transition-colors">
+                                        Restock
+                                    </button>
+</td>
+</tr><tr class="bg-surface-container-low border-b border-outline-variant/50"><td class="p-4"></td><td class="p-4 pl-12"><div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-on-surface-variant"></span><span class="text-xs font-medium">Black (Standard)</span></div></td><td class="p-4 font-mono text-on-surface-variant text-xs">BAG-LXB-BLK</td><td class="p-4 text-on-surface-variant">Accessories</td><td class="p-4 text-right font-semibold text-error">4</td><td class="p-4 text-right text-on-surface-variant">10</td><td class="p-4 text-center"><span class="inline-flex items-center gap-1 px-2 py-0.5 bg-error-container text-error text-[10px] font-bold uppercase">Low</span></td><td class="p-4"></td></tr><tr class="bg-surface-container-low border-b border-outline-variant/50"><td class="p-4"></td><td class="p-4 pl-12"><div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-on-surface-variant"></span><span class="text-xs font-medium">Tan Leather</span></div></td><td class="p-4 font-mono text-on-surface-variant text-xs">BAG-LXB-TAN</td><td class="p-4 text-on-surface-variant">Accessories</td><td class="p-4 text-right font-semibold">5</td><td class="p-4 text-right text-on-surface-variant">10</td><td class="p-4 text-center"><span class="inline-flex items-center gap-1 px-2 py-0.5 bg-error-container text-error text-[10px] font-bold uppercase">Low</span></td><td class="p-4"></td></tr><tr class="bg-surface-container-low border-b border-outline-variant/50"><td class="p-4"></td><td class="p-4 pl-12"><div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-on-surface-variant"></span><span class="text-xs font-medium">Navy Blue</span></div></td><td class="p-4 font-mono text-on-surface-variant text-xs">BAG-LXB-NVY</td><td class="p-4 text-on-surface-variant">Accessories</td><td class="p-4 text-right font-semibold">3</td><td class="p-4 text-right text-on-surface-variant">10</td><td class="p-4 text-center"><span class="inline-flex items-center gap-1 px-2 py-0.5 bg-error-container text-error text-[10px] font-bold uppercase">Low</span></td><td class="p-4"></td></tr>
+<!-- Row 3: Out of Stock -->
+<tr class="border-b border-outline-variant bg-surface-variant/50 hover:bg-surface-variant transition-colors group">
+<td class="p-4"><input class="rounded-none border-outline-variant text-primary focus:ring-primary" type="checkbox"/></td>
+<td class="p-4">
+<div class="flex items-center gap-3 opacity-60">
+<div class="w-10 h-10 bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="styler">styler</span>
+</div>
+<div>
+<p class="font-semibold text-on-surface group-hover:text-primary transition-colors">Denim Jacket - Vintage Wash</p>
+<p class="text-xs text-on-surface-variant">Global Imports</p>
+</div>
+</div>
+</td>
+<td class="p-4 font-mono text-on-surface-variant text-xs opacity-60">JKT-VNT-BLU</td>
+<td class="p-4 text-on-surface-variant opacity-60">Apparel</td>
+<td class="p-4 text-right font-semibold text-on-surface-variant opacity-60">0</td>
+<td class="p-4 text-right text-on-surface-variant opacity-60">15</td>
+<td class="p-4 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-1 bg-surface-container-highest text-on-surface text-xs font-semibold rounded-none border border-outline">
+<span class="w-1.5 h-1.5 rounded-full bg-on-surface-variant"></span> Out of Stock
+                                    </span>
+</td>
+<td class="p-4 text-center">
+<button class="px-3 py-1 bg-surface border border-outline-variant text-primary text-xs font-semibold hover:border-primary hover:bg-primary-container/10 transition-colors">
+                                        Restock
+                                    </button>
+</td>
+</tr>
+<!-- Row 4: Healthy -->
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors group">
+<td class="p-4"><input class="rounded-none border-outline-variant text-primary focus:ring-primary" type="checkbox"/></td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="watch">watch</span>
+</div>
+<div>
+<p class="font-semibold text-on-surface group-hover:text-primary transition-colors">Minimalist Wrist Watch</p>
+<p class="text-xs text-on-surface-variant">Luxe Brands Co.</p>
+</div>
+</div>
+</td>
+<td class="p-4 font-mono text-on-surface-variant text-xs">WTC-MNM-SLV</td>
+<td class="p-4 text-on-surface-variant">Accessories</td>
+<td class="p-4 text-right font-semibold">84</td>
+<td class="p-4 text-right text-on-surface-variant">10</td>
+<td class="p-4 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-1 bg-tertiary-container/30 text-tertiary text-xs font-semibold rounded-none border border-tertiary/20">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> In Stock
+                                    </span>
+</td>
+<td class="p-4 text-center">
+<button class="p-1 text-on-surface-variant hover:text-primary transition-colors" title="Edit">
+<span class="material-symbols-outlined text-[18px]" data-icon="edit">edit</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Pagination Footer -->
+<div class="p-4 border-t border-outline-variant flex items-center justify-between text-sm text-on-surface-variant bg-surface-container-low">
+<div>Showing 1 to 10 of 2,451 entries</div>
+<div class="flex gap-1">
+<button class="px-3 py-1 border border-outline-variant bg-surface hover:bg-surface-container-high disabled:opacity-50" disabled="">Prev</button>
+<button class="px-3 py-1 border border-primary bg-primary text-on-primary font-bold">1</button>
+<button class="px-3 py-1 border border-outline-variant bg-surface hover:bg-surface-container-high">2</button>
+<button class="px-3 py-1 border border-outline-variant bg-surface hover:bg-surface-container-high">3</button>
+<span class="px-2 py-1">...</span>
+<button class="px-3 py-1 border border-outline-variant bg-surface hover:bg-surface-container-high">Next</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

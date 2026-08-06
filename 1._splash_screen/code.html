@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Girl Store - Initializing</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: IBM Plex Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#ffffff",
+                    "error-container": "#fff1f1",
+                    "background": "#ffffff",
+                    "surface": "#ffffff",
+                    "inverse-primary": "#78a9ff",
+                    "on-tertiary-fixed-variant": "#044317",
+                    "on-surface-variant": "#525252",
+                    "on-primary-container": "#161616",
+                    "on-secondary-fixed-variant": "#525252",
+                    "surface-dim": "#e0e0e0",
+                    "inverse-surface": "#393939",
+                    "primary-container": "#d0e2ff",
+                    "on-primary": "#ffffff",
+                    "surface-container": "#f4f4f4",
+                    "primary-fixed-dim": "#78a9ff",
+                    "tertiary-fixed-dim": "#42be65",
+                    "on-tertiary-fixed": "#022d0d",
+                    "on-primary-fixed-variant": "#0043ce",
+                    "tertiary-fixed": "#a7f0ba",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed": "#e0e0e0",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed": "#001d6c",
+                    "on-tertiary-container": "#044317",
+                    "surface-container-high": "#e0e0e0",
+                    "surface-tint": "#0f62fe",
+                    "on-error": "#ffffff",
+                    "on-error-container": "#750e13",
+                    "secondary": "#6f6f6f",
+                    "on-secondary-container": "#525252",
+                    "on-surface": "#161616",
+                    "surface-container-highest": "#c6c6c6",
+                    "surface-container-lowest": "#ffffff",
+                    "primary": "#0f62fe",
+                    "on-secondary-fixed": "#161616",
+                    "primary-fixed": "#d0e2ff",
+                    "outline": "#8d8d8d",
+                    "error": "#da1e28",
+                    "surface-container-low": "#f4f4f4",
+                    "tertiary": "#198038",
+                    "secondary-container": "#e0e0e0",
+                    "secondary-fixed-dim": "#c6c6c6",
+                    "inverse-on-surface": "#f4f4f4",
+                    "tertiary-container": "#a7f0ba",
+                    "surface-variant": "#f4f4f4",
+                    "on-background": "#161616",
+                    "outline-variant": "#e0e0e0"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["IBM Plex Sans", "sans-serif"],
+                    "display": ["IBM Plex Sans", "sans-serif"],
+                    "body": ["IBM Plex Sans", "sans-serif"],
+                    "label": ["IBM Plex Sans", "sans-serif"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .loading-dot {
+            animation: pulse-dot 1.4s infinite ease-in-out both;
+        }
+        .loading-dot:nth-child(1) { animation-delay: -0.32s; }
+        .loading-dot:nth-child(2) { animation-delay: -0.16s; }
+        
+        @keyframes pulse-dot {
+            0%, 80%, 100% { transform: scale(0); opacity: 0.3; }
+            40% { transform: scale(1); opacity: 1; }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1.5s ease-out forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-surface-bright text-on-surface font-body h-screen w-full flex flex-col items-center justify-center overflow-hidden antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- Splash Canvas (Transactional/Loading - Navigation Suppressed as per instructions) -->
+<main class="w-full max-w-md mx-auto px-6 flex flex-col items-center justify-center relative z-10 fade-in h-full">
+<!-- Logo Area -->
+<div class="mb-12 relative w-48 h-48 md:w-64 md:h-64 flex items-center justify-center">
+<!-- Utilizing the provided image placeholder -->
+<img alt="Girl Store Logo" class="w-full h-full object-contain drop-shadow-sm transition-transform duration-700 ease-out hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEuR8MEYnfeSlYEUqa2Pu08v-WaTZK_9psirRczszc8QCffCZw9z_p8aKPLdGY8pu-cJjIHSpvHZR9JPFhXHYmgfRNO7_mwjPgq9rt8gXxkVwv2zvBTGI0Lejh9QAdIa-T-GM9sy4U1mJddPe2nxFhkT8Qupd9vqrZsE29bm6mFOWjHNtKVyw9R9HJsGZ-FuMkRZbDhwn2qlnJ1ejKguecfBOUbTnC8u2YoaLuhBkggK9mxT_g0d8w"/>
+</div>
+<!-- Typography & Loading State -->
+<div class="flex flex-col items-center space-y-6">
+<h1 class="font-headline font-semibold text-2xl tracking-tight text-on-surface">Girl Store</h1>
+<div class="flex flex-col items-center space-y-4">
+<p class="font-label text-sm text-on-surface-variant font-light tracking-wide uppercase">Initializing POS Terminal</p>
+<!-- Custom minimal loading indicator -->
+<div class="flex space-x-2 items-center h-4">
+<div class="w-1.5 h-1.5 bg-primary rounded-full loading-dot"></div>
+<div class="w-1.5 h-1.5 bg-primary rounded-full loading-dot"></div>
+<div class="w-1.5 h-1.5 bg-primary rounded-full loading-dot"></div>
+</div>
+</div>
+</div>
+</main>
+<!-- Subtle atmospheric background effect -->
+<div class="absolute inset-0 pointer-events-none bg-gradient-to-b from-transparent via-transparent to-surface-container-low opacity-50"></div>
+</body></html>

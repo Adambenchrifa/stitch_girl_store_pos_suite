@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Return / Refund Search - Carbon Store</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-low": "#f4f4f4",
+                      "inverse-on-surface": "#f4f4f4",
+                      "surface": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "tertiary-fixed": "#a7f0ba",
+                      "on-secondary-fixed-variant": "#525252",
+                      "on-error-container": "#750e13",
+                      "on-primary-container": "#161616",
+                      "secondary-fixed-dim": "#c6c6c6",
+                      "surface-bright": "#ffffff",
+                      "on-tertiary-container": "#044317",
+                      "primary-fixed-dim": "#78a9ff",
+                      "primary-container": "#d0e2ff",
+                      "outline": "#8d8d8d",
+                      "on-primary-fixed": "#001d6c",
+                      "on-primary-fixed-variant": "#0043ce",
+                      "surface-container-high": "#e0e0e0",
+                      "tertiary-container": "#a7f0ba",
+                      "background": "#ffffff",
+                      "on-secondary-container": "#525252",
+                      "primary": "#0f62fe",
+                      "on-secondary-fixed": "#161616",
+                      "surface-variant": "#f4f4f4",
+                      "on-surface": "#161616",
+                      "primary-fixed": "#d0e2ff",
+                      "on-surface-variant": "#525252",
+                      "tertiary-fixed-dim": "#42be65",
+                      "outline-variant": "#e0e0e0",
+                      "on-secondary": "#ffffff",
+                      "inverse-surface": "#393939",
+                      "secondary-container": "#e0e0e0",
+                      "surface-container": "#f4f4f4",
+                      "tertiary": "#198038",
+                      "error-container": "#fff1f1",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-fixed-variant": "#044317",
+                      "error": "#da1e28",
+                      "surface-container-highest": "#c6c6c6",
+                      "on-tertiary-fixed": "#022d0d",
+                      "on-error": "#ffffff",
+                      "secondary-fixed": "#e0e0e0",
+                      "inverse-primary": "#78a9ff",
+                      "surface-dim": "#e0e0e0",
+                      "on-tertiary": "#ffffff",
+                      "on-background": "#161616",
+                      "secondary": "#6f6f6f",
+                      "surface-tint": "#0f62fe"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {},
+              "fontFamily": {
+                      "headline": [
+                              "Ibm Plex Sans"
+                      ],
+                      "display": [
+                              "Ibm Plex Sans"
+                      ],
+                      "body": [
+                              "Ibm Plex Sans"
+                      ],
+                      "label": [
+                              "Ibm Plex Sans"
+                      ]
+              },
+              "fontSize": {}
+      },
+          },
+        }
+      </script>
+<style>
+        body { font-family: 'IBM Plex Sans', sans-serif; }
+      </style>
+</head>
+<body class="h-full flex bg-background text-on-surface">
+<!-- SideNavBar -->
+<nav class="hidden md:flex flex-col bg-surface-container-low border-r border-outline-variant h-screen left-0 w-64 py-4 shrink-0 transition-all duration-200">
+<!-- Header -->
+<div class="px-6 mb-8 flex items-center space-x-3">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="storefront">storefront</span>
+</div>
+<div>
+<h1 class="text-[18px] font-[600] text-on-surface leading-tight">Boutique POS</h1>
+<p class="text-[12px] text-secondary font-[400]">Flagship Store</p>
+</div>
+</div>
+<!-- CTA -->
+<div class="px-4 mb-6">
+<button class="w-full bg-primary text-on-primary font-body text-[14px] font-[600] h-12 flex items-center justify-center space-x-2 hover:bg-on-primary-fixed-variant transition-colors duration-150 rounded DEFAULT">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+<span>New Sale</span>
+</button>
+</div>
+<!-- Main Navigation -->
+<div class="flex-1 flex flex-col space-y-1">
+<a class="flex items-center space-x-3 px-6 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="dashboard">dashboard</span>
+<span class="font-body text-[14px] font-[400]">Dashboard</span>
+</a>
+<a class="flex items-center space-x-3 px-6 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="checkroom">checkroom</span>
+<span class="font-body text-[14px] font-[400]">Inventory</span>
+</a>
+<a class="flex items-center space-x-3 px-6 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="shopping_cart">shopping_cart</span>
+<span class="font-body text-[14px] font-[400]">Sales</span>
+</a>
+<a class="flex items-center space-x-3 px-6 py-3 bg-surface text-primary border-l-4 border-primary font-[600] hover:bg-surface-container-high transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="assignment_return" style="font-variation-settings: 'FILL' 1;">assignment_return</span>
+<span class="font-body text-[14px] font-[600]">Returns</span>
+</a>
+<a class="flex items-center space-x-3 px-6 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="group">group</span>
+<span class="font-body text-[14px] font-[400]">Customers</span>
+</a>
+<a class="flex items-center space-x-3 px-6 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="analytics">analytics</span>
+<span class="font-body text-[14px] font-[400]">Reports</span>
+</a>
+<a class="flex items-center space-x-3 px-6 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings">settings</span>
+<span class="font-body text-[14px] font-[400]">Settings</span>
+</a>
+</div>
+<!-- Footer Navigation -->
+<div class="mt-auto flex flex-col space-y-1">
+<a class="flex items-center space-x-3 px-6 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="contact_support">contact_support</span>
+<span class="font-body text-[14px] font-[400]">Support</span>
+</a>
+<a class="flex items-center space-x-3 px-6 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="logout">logout</span>
+<span class="font-body text-[14px] font-[400]">Log Out</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center w-full px-6 h-12 z-50 bg-surface border-b border-outline-variant shrink-0">
+<div class="flex items-center">
+<div class="md:hidden flex items-center space-x-2 mr-4">
+<span class="material-symbols-outlined text-primary cursor-pointer" data-icon="menu">menu</span>
+</div>
+<span class="text-[20px] font-[600] text-on-surface">Carbon Store</span>
+</div>
+<!-- Global Search (Hidden on Mobile) -->
+<div class="hidden md:flex items-center bg-surface-container-low h-8 px-3 w-64 rounded DEFAULT">
+<span class="material-symbols-outlined text-[18px] text-secondary mr-2" data-icon="search">search</span>
+<input class="bg-transparent border-none p-0 text-[14px] font-body text-on-surface focus:ring-0 w-full placeholder-secondary" placeholder="Search..." type="text"/>
+</div>
+<div class="flex items-center space-x-4">
+<button class="text-secondary hover:text-primary transition-colors duration-150 ease-in-out hover:bg-surface-container p-1.5 rounded-full">
+<span class="material-symbols-outlined text-[20px]" data-icon="notifications">notifications</span>
+</button>
+<button class="text-secondary hover:text-primary transition-colors duration-150 ease-in-out hover:bg-surface-container p-1.5 rounded-full">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings">settings</span>
+</button>
+<button class="text-secondary hover:text-primary transition-colors duration-150 ease-in-out hover:bg-surface-container p-1.5 rounded-full">
+<span class="material-symbols-outlined text-[20px]" data-icon="help">help</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant ml-2">
+<img alt="Manager Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a retail store manager in a clean, brightly lit environment. Light mode aesthetic, sharp focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKhpnStVvBT1gsMHspzkaz6H27Ce0__PVd2OahRfalFAn3HRkCooZi9Vu8TY2QbslLKslWab-m8dWMhn-SMquotCvUJJ0uZ5iXJdlkOsoUr7HU73NjJNw2ijcmnNb6Sa9kAvchW4lk_a9JuoeKCRmArcfmpRG2YhkahXf7veUMEVVVPqieFPnICFV0SghaewB2MoWzzQT2EkO-JsZy-IkZzA9ACpx6YkXT6HjuoIrAHI0Scmz1AecX"/>
+</div>
+</div>
+</header>
+<!-- Canvas -->
+<main class="flex-1 overflow-y-auto bg-background p-6 md:p-8">
+<div class="max-w-5xl mx-auto space-y-8">
+<!-- Page Header -->
+<div class="flex flex-col space-y-2">
+<h2 class="text-[28px] font-[300] text-on-surface leading-tight tracking-tight">Return / Refund Search</h2>
+<p class="text-[14px] text-secondary font-body">Scan receipt barcode or enter order details to initiate a return.</p>
+</div>
+<!-- Primary Search Area (Bento Layout) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Search Input Box -->
+<div class="md:col-span-2 bg-surface-container p-6 flex flex-col justify-center border-l-4 border-primary">
+<label class="text-[12px] font-[600] text-on-surface uppercase tracking-wider mb-3 block" for="order-search">Scan or Enter Order ID</label>
+<div class="flex relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-secondary" data-icon="barcode_scanner">barcode_scanner</span>
+</div>
+<input autofocus="" class="block w-full pl-10 pr-4 py-3 bg-surface border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-[16px] font-body text-on-surface" id="order-search" placeholder="e.g. ORD-9823-11" type="text"/>
+<button class="absolute inset-y-0 right-0 px-4 bg-primary text-on-primary font-[600] text-[14px] hover:bg-on-primary-fixed-variant transition-colors">
+                                Search
+                            </button>
+</div>
+<p class="text-[12px] text-secondary mt-3 font-body flex items-center">
+<span class="material-symbols-outlined text-[14px] mr-1" data-icon="info">info</span>
+                            Also accepts customer email or phone number.
+                        </p>
+</div>
+<!-- Quick Stats / Guidelines -->
+<div class="bg-surface border border-outline-variant p-6 flex flex-col justify-between">
+<div>
+<h3 class="text-[14px] font-[600] text-on-surface mb-2">Return Policy Guidelines</h3>
+<ul class="text-[12px] text-secondary space-y-2 font-body">
+<li class="flex items-start">
+<span class="material-symbols-outlined text-[14px] text-primary mr-2 mt-0.5" data-icon="check_circle">check_circle</span>
+                                    Within 30 days of purchase for full refund.
+                                </li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-[14px] text-primary mr-2 mt-0.5" data-icon="check_circle">check_circle</span>
+                                    Original receipt required for cash refunds.
+                                </li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-[14px] text-error mr-2 mt-0.5" data-icon="cancel">cancel</span>
+                                    Final sale items are non-returnable.
+                                </li>
+</ul>
+</div>
+<a class="text-[12px] font-[600] text-primary hover:underline mt-4 inline-block" href="#">View Full Policy</a>
+</div>
+</div>
+<!-- Recent Sales List -->
+<div>
+<div class="flex justify-between items-end mb-4 border-b border-outline-variant pb-2">
+<h3 class="text-[20px] font-[400] text-on-surface">Recent Sales</h3>
+<div class="flex space-x-2">
+<button class="text-[12px] font-[600] text-secondary hover:text-primary transition-colors flex items-center">
+<span class="material-symbols-outlined text-[16px] mr-1" data-icon="filter_list">filter_list</span> Filter
+                            </button>
+</div>
+</div>
+<!-- Data Table Structure -->
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left font-body text-[14px]">
+<thead class="text-[12px] font-[600] text-on-surface bg-surface-container-low border-b border-outline-variant uppercase tracking-wide">
+<tr>
+<th class="py-3 px-4 w-32">Order ID</th>
+<th class="py-3 px-4">Date &amp; Time</th>
+<th class="py-3 px-4">Customer</th>
+<th class="py-3 px-4">Items</th>
+<th class="py-3 px-4 text-right">Total</th>
+<th class="py-3 px-4 text-center">Action</th>
+</tr>
+</thead>
+<tbody class="text-on-surface">
+<!-- Row 1 -->
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors group">
+<td class="py-3 px-4 font-[600]">ORD-9021</td>
+<td class="py-3 px-4 text-secondary">Today, 10:42 AM</td>
+<td class="py-3 px-4">Walk-in Customer</td>
+<td class="py-3 px-4">2 items</td>
+<td class="py-3 px-4 text-right font-[600]">$142.50</td>
+<td class="py-3 px-4 text-center">
+<button class="text-[12px] font-[600] text-primary border border-primary px-3 py-1 hover:bg-primary hover:text-on-primary transition-colors rounded DEFAULT opacity-0 group-hover:opacity-100 focus:opacity-100">
+                                            Select
+                                        </button>
+</td>
+</tr>
+<!-- Row 2 (Zebra) -->
+<tr class="bg-surface-container-low border-b border-outline-variant hover:bg-surface-container-high transition-colors group">
+<td class="py-3 px-4 font-[600]">ORD-9020</td>
+<td class="py-3 px-4 text-secondary">Today, 10:15 AM</td>
+<td class="py-3 px-4">Sarah Jenkins</td>
+<td class="py-3 px-4">1 item</td>
+<td class="py-3 px-4 text-right font-[600]">$89.00</td>
+<td class="py-3 px-4 text-center">
+<button class="text-[12px] font-[600] text-primary border border-primary px-3 py-1 hover:bg-primary hover:text-on-primary transition-colors rounded DEFAULT opacity-0 group-hover:opacity-100 focus:opacity-100">
+                                            Select
+                                        </button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors group">
+<td class="py-3 px-4 font-[600]">ORD-9019</td>
+<td class="py-3 px-4 text-secondary">Today, 09:30 AM</td>
+<td class="py-3 px-4">Michael Chen</td>
+<td class="py-3 px-4">4 items</td>
+<td class="py-3 px-4 text-right font-[600]">$320.75</td>
+<td class="py-3 px-4 text-center">
+<button class="text-[12px] font-[600] text-primary border border-primary px-3 py-1 hover:bg-primary hover:text-on-primary transition-colors rounded DEFAULT opacity-0 group-hover:opacity-100 focus:opacity-100">
+                                            Select
+                                        </button>
+</td>
+</tr>
+<!-- Row 4 (Zebra) -->
+<tr class="bg-surface-container-low border-b border-outline-variant hover:bg-surface-container-high transition-colors group">
+<td class="py-3 px-4 font-[600]">ORD-9018</td>
+<td class="py-3 px-4 text-secondary">Yesterday, 4:45 PM</td>
+<td class="py-3 px-4">Walk-in Customer</td>
+<td class="py-3 px-4">1 item</td>
+<td class="py-3 px-4 text-right font-[600]">$45.00</td>
+<td class="py-3 px-4 text-center">
+<button class="text-[12px] font-[600] text-primary border border-primary px-3 py-1 hover:bg-primary hover:text-on-primary transition-colors rounded DEFAULT opacity-0 group-hover:opacity-100 focus:opacity-100">
+                                            Select
+                                        </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

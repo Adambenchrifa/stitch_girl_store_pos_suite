@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Girl Store POS - Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#ffffff",
+                        "error-container": "#fff1f1",
+                        "background": "#ffffff",
+                        "surface": "#ffffff",
+                        "inverse-primary": "#78a9ff",
+                        "on-tertiary-fixed-variant": "#044317",
+                        "on-surface-variant": "#525252",
+                        "on-primary-container": "#161616",
+                        "on-secondary-fixed-variant": "#525252",
+                        "surface-dim": "#e0e0e0",
+                        "inverse-surface": "#393939",
+                        "primary-container": "#d0e2ff",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#f4f4f4",
+                        "primary-fixed-dim": "#78a9ff",
+                        "tertiary-fixed-dim": "#42be65",
+                        "on-tertiary-fixed": "#022d0d",
+                        "on-primary-fixed-variant": "#0043ce",
+                        "tertiary-fixed": "#a7f0ba",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#e0e0e0",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#001d6c",
+                        "on-tertiary-container": "#044317",
+                        "surface-container-high": "#e0e0e0",
+                        "surface-tint": "#0f62fe",
+                        "on-error": "#ffffff",
+                        "on-error-container": "#750e13",
+                        "secondary": "#6f6f6f",
+                        "on-secondary-container": "#525252",
+                        "on-surface": "#161616",
+                        "surface-container-highest": "#c6c6c6",
+                        "surface-container-lowest": "#ffffff",
+                        "primary": "#0f62fe",
+                        "on-secondary-fixed": "#161616",
+                        "primary-fixed": "#d0e2ff",
+                        "outline": "#8d8d8d",
+                        "error": "#da1e28",
+                        "surface-container-low": "#f4f4f4",
+                        "tertiary": "#198038",
+                        "secondary-container": "#e0e0e0",
+                        "secondary-fixed-dim": "#c6c6c6",
+                        "inverse-on-surface": "#f4f4f4",
+                        "tertiary-container": "#a7f0ba",
+                        "surface-variant": "#f4f4f4",
+                        "on-background": "#161616",
+                        "outline-variant": "#e0e0e0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["IBM Plex Sans", "sans-serif"],
+                        "display": ["IBM Plex Sans", "sans-serif"],
+                        "body": ["IBM Plex Sans", "sans-serif"],
+                        "label": ["IBM Plex Sans", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'IBM Plex Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="h-full bg-background text-on-background m-0 p-0 antialiased font-body flex">
+<!-- Split Screen Container -->
+<div class="flex h-full w-full">
+<!-- Left Side: Photographic Background -->
+<div class="hidden lg:block lg:w-1/2 relative bg-surface-container overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center filter blur-[2px] scale-105" data-alt="A beautiful, slightly blurred photograph of a high-fashion boutique interior. Racks of elegant clothing in soft neutral tones and deep purples are visible in the background. The lighting is sophisticated and warm, creating a welcoming and premium atmosphere. The scene aligns with a modern enterprise light-mode aesthetic, utilizing bright whites and subtle grays to maintain a clean, uncluttered visual space." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAGfWN5MEVs8QL0wKDlBO9Df_a8vuIsJknVcVuN8xXIw3yAV2H-yLIBTmYvO1mHtDHaOaA3Hqh_9VZcS3FNuJmJJ7Vm_49S96ZunRAC_M1L8Y0QN08cJA84t64_3T6WokgIS1cFL6O17QGtde987UgyZ53nj6fnDzvLGpm3TMKNMeaPTvcyTkp0xlfykPA75MpZnl60EhB3ngAW85o3R7yRbau4aJu2WeOcUJ47kdnoDfEU9VAYNkaK')"></div>
+<!-- Overlay to ensure text readability if needed, though mostly decorative -->
+<div class="absolute inset-0 bg-gradient-to-br from-surface-bright/20 to-surface-container/60 mix-blend-multiply"></div>
+<div class="absolute bottom-12 left-12 max-w-md">
+<h2 class="text-4xl font-headline font-semibold text-surface-bright shadow-sm mb-4">Empowering Retail Brilliance.</h2>
+<p class="text-lg text-surface-bright/90 font-body drop-shadow-md">Access your Girl Store POS terminal to manage inventory, sales, and customers with productive clarity.</p>
+</div>
+</div>
+<!-- Right Side: Login Form -->
+<div class="w-full lg:w-1/2 flex items-center justify-center bg-surface p-8 sm:p-12">
+<div class="w-full max-w-md">
+<!-- Logo -->
+<div class="flex justify-center mb-10">
+<img alt="Girl Store Logo" class="h-24 w-24 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEuR8MEYnfeSlYEUqa2Pu08v-WaTZK_9psirRczszc8QCffCZw9z_p8aKPLdGY8pu-cJjIHSpvHZR9JPFhXHYmgfRNO7_mwjPgq9rt8gXxkVwv2zvBTGI0Lejh9QAdIa-T-GM9sy4U1mJddPe2nxFhkT8Qupd9vqrZsE29bm6mFOWjHNtKVyw9R9HJsGZ-FuMkRZbDhwn2qlnJ1ejKguecfBOUbTnC8u2YoaLuhBkggK9mxT_g0d8w"/>
+</div>
+<!-- Header -->
+<div class="text-center mb-8">
+<h1 class="text-2xl font-headline font-semibold text-on-background mb-2">Welcome Back</h1>
+<p class="text-sm font-body text-on-surface-variant">Sign in to your admin terminal</p>
+</div>
+<!-- Form -->
+<form class="space-y-6">
+<!-- Username Field -->
+<div>
+<label class="block text-xs font-label font-semibold text-on-surface-variant mb-1 uppercase tracking-wider" for="username">Username</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant/70 text-sm">person</span>
+<input class="block w-full pl-9 pr-3 py-2 bg-surface-container border-0 border-b-[1px] border-outline-variant focus:border-primary focus:ring-0 text-sm font-body text-on-background h-10 transition-colors" id="username" name="username" placeholder="Enter your username" required="" type="text"/>
+</div>
+</div>
+<!-- Password Field -->
+<div>
+<label class="block text-xs font-label font-semibold text-on-surface-variant mb-1 uppercase tracking-wider" for="password">Password</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant/70 text-sm">lock</span>
+<input class="block w-full pl-9 pr-3 py-2 bg-surface-container border-0 border-b-[1px] border-outline-variant focus:border-primary focus:ring-0 text-sm font-body text-on-background h-10 transition-colors" id="password" name="password" placeholder="Enter your password" required="" type="password"/>
+</div>
+</div>
+<!-- Remember Me & Forgot Password -->
+<div class="flex items-center justify-between mt-4">
+<div class="flex items-center">
+<input class="h-4 w-4 text-primary focus:ring-primary border-outline-variant rounded-sm bg-surface-container" id="remember-me" name="remember-me" type="checkbox"/>
+<label class="ml-2 block text-sm font-body text-on-surface-variant" for="remember-me">
+                                Remember me
+                            </label>
+</div>
+<div class="text-sm">
+<a class="font-body font-semibold text-primary hover:text-primary-fixed-dim transition-colors" href="#">Forgot Password?</a>
+</div>
+</div>
+<!-- Submit Button -->
+<div class="pt-4">
+<button class="w-full flex justify-center py-3 px-4 border border-transparent rounded-DEFAULT shadow-sm text-sm font-label font-semibold text-on-primary bg-[#673ab7] hover:bg-[#5e35b1] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#673ab7] transition-colors min-h-[48px] items-center" type="button">
+                            Login
+                        </button>
+<!-- Note: User requested Deep Purple for the button, overriding standard primary (#0f62fe) just for this specific CTA as requested -->
+</div>
+</form>
+<!-- Register Link -->
+<div class="mt-8 text-center border-t border-outline-variant pt-6">
+<p class="text-sm font-body text-on-surface-variant">
+                        Need access? 
+                        <a class="font-semibold text-primary hover:text-primary-fixed-dim transition-colors" href="#">Register New Terminal</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+</body></html>

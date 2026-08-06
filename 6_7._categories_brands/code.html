@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-background antialiased dark:bg-background" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Categories &amp; Brands Management - Girl Store POS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#ffffff",
+                        "error-container": "#fff1f1",
+                        "background": "#ffffff",
+                        "surface": "#ffffff",
+                        "inverse-primary": "#78a9ff",
+                        "on-tertiary-fixed-variant": "#044317",
+                        "on-surface-variant": "#525252",
+                        "on-primary-container": "#161616",
+                        "on-secondary-fixed-variant": "#525252",
+                        "surface-dim": "#e0e0e0",
+                        "inverse-surface": "#393939",
+                        "primary-container": "#d0e2ff",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#f4f4f4",
+                        "primary-fixed-dim": "#78a9ff",
+                        "tertiary-fixed-dim": "#42be65",
+                        "on-tertiary-fixed": "#022d0d",
+                        "on-primary-fixed-variant": "#0043ce",
+                        "tertiary-fixed": "#a7f0ba",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#e0e0e0",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#001d6c",
+                        "on-tertiary-container": "#044317",
+                        "surface-container-high": "#e0e0e0",
+                        "surface-tint": "#0f62fe",
+                        "on-error": "#ffffff",
+                        "on-error-container": "#750e13",
+                        "secondary": "#6f6f6f",
+                        "on-secondary-container": "#525252",
+                        "on-surface": "#161616",
+                        "surface-container-highest": "#c6c6c6",
+                        "surface-container-lowest": "#ffffff",
+                        "primary": "#0f62fe",
+                        "on-secondary-fixed": "#161616",
+                        "primary-fixed": "#d0e2ff",
+                        "outline": "#8d8d8d",
+                        "error": "#da1e28",
+                        "surface-container-low": "#f4f4f4",
+                        "tertiary": "#198038",
+                        "secondary-container": "#e0e0e0",
+                        "secondary-fixed-dim": "#c6c6c6",
+                        "inverse-on-surface": "#f4f4f4",
+                        "tertiary-container": "#a7f0ba",
+                        "surface-variant": "#f4f4f4",
+                        "on-background": "#161616",
+                        "outline-variant": "#e0e0e0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {},
+                    "fontFamily": {
+                        "headline": ["IBM Plex Sans", "sans-serif"],
+                        "display": ["IBM Plex Sans", "sans-serif"],
+                        "body": ["IBM Plex Sans", "sans-serif"],
+                        "label": ["IBM Plex Sans", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["0.75rem", { lineHeight: "1rem" }],
+                        "label-md": ["0.875rem", { lineHeight: "1.25rem" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* Zebra striping for lists */
+        .zebra-list > div:nth-child(even) {
+            background-color: theme('colors.surface-container');
+        }
+    </style>
+</head>
+<body class="font-body text-on-background h-full flex overflow-hidden bg-background">
+<!-- SideNavBar -->
+<nav class="hidden md:flex flex-col h-full py-4 bg-surface-container dark:bg-surface-container text-primary dark:text-primary font-body text-label-sm font-normal h-screen w-64 flex-shrink-0 border-r border-outline-variant">
+<div class="px-6 mb-6">
+<h1 class="text-xl font-headline font-semibold text-primary dark:text-primary">Girl Store POS</h1>
+<p class="text-on-surface-variant mt-1">Admin Terminal</p>
+</div>
+<div class="px-4 mb-4">
+<button class="w-full flex items-center justify-center gap-2 bg-primary text-on-primary py-2 px-4 rounded font-semibold hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-sm">add</span>
+                New Sale
+            </button>
+</div>
+<div class="flex-1 overflow-y-auto overflow-x-hidden space-y-1 px-3">
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="point_of_sale">point_of_sale</span>
+<span>POS</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-primary font-semibold border-r-2 border-primary bg-primary-container/10 Active: opacity-80 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span>Products</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="inventory">inventory</span>
+<span>Inventory</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span>Customers</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span>Sales</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span>Expenses</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="assessment">assessment</span>
+<span>Reports</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span>Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="manage_accounts">manage_accounts</span>
+<span>User Management</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</div>
+<div class="px-6 pt-4 border-t border-outline-variant mt-auto">
+<div class="flex items-center gap-3">
+<img alt="Store Manager Profile" class="w-8 h-8 rounded-full object-cover bg-surface-dim" data-alt="A highly detailed close-up portrait of a female store manager in a brightly lit modern retail boutique. The lighting is soft and natural, emphasizing a clean, light-mode aesthetic with high contrast between deep blacks and crisp whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3kRMzOSGy62vXsb7bJvjCPUArUR_OTUuQQpAvAezhWGMd7KuzSlrMI-qD6XVzENKO7Ws-SvF9vRgFraiVLKhA4dnpZARALqFAQX0riPIMLrealg2VEs3yfw1pXEgyfEEtwT2gVkoiaWW_fXauQNaQPSayre2ZSkt63u_1xsq85oMO8Hhb2wGATtzIBFwDiPBXzyqBQ4ZWRXlJljJruPOwLMDKy7FYBXtCkSVs04lKu7HpSJbCPd1B"/>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-semibold text-on-surface truncate">Admin User</p>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Wrapper -->
+<div class="flex-1 flex flex-col h-screen overflow-hidden">
+<!-- TopAppBar (Mobile Only based on layout rules, but keeping for structure) -->
+<header class="md:hidden flex justify-between items-center h-16 w-full px-6 bg-surface dark:bg-surface text-primary dark:text-primary font-body text-label-md docked full-width top-0 border-b border-outline-variant flat no shadows">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined hover:bg-surface-container-low transition-all scale-95 active:scale-90 p-2 rounded" data-icon="menu">menu</button>
+<span class="font-bold">Girl Store POS</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low transition-all scale-95 active:scale-90 p-2 rounded" data-icon="search">search</button>
+<img alt="User Avatar" class="w-8 h-8 rounded-full object-cover bg-surface-dim" data-alt="A highly detailed close-up portrait of a female store manager in a brightly lit modern retail boutique. The lighting is soft and natural, emphasizing a clean, light-mode aesthetic with high contrast between deep blacks and crisp whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQXImNwksJ07e6ejhPiuJAW6R8KeqGasNlZJkTOLflj16wTQz_v1f0Y6-9Sq04h3HruJ_K7yL2eun_rO0SINn4IrxLSEd_4dbWMbyTRnVwx2M9n_0C7LI7hUAINEjDY1fIeXeMbJuCkUcy2IdwJWe3aA2GCozwBnpeuHSgFLFm4BIlIAkArhfViWS_5YepLFytDOChbumScWzqJBg2GGqXLoPLad6ogfJ8LgC1CeHuQ1Z6i9wPAFd_"/>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 overflow-y-auto bg-background p-6 lg:p-8">
+<div class="max-w-7xl mx-auto h-full flex flex-col">
+<!-- Page Header -->
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
+<div>
+<h2 class="text-2xl font-headline font-semibold text-on-surface">Categories &amp; Brands</h2>
+<p class="text-on-surface-variant mt-1 text-sm">Manage product classifications and vendor portfolios.</p>
+</div>
+<!-- Unified Search -->
+<div class="relative w-full sm:w-72">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="w-full h-10 pl-10 pr-4 bg-surface-container border-b border-outline-variant focus:border-primary focus:ring-0 text-sm placeholder-on-surface-variant transition-colors" placeholder="Search categories or brands..." type="text"/>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 flex-1 h-full min-h-[600px]">
+<!-- Left: Categories Panel -->
+<div class="bg-surface-bright border border-outline-variant flex flex-col h-full rounded shadow-sm">
+<!-- Panel Header -->
+<div class="flex justify-between items-center p-4 border-b border-outline-variant bg-surface-container-lowest">
+<h3 class="font-semibold text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="category">category</span>
+                                Categories
+                            </h3>
+<button class="flex items-center gap-1 text-sm font-semibold text-primary hover:bg-primary-container/20 px-2 py-1 rounded transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+                                Add Category
+                            </button>
+</div>
+<!-- Panel Content (List) -->
+<div class="flex-1 overflow-y-auto zebra-list">
+<!-- Category Item 1 -->
+<div class="flex items-center justify-between p-4 hover:bg-surface-container-high transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded bg-primary-container text-on-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="styler">styler</span>
+</div>
+<div>
+<p class="font-semibold text-on-surface">Apparel</p>
+<p class="text-xs text-on-surface-variant">420 Products</p>
+</div>
+</div>
+<div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container-low transition-colors" title="Edit">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-error rounded hover:bg-error-container transition-colors" title="Delete">
+<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+<!-- Category Item 2 -->
+<div class="flex items-center justify-between p-4 hover:bg-surface-container-high transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded bg-tertiary-container text-on-tertiary-container flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="watch">watch</span>
+</div>
+<div>
+<p class="font-semibold text-on-surface">Accessories</p>
+<p class="text-xs text-on-surface-variant">156 Products</p>
+</div>
+</div>
+<div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container-low transition-colors" title="Edit">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-error rounded hover:bg-error-container transition-colors" title="Delete">
+<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+<!-- Category Item 3 -->
+<div class="flex items-center justify-between p-4 hover:bg-surface-container-high transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded bg-surface-container-highest text-on-surface flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</div>
+<div>
+<p class="font-semibold text-on-surface">Bags &amp; Purses</p>
+<p class="text-xs text-on-surface-variant">89 Products</p>
+</div>
+</div>
+<div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container-low transition-colors" title="Edit">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-error rounded hover:bg-error-container transition-colors" title="Delete">
+<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+<!-- Category Item 4 -->
+<div class="flex items-center justify-between p-4 hover:bg-surface-container-high transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded bg-surface-container-highest text-on-surface flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="face_retouching_natural">face_retouching_natural</span>
+</div>
+<div>
+<p class="font-semibold text-on-surface">Beauty</p>
+<p class="text-xs text-on-surface-variant">234 Products</p>
+</div>
+</div>
+<div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container-low transition-colors" title="Edit">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-error rounded hover:bg-error-container transition-colors" title="Delete">
+<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Right: Brands Panel -->
+<div class="bg-surface-bright border border-outline-variant flex flex-col h-full rounded shadow-sm">
+<!-- Panel Header -->
+<div class="flex justify-between items-center p-4 border-b border-outline-variant bg-surface-container-lowest">
+<h3 class="font-semibold text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="storefront">storefront</span>
+                                Brands
+                            </h3>
+<button class="flex items-center gap-1 text-sm font-semibold text-primary hover:bg-primary-container/20 px-2 py-1 rounded transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+                                Add Brand
+                            </button>
+</div>
+<!-- Panel Content (List) -->
+<div class="flex-1 overflow-y-auto zebra-list">
+<!-- Brand Item 1 -->
+<div class="flex items-center justify-between p-4 hover:bg-surface-container-high transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded border border-outline-variant bg-surface overflow-hidden flex-shrink-0">
+<img alt="Lumiere Brand Logo" class="w-full h-full object-cover" data-alt="A stark, minimalist fashion brand logo featuring elegant serif typography on a pure white background. High contrast, high key lighting, embodying a modern luxury retail aesthetic in a light-mode UI context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuEdLt4K_NdACuUBtJrnCLUuYZsvsuFDVVja2-GkzXx6tPbpVXSEa3sj1NLjGh9oW-_pi8hTLHsrPOq2fO6p0HzWTirU401Eiqt3w_ASrKMwrtASrmiMKRoub0b33zDWU2AP_4Aw5vl4DrQylVUd4ikY7TmTvqORoQAgLQX42cDwZFJ1ByVh_JPzvLAZ8ucyysmjN494F5-6aOVINK3z6ZFmCuxhMLJKrLEz3S1v3vslCoJulRcEsp"/>
+</div>
+<div>
+<p class="font-semibold text-on-surface">Lumière</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-xs bg-tertiary/10 text-tertiary px-1.5 py-0.5 rounded font-medium">Premium</span>
+<span class="text-xs text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="trending_up">trending_up</span>
+                                                $45.2k Rev
+                                            </span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container-low transition-colors" title="Edit">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+</div>
+</div>
+<!-- Brand Item 2 -->
+<div class="flex items-center justify-between p-4 hover:bg-surface-container-high transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded border border-outline-variant bg-surface overflow-hidden flex-shrink-0">
+<img alt="Vera Brand Logo" class="w-full h-full object-cover" data-alt="A sleek, modern cosmetics brand logo featuring geometric sans-serif typography. Rendered in monochromatic tones on a pure white background, suitable for a high-end enterprise software interface light mode." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjPMtIEUF2-Kadv0XjG8n12jTnhrAWM81OTNfnFjw2-mIy30vRNApwhzC4QjiAGGbFw4mzNlvM_jtohTQU2_COG_B2-PVIHB3pmfPHGMHBhjSMcK7IjMAIB4IrMZIhTihBzrzdWnLZWR-sPOIcaq2GC8DGCf6dRaiKS1KU11BNTidwvkL_dnMfD_rPcyDUca7JQ8WzybJx0w8tKMynQB2eyeVunjqaKLC9tFBjDMspCm45gsFaVu98"/>
+</div>
+<div>
+<p class="font-semibold text-on-surface">Vera Beauty</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-xs bg-surface-container-highest text-on-surface px-1.5 py-0.5 rounded font-medium">Standard</span>
+<span class="text-xs text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="trending_up">trending_up</span>
+                                                $28.1k Rev
+                                            </span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container-low transition-colors" title="Edit">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+</div>
+</div>
+<!-- Brand Item 3 -->
+<div class="flex items-center justify-between p-4 hover:bg-surface-container-high transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded border border-outline-variant bg-surface overflow-hidden flex-shrink-0 flex items-center justify-center">
+<span class="text-on-surface-variant font-bold text-lg">AZ</span>
+</div>
+<div>
+<p class="font-semibold text-on-surface">Aura Zen</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-xs bg-surface-container-highest text-on-surface px-1.5 py-0.5 rounded font-medium">Standard</span>
+<span class="text-xs text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-error" data-icon="trending_down">trending_down</span>
+                                                $12.4k Rev
+                                            </span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container-low transition-colors" title="Edit">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

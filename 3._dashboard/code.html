@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Girl Store POS - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-bright": "#ffffff",
+                        "error-container": "#fff1f1",
+                        "background": "#ffffff",
+                        "surface": "#ffffff",
+                        "inverse-primary": "#78a9ff",
+                        "on-tertiary-fixed-variant": "#044317",
+                        "on-surface-variant": "#525252",
+                        "on-primary-container": "#161616",
+                        "on-secondary-fixed-variant": "#525252",
+                        "surface-dim": "#e0e0e0",
+                        "inverse-surface": "#393939",
+                        "primary-container": "#d0e2ff",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#f4f4f4",
+                        "primary-fixed-dim": "#78a9ff",
+                        "tertiary-fixed-dim": "#42be65",
+                        "on-tertiary-fixed": "#022d0d",
+                        "on-primary-fixed-variant": "#0043ce",
+                        "tertiary-fixed": "#a7f0ba",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#e0e0e0",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#001d6c",
+                        "on-tertiary-container": "#044317",
+                        "surface-container-high": "#e0e0e0",
+                        "surface-tint": "#0f62fe",
+                        "on-error": "#ffffff",
+                        "on-error-container": "#750e13",
+                        "secondary": "#6f6f6f",
+                        "on-secondary-container": "#525252",
+                        "on-surface": "#161616",
+                        "surface-container-highest": "#c6c6c6",
+                        "surface-container-lowest": "#ffffff",
+                        "primary": "#0f62fe",
+                        "on-secondary-fixed": "#161616",
+                        "primary-fixed": "#d0e2ff",
+                        "outline": "#8d8d8d",
+                        "error": "#da1e28",
+                        "surface-container-low": "#f4f4f4",
+                        "tertiary": "#198038",
+                        "secondary-container": "#e0e0e0",
+                        "secondary-fixed-dim": "#c6c6c6",
+                        "inverse-on-surface": "#f4f4f4",
+                        "tertiary-container": "#a7f0ba",
+                        "surface-variant": "#f4f4f4",
+                        "on-background": "#161616",
+                        "outline-variant": "#e0e0e0"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    fontFamily: {
+                        "headline": ["IBM Plex Sans", "sans-serif"],
+                        "display": ["IBM Plex Sans", "sans-serif"],
+                        "body": ["IBM Plex Sans", "sans-serif"],
+                        "label": ["IBM Plex Sans", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'IBM Plex Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .nav-item-active { font-variation-settings: 'FILL' 1; }
+        
+        /* Carbon Design System specifics */
+        .carbon-input { border-bottom: 1px solid #8d8d8d; background-color: #f4f4f4; border-top: none; border-left: none; border-right: none; border-radius: 0; }
+        .carbon-input:focus { border-bottom: 2px solid #0f62fe; outline: none; box-shadow: none; }
+        .carbon-card { background-color: #f4f4f4; border-radius: 0; }
+        .carbon-table-row:nth-child(even) { background-color: #f4f4f4; }
+    </style>
+</head>
+<body class="bg-surface-bright text-on-surface h-screen overflow-hidden flex font-body text-[14px]">
+<!-- SideNavBar -->
+<aside class="bg-surface-container dark:bg-surface-container text-primary dark:text-primary font-body text-label-sm font-normal h-screen w-64 flex-shrink-0 border-r border-outline-variant flex flex-col h-full py-4 hidden md:flex z-20">
+<!-- Brand / Header -->
+<div class="px-6 pb-6 border-b border-outline-variant mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary-container rounded-full flex items-center justify-center text-primary font-bold text-lg">GS</div>
+<div>
+<h1 class="text-xl font-headline font-semibold text-primary dark:text-primary tracking-tight">Girl Store POS</h1>
+<p class="text-xs text-on-surface-variant">Admin Terminal</p>
+</div>
+</div>
+<button class="mt-4 w-full bg-primary text-on-primary py-2 px-4 flex items-center justify-center gap-2 font-semibold hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                New Sale
+            </button>
+</div>
+<!-- Navigation Links -->
+<nav class="flex-1 overflow-y-auto px-2 space-y-1">
+<!-- Active Tab -->
+<a class="flex items-center gap-3 px-4 py-2.5 text-primary font-semibold border-r-2 border-primary bg-primary-container/10 Active: opacity-80 transition-all" href="#">
+<span class="material-symbols-outlined nav-item-active">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">point_of_sale</span>
+<span>POS</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span>Products</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">inventory</span>
+<span>Inventory</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">group</span>
+<span>Customers</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span>Sales</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span>Expenses</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span>Reports</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span>Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">manage_accounts</span>
+<span>User Management</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Area Wrapper -->
+<div class="flex-1 flex flex-col h-screen overflow-hidden">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface text-primary dark:text-primary font-body text-label-md docked full-width top-0 border-b border-outline-variant flex justify-between items-center h-16 w-full px-6 z-10 shrink-0">
+<!-- Left Side: Search -->
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="carbon-input w-full pl-10 pr-4 py-2 text-sm text-on-surface h-[40px]" placeholder="Search..." type="text"/>
+</div>
+</div>
+<!-- Right Side: Navigation & Actions -->
+<div class="flex items-center gap-6">
+<!-- Top Links (Desktop) -->
+<nav class="hidden lg:flex items-center gap-6">
+<a class="text-primary font-bold hover:bg-surface-container-low transition-all scale-95 active:scale-90 px-2 py-1" href="#">Dashboard</a>
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-all scale-95 active:scale-90 px-2 py-1" href="#">Inventory</a>
+</nav>
+<div class="h-6 w-px bg-outline-variant hidden lg:block"></div>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-2">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low transition-all scale-95 active:scale-90 rounded-full relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low transition-all scale-95 active:scale-90 rounded-full">
+<span class="material-symbols-outlined">barcode_scanner</span>
+</button>
+<button class="hidden md:flex bg-primary text-on-primary px-4 py-2 ml-2 hover:bg-primary/90 transition-colors font-semibold scale-95 active:scale-90">
+                        New Sale
+                    </button>
+</div>
+<!-- Profile -->
+<div class="w-8 h-8 rounded-full bg-secondary-container overflow-hidden border border-outline-variant flex-shrink-0 cursor-pointer">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="A professional headshot of a store manager, modern lighting, clear background, high quality, neutral expression." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsmOkag1_eaRX-JG9738Iz7Je0vwn2ugF5Rvm3vn2-XyS1bJnNlsHnWCF4_a9Pow5IYWPem2NhNz3j5MWUlJx96vwozxZ7q5JjFB1f1XZYopzZfS0EsfXJYY_3Dy_dCnyTdf-F013TDyd4rHrU1Pdd6PJoZazoKCqohkRqiN2bqP9Blaxcxib3M5QaXXJOkpCPEFe08qd45yECTmRc2Mv_zpcTeUUx4E1NtF_2sc0Y2Jmp8zKIWFjS"/>
+</div>
+</div>
+</header>
+<!-- Main Dashboard Canvas -->
+<main class="flex-1 overflow-y-auto p-6 lg:p-8 bg-surface-bright">
+<div class="max-w-[1400px] mx-auto space-y-6">
+<!-- Page Header -->
+<div class="flex justify-between items-end mb-8">
+<div>
+<h2 class="text-2xl font-headline font-semibold text-on-surface">Overview</h2>
+<p class="text-sm text-on-surface-variant mt-1">Today's business performance at a glance.</p>
+</div>
+<div class="text-sm text-on-surface-variant">Last updated: Just now</div>
+</div>
+<!-- 4 Key Metric Cards (Bento style grid) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Metric 1 -->
+<div class="carbon-card p-5 flex flex-col justify-between h-[120px] border-l-4 border-primary">
+<div class="flex justify-between items-start">
+<span class="text-sm text-on-surface-variant font-medium uppercase tracking-wide">Today's Sales</span>
+<span class="material-symbols-outlined text-primary text-[20px]">receipt_long</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-headline font-semibold">$4,289</span>
+<span class="text-xs text-tertiary flex items-center"><span class="material-symbols-outlined text-[16px]">arrow_upward</span> 12%</span>
+</div>
+</div>
+<!-- Metric 2 -->
+<div class="carbon-card p-5 flex flex-col justify-between h-[120px] border-l-4 border-primary">
+<div class="flex justify-between items-start">
+<span class="text-sm text-on-surface-variant font-medium uppercase tracking-wide">Revenue</span>
+<span class="material-symbols-outlined text-primary text-[20px]">account_balance_wallet</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-headline font-semibold">$12,450</span>
+<span class="text-xs text-tertiary flex items-center"><span class="material-symbols-outlined text-[16px]">arrow_upward</span> 8%</span>
+</div>
+</div>
+<!-- Metric 3 -->
+<div class="carbon-card p-5 flex flex-col justify-between h-[120px] border-l-4 border-primary">
+<div class="flex justify-between items-start">
+<span class="text-sm text-on-surface-variant font-medium uppercase tracking-wide">Profit Margin</span>
+<span class="material-symbols-outlined text-primary text-[20px]">insights</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-headline font-semibold">24.5%</span>
+<span class="text-xs text-error flex items-center"><span class="material-symbols-outlined text-[16px]">arrow_downward</span> 1.2%</span>
+</div>
+</div>
+<!-- Metric 4 -->
+<div class="carbon-card p-5 flex flex-col justify-between h-[120px] border-l-4 border-primary">
+<div class="flex justify-between items-start">
+<span class="text-sm text-on-surface-variant font-medium uppercase tracking-wide">Customers</span>
+<span class="material-symbols-outlined text-primary text-[20px]">group</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-headline font-semibold">342</span>
+<span class="text-xs text-tertiary flex items-center"><span class="material-symbols-outlined text-[16px]">arrow_upward</span> 4%</span>
+</div>
+</div>
+</div>
+<!-- Secondary Grid: Charts & Lists -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-4">
+<!-- Sales Trend Chart (Span 2) -->
+<div class="carbon-card col-span-1 lg:col-span-2 p-6 min-h-[350px] flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-lg font-headline font-semibold text-on-surface">Sales Trend</h3>
+<button class="text-primary text-sm hover:underline">View Full Report</button>
+</div>
+<div class="flex-1 relative w-full border-b border-l border-outline-variant/30 flex items-end">
+<!-- CSS pure placeholder for a chart to keep it lightweight -->
+<div class="w-full h-full flex items-end justify-between px-2 pb-2">
+<div class="w-1/12 bg-primary/20 hover:bg-primary/40 h-[40%] transition-all"></div>
+<div class="w-1/12 bg-primary/40 hover:bg-primary/60 h-[55%] transition-all"></div>
+<div class="w-1/12 bg-primary/60 hover:bg-primary/80 h-[45%] transition-all"></div>
+<div class="w-1/12 bg-primary/80 hover:bg-primary h-[70%] transition-all"></div>
+<div class="w-1/12 bg-primary/40 hover:bg-primary/60 h-[60%] transition-all"></div>
+<div class="w-1/12 bg-primary/60 hover:bg-primary/80 h-[85%] transition-all"></div>
+<div class="w-1/12 bg-primary hover:bg-primary h-[95%] transition-all"></div>
+</div>
+</div>
+</div>
+<!-- Best Selling Products -->
+<div class="carbon-card col-span-1 p-6 min-h-[350px] flex flex-col">
+<h3 class="text-lg font-headline font-semibold text-on-surface mb-6">Top Products</h3>
+<div class="flex-1 flex items-center justify-center relative">
+<!-- Circular chart CSS placeholder -->
+<div class="w-48 h-48 rounded-full border-[16px] border-surface-container-highest relative">
+<div class="absolute inset-[-16px] rounded-full border-[16px] border-primary" style="clip-path: polygon(50% 50%, 100% 0, 100% 100%, 50% 100%);"></div>
+<div class="absolute inset-[-16px] rounded-full border-[16px] border-inverse-primary" style="clip-path: polygon(50% 50%, 50% 100%, 0 100%, 0 50%);"></div>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-2xl font-bold">1.2k</span>
+<span class="text-xs text-on-surface-variant">Units</span>
+</div>
+</div>
+</div>
+<ul class="mt-4 space-y-2 text-sm">
+<li class="flex justify-between"><span class="flex items-center gap-2"><span class="w-3 h-3 bg-primary block"></span> Product A</span> <span>45%</span></li>
+<li class="flex justify-between"><span class="flex items-center gap-2"><span class="w-3 h-3 bg-inverse-primary block"></span> Product B</span> <span>30%</span></li>
+<li class="flex justify-between"><span class="flex items-center gap-2"><span class="w-3 h-3 bg-surface-container-highest block"></span> Others</span> <span>25%</span></li>
+</ul>
+</div>
+<!-- Recent Sales Table (Span 2) -->
+<div class="carbon-card col-span-1 lg:col-span-2 p-0 overflow-hidden min-h-[300px]">
+<div class="p-6 border-b border-outline-variant flex justify-between items-center bg-surface-bright">
+<h3 class="text-lg font-headline font-semibold text-on-surface">Recent Transactions</h3>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">more_horiz</span>
+</div>
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left text-sm whitespace-nowrap">
+<thead class="bg-surface-container-low border-b border-outline-variant text-on-surface-variant">
+<tr>
+<th class="px-6 py-3 font-semibold">Order ID</th>
+<th class="px-6 py-3 font-semibold">Customer</th>
+<th class="px-6 py-3 font-semibold">Date</th>
+<th class="px-6 py-3 font-semibold">Amount</th>
+<th class="px-6 py-3 font-semibold">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="carbon-table-row border-b border-outline-variant/50 hover:bg-surface-container-low transition-colors">
+<td class="px-6 py-4 font-mono">#ORD-9012</td>
+<td class="px-6 py-4 text-primary cursor-pointer hover:underline">Alice Smith</td>
+<td class="px-6 py-4 text-on-surface-variant">Oct 24, 10:42 AM</td>
+<td class="px-6 py-4 font-semibold">$124.50</td>
+<td class="px-6 py-4"><span class="px-2 py-1 bg-tertiary/10 text-tertiary text-xs font-semibold rounded-sm">Completed</span></td>
+</tr>
+<tr class="carbon-table-row border-b border-outline-variant/50 hover:bg-surface-container-low transition-colors">
+<td class="px-6 py-4 font-mono">#ORD-9011</td>
+<td class="px-6 py-4 text-primary cursor-pointer hover:underline">Walk-in Customer</td>
+<td class="px-6 py-4 text-on-surface-variant">Oct 24, 10:15 AM</td>
+<td class="px-6 py-4 font-semibold">$45.00</td>
+<td class="px-6 py-4"><span class="px-2 py-1 bg-tertiary/10 text-tertiary text-xs font-semibold rounded-sm">Completed</span></td>
+</tr>
+<tr class="carbon-table-row border-b border-outline-variant/50 hover:bg-surface-container-low transition-colors">
+<td class="px-6 py-4 font-mono">#ORD-9010</td>
+<td class="px-6 py-4 text-primary cursor-pointer hover:underline">Bob Jones</td>
+<td class="px-6 py-4 text-on-surface-variant">Oct 24, 09:30 AM</td>
+<td class="px-6 py-4 font-semibold">$399.99</td>
+<td class="px-6 py-4"><span class="px-2 py-1 bg-outline-variant/50 text-on-surface-variant text-xs font-semibold rounded-sm">Pending</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Low Stock Alerts -->
+<div class="carbon-card col-span-1 p-6 min-h-[300px]">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-error">warning</span>
+<h3 class="text-lg font-headline font-semibold text-on-surface">Low Stock</h3>
+</div>
+<div class="space-y-6">
+<!-- Alert Item -->
+<div>
+<div class="flex justify-between text-sm mb-2">
+<span class="font-medium">Organic Cotton Tee</span>
+<span class="text-error font-semibold">4 left</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5">
+<div class="bg-error h-1.5 w-[10%]"></div>
+</div>
+</div>
+<!-- Alert Item -->
+<div>
+<div class="flex justify-between text-sm mb-2">
+<span class="font-medium">Denim Jacket M</span>
+<span class="text-error font-semibold">2 left</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5">
+<div class="bg-error h-1.5 w-[5%]"></div>
+</div>
+</div>
+<!-- Alert Item -->
+<div>
+<div class="flex justify-between text-sm mb-2">
+<span class="font-medium">Silver Hoop Earrings</span>
+<span class="text-primary font-semibold">12 left</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5">
+<div class="bg-primary h-1.5 w-[25%]"></div>
+</div>
+</div>
+</div>
+<button class="mt-6 w-full py-2 border border-primary text-primary font-semibold hover:bg-primary hover:text-on-primary transition-colors text-sm">
+                            Reorder Inventory
+                        </button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

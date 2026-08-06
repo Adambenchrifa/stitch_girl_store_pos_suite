@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Analytics Dashboard - Girl Store POS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#ffffff",
+                        "error-container": "#fff1f1",
+                        "background": "#ffffff",
+                        "surface": "#ffffff",
+                        "inverse-primary": "#78a9ff",
+                        "on-tertiary-fixed-variant": "#044317",
+                        "on-surface-variant": "#525252",
+                        "on-primary-container": "#161616",
+                        "on-secondary-fixed-variant": "#525252",
+                        "surface-dim": "#e0e0e0",
+                        "inverse-surface": "#393939",
+                        "primary-container": "#d0e2ff",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#f4f4f4",
+                        "primary-fixed-dim": "#78a9ff",
+                        "tertiary-fixed-dim": "#42be65",
+                        "on-tertiary-fixed": "#022d0d",
+                        "on-primary-fixed-variant": "#0043ce",
+                        "tertiary-fixed": "#a7f0ba",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#e0e0e0",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#001d6c",
+                        "on-tertiary-container": "#044317",
+                        "surface-container-high": "#e0e0e0",
+                        "surface-tint": "#0f62fe",
+                        "on-error": "#ffffff",
+                        "on-error-container": "#750e13",
+                        "secondary": "#6f6f6f",
+                        "on-secondary-container": "#525252",
+                        "on-surface": "#161616",
+                        "surface-container-highest": "#c6c6c6",
+                        "surface-container-lowest": "#ffffff",
+                        "primary": "#0f62fe",
+                        "on-secondary-fixed": "#161616",
+                        "primary-fixed": "#d0e2ff",
+                        "outline": "#8d8d8d",
+                        "error": "#da1e28",
+                        "surface-container-low": "#f4f4f4",
+                        "tertiary": "#198038",
+                        "secondary-container": "#e0e0e0",
+                        "secondary-fixed-dim": "#c6c6c6",
+                        "inverse-on-surface": "#f4f4f4",
+                        "tertiary-container": "#a7f0ba",
+                        "surface-variant": "#f4f4f4",
+                        "on-background": "#161616",
+                        "outline-variant": "#e0e0e0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["IBM Plex Sans", "sans-serif"],
+                        "display": ["IBM Plex Sans", "sans-serif"],
+                        "body": ["IBM Plex Sans", "sans-serif"],
+                        "label": ["IBM Plex Sans", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'IBM Plex Sans', sans-serif; }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 16px;
+        }
+        .bento-item { background-color: #f4f4f4; padding: 16px; border-radius: 0; }
+        /* Chart Mockup Styles */
+        .chart-bar { background-color: #0f62fe; }
+        .chart-bar-alt { background-color: #6f6f6f; }
+    </style>
+</head>
+<body class="bg-background text-on-background flex h-screen overflow-hidden">
+<!-- SideNavBar -->
+<aside class="bg-surface-container dark:bg-surface-container h-screen w-64 flex-shrink-0 border-r border-outline-variant flex flex-col h-full py-4 hidden md:flex">
+<div class="px-6 pb-6">
+<h1 class="text-xl font-headline font-semibold text-primary dark:text-primary">Girl Store POS</h1>
+<p class="text-on-surface-variant font-body text-label-sm font-normal mt-1">Admin Terminal</p>
+</div>
+<nav class="flex-1 overflow-y-auto">
+<ul class="space-y-1">
+<li><a class="flex items-center px-6 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 Active: opacity-80 transition-all font-body text-label-sm font-normal" href="#"><span class="material-symbols-outlined mr-3">dashboard</span>Dashboard</a></li>
+<li><a class="flex items-center px-6 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 Active: opacity-80 transition-all font-body text-label-sm font-normal" href="#"><span class="material-symbols-outlined mr-3">point_of_sale</span>POS</a></li>
+<li><a class="flex items-center px-6 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 Active: opacity-80 transition-all font-body text-label-sm font-normal" href="#"><span class="material-symbols-outlined mr-3">inventory_2</span>Products</a></li>
+<li><a class="flex items-center px-6 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 Active: opacity-80 transition-all font-body text-label-sm font-normal" href="#"><span class="material-symbols-outlined mr-3">inventory</span>Inventory</a></li>
+<li><a class="flex items-center px-6 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 Active: opacity-80 transition-all font-body text-label-sm font-normal" href="#"><span class="material-symbols-outlined mr-3">group</span>Customers</a></li>
+<li><a class="flex items-center px-6 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 Active: opacity-80 transition-all font-body text-label-sm font-normal" href="#"><span class="material-symbols-outlined mr-3">receipt_long</span>Sales</a></li>
+<li><a class="flex items-center px-6 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 Active: opacity-80 transition-all font-body text-label-sm font-normal" href="#"><span class="material-symbols-outlined mr-3">payments</span>Expenses</a></li>
+<li><a class="flex items-center px-6 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 Active: opacity-80 transition-all font-body text-label-sm font-normal" href="#"><span class="material-symbols-outlined mr-3">assessment</span>Reports</a></li>
+<li><a class="flex items-center px-6 py-3 text-primary font-semibold border-r-2 border-primary bg-primary-container/10 hover:bg-surface-container-high transition-colors duration-200 Active: opacity-80 transition-all font-body text-label-sm" href="#"><span class="material-symbols-outlined mr-3">analytics</span>Analytics</a></li>
+<li><a class="flex items-center px-6 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 Active: opacity-80 transition-all font-body text-label-sm font-normal" href="#"><span class="material-symbols-outlined mr-3">manage_accounts</span>User Management</a></li>
+<li><a class="flex items-center px-6 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 Active: opacity-80 transition-all font-body text-label-sm font-normal" href="#"><span class="material-symbols-outlined mr-3">settings</span>Settings</a></li>
+</ul>
+</nav>
+<div class="px-6 mt-auto">
+<button class="w-full bg-primary text-on-primary py-3 px-4 font-semibold hover:bg-primary-fixed-dim transition-colors flex items-center justify-center h-12">New Sale</button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col h-screen overflow-hidden bg-background">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface border-b border-outline-variant flex justify-between items-center h-16 w-full px-6 flex-shrink-0">
+<div class="flex items-center md:hidden">
+<h2 class="text-lg font-headline font-semibold text-primary">Girl Store POS</h2>
+</div>
+<div class="hidden md:flex items-center space-x-6">
+<!-- Search on left as requested in JSON -->
+<div class="relative w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 transform -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container border-b border-outline-variant focus:outline-none focus:border-primary font-body text-label-md h-10" placeholder="Search analytics..." type="text"/>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<button class="text-on-surface-variant hover:bg-surface-container-low p-2 rounded transition-all scale-95 active:scale-90 flex items-center border border-outline-variant text-sm font-semibold h-10 px-4">
+<span class="material-symbols-outlined mr-2 text-sm">download</span> Export PDF
+                </button>
+<button class="text-on-surface-variant hover:bg-surface-container-low p-2 rounded transition-all scale-95 active:scale-90 flex items-center border border-outline-variant text-sm font-semibold h-10 px-4">
+<span class="material-symbols-outlined mr-2 text-sm">table_view</span> Export Excel
+                </button>
+<button class="text-on-surface-variant hover:bg-surface-container-low p-2 transition-all scale-95 active:scale-90 flex items-center justify-center">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden border border-outline-variant flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A small, professional headshot of an administrative user for a point of sale system avatar. Neutral background, well lit, enterprise aesthetic, high contrast." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPuYRAad7Ag3y1taLXPq7CkUcHOW4yZCSN1t8mDNQ09vkY_n70I4quRnEiz-K7MM2zaKvjcm4jSlTsb_bXQ5ZfyVmxhIOdqE31JZiUK6S4xoYUsccFXDuD2hgtPlJwWApxXXl7XmYv3WwtEAL9ok4HRc2aJKkf9SI0YRAQKrQEYuN6yl47glagpYdlOhqW4I2mh7pyamH8hX1J2K7HkYgAIIpPBCJobrdQ4j4JsGDNWRU7f0HgmFrM"/>
+</div>
+</div>
+</header>
+<!-- Dashboard Canvas -->
+<main class="flex-1 overflow-y-auto p-6">
+<div class="max-w-7xl mx-auto">
+<div class="flex justify-between items-end mb-6">
+<div>
+<h2 class="text-2xl font-headline font-semibold text-on-surface">Analytics Overview</h2>
+<p class="text-on-surface-variant font-body text-sm mt-1">Comprehensive view of business performance metrics.</p>
+</div>
+<div class="flex items-center space-x-2 text-sm">
+<select class="bg-surface-container border-b border-outline-variant py-2 px-3 focus:outline-none focus:border-primary">
+<option>Last 30 Days</option>
+<option>This Quarter</option>
+<option>Year to Date</option>
+</select>
+</div>
+</div>
+<div class="bento-grid">
+<!-- KPI Cards (Row 1) -->
+<div class="bento-item col-span-12 md:col-span-3 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="text-on-surface-variant text-sm font-semibold uppercase tracking-wider">Total Revenue</span>
+<span class="material-symbols-outlined text-primary">attach_money</span>
+</div>
+<div class="mt-4">
+<span class="text-3xl font-headline font-bold">$124,500</span>
+<div class="flex items-center mt-2 text-tertiary text-sm">
+<span class="material-symbols-outlined text-sm mr-1">trending_up</span>
+<span>12.5% vs last month</span>
+</div>
+</div>
+</div>
+<div class="bento-item col-span-12 md:col-span-3 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="text-on-surface-variant text-sm font-semibold uppercase tracking-wider">Total Expenses</span>
+<span class="material-symbols-outlined text-error">money_off</span>
+</div>
+<div class="mt-4">
+<span class="text-3xl font-headline font-bold">$42,300</span>
+<div class="flex items-center mt-2 text-error text-sm">
+<span class="material-symbols-outlined text-sm mr-1">trending_up</span>
+<span>4.2% vs last month</span>
+</div>
+</div>
+</div>
+<div class="bento-item col-span-12 md:col-span-3 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="text-on-surface-variant text-sm font-semibold uppercase tracking-wider">Net Profit</span>
+<span class="material-symbols-outlined text-tertiary">account_balance_wallet</span>
+</div>
+<div class="mt-4">
+<span class="text-3xl font-headline font-bold">$82,200</span>
+<div class="flex items-center mt-2 text-tertiary text-sm">
+<span class="material-symbols-outlined text-sm mr-1">trending_up</span>
+<span>18.1% vs last month</span>
+</div>
+</div>
+</div>
+<div class="bento-item col-span-12 md:col-span-3 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="text-on-surface-variant text-sm font-semibold uppercase tracking-wider">Active Customers</span>
+<span class="material-symbols-outlined text-primary">group</span>
+</div>
+<div class="mt-4">
+<span class="text-3xl font-headline font-bold">1,492</span>
+<div class="flex items-center mt-2 text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-sm mr-1">trending_flat</span>
+<span>0.5% vs last month</span>
+</div>
+</div>
+</div>
+<!-- Revenue vs Expenses Line Chart (Full Width) -->
+<div class="bento-item col-span-12 h-96 flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline font-semibold text-lg">Revenue vs Expenses</h3>
+<div class="flex items-center space-x-4 text-sm">
+<div class="flex items-center"><div class="w-3 h-3 bg-primary mr-2"></div> Revenue</div>
+<div class="flex items-center"><div class="w-3 h-3 bg-secondary mr-2"></div> Expenses</div>
+</div>
+</div>
+<div class="flex-1 relative w-full border-l border-b border-outline-variant flex items-end justify-between pt-4 px-2">
+<!-- Mockup Line Chart Data Points -->
+<div class="w-full h-full relative">
+<!-- Grid Lines -->
+<div class="absolute w-full border-t border-outline-variant top-0"></div>
+<div class="absolute w-full border-t border-outline-variant top-1/4"></div>
+<div class="absolute w-full border-t border-outline-variant top-2/4"></div>
+<div class="absolute w-full border-t border-outline-variant top-3/4"></div>
+<!-- Decorative SVG Line representing data -->
+<svg class="absolute inset-0 w-full h-full" preserveaspectratio="none" viewbox="0 0 100 100">
+<path d="M0,80 L10,75 L20,60 L30,65 L40,40 L50,45 L60,20 L70,30 L80,15 L90,20 L100,5" fill="none" stroke="#0f62fe" stroke-width="2" vector-effect="non-scaling-stroke"></path>
+<path d="M0,90 L10,88 L20,85 L30,80 L40,75 L50,70 L60,65 L70,60 L80,55 L90,50 L100,45" fill="none" stroke="#6f6f6f" stroke-dasharray="4" stroke-width="2" vector-effect="non-scaling-stroke"></path>
+</svg>
+</div>
+</div>
+<div class="flex justify-between mt-2 text-xs text-on-surface-variant px-2">
+<span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
+</div>
+</div>
+<!-- Sales by Category (Pie Chart Concept) & Top 10 Customers -->
+<div class="bento-item col-span-12 md:col-span-4 h-80 flex flex-col">
+<h3 class="font-headline font-semibold text-lg mb-4">Sales by Category</h3>
+<div class="flex-1 flex items-center justify-center relative">
+<!-- CSS Donut Chart representation -->
+<div class="w-48 h-48 rounded-full border-[16px] border-surface-dim relative flex items-center justify-center" style="border-top-color: #0f62fe; border-right-color: #78a9ff; border-bottom-color: #198038; border-left-color: #d0e2ff;">
+<div class="text-center">
+<span class="block text-2xl font-bold">4</span>
+<span class="text-xs text-on-surface-variant uppercase">Categories</span>
+</div>
+</div>
+</div>
+<div class="mt-4 grid grid-cols-2 gap-2 text-sm">
+<div class="flex items-center"><div class="w-3 h-3 bg-primary mr-2"></div> Apparel</div>
+<div class="flex items-center"><div class="w-3 h-3 bg-inverse-primary mr-2"></div> Accessories</div>
+<div class="flex items-center"><div class="w-3 h-3 bg-tertiary mr-2"></div> Footwear</div>
+<div class="flex items-center"><div class="w-3 h-3 bg-primary-container mr-2"></div> Beauty</div>
+</div>
+</div>
+<!-- Sales Performance by Staff (Horizontal Bar) -->
+<div class="bento-item col-span-12 md:col-span-8 h-80 flex flex-col">
+<h3 class="font-headline font-semibold text-lg mb-4">Sales Performance by Staff</h3>
+<div class="flex-1 flex flex-col justify-around">
+<div class="flex items-center">
+<span class="w-24 text-sm font-semibold truncate mr-4">Sarah J.</span>
+<div class="flex-1 bg-surface-dim h-6 relative">
+<div class="absolute top-0 left-0 h-full chart-bar" style="width: 85%;"></div>
+</div>
+<span class="w-16 text-right text-sm ml-4">$42k</span>
+</div>
+<div class="flex items-center">
+<span class="w-24 text-sm font-semibold truncate mr-4">Michael T.</span>
+<div class="flex-1 bg-surface-dim h-6 relative">
+<div class="absolute top-0 left-0 h-full chart-bar" style="width: 70%;"></div>
+</div>
+<span class="w-16 text-right text-sm ml-4">$35k</span>
+</div>
+<div class="flex items-center">
+<span class="w-24 text-sm font-semibold truncate mr-4">Emma W.</span>
+<div class="flex-1 bg-surface-dim h-6 relative">
+<div class="absolute top-0 left-0 h-full chart-bar" style="width: 55%;"></div>
+</div>
+<span class="w-16 text-right text-sm ml-4">$28k</span>
+</div>
+<div class="flex items-center">
+<span class="w-24 text-sm font-semibold truncate mr-4">David L.</span>
+<div class="flex-1 bg-surface-dim h-6 relative">
+<div class="absolute top-0 left-0 h-full chart-bar" style="width: 40%;"></div>
+</div>
+<span class="w-16 text-right text-sm ml-4">$20k</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

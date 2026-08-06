@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-surface-container-low text-on-surface" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Process Return - Boutique POS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'IBM Plex Sans', sans-serif; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-low": "#f4f4f4",
+                      "inverse-on-surface": "#f4f4f4",
+                      "surface": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "tertiary-fixed": "#a7f0ba",
+                      "on-secondary-fixed-variant": "#525252",
+                      "on-error-container": "#750e13",
+                      "on-primary-container": "#161616",
+                      "secondary-fixed-dim": "#c6c6c6",
+                      "surface-bright": "#ffffff",
+                      "on-tertiary-container": "#044317",
+                      "primary-fixed-dim": "#78a9ff",
+                      "primary-container": "#d0e2ff",
+                      "outline": "#8d8d8d",
+                      "on-primary-fixed": "#001d6c",
+                      "on-primary-fixed-variant": "#0043ce",
+                      "surface-container-high": "#e0e0e0",
+                      "tertiary-container": "#a7f0ba",
+                      "background": "#ffffff",
+                      "on-secondary-container": "#525252",
+                      "primary": "#0f62fe",
+                      "on-secondary-fixed": "#161616",
+                      "surface-variant": "#f4f4f4",
+                      "on-surface": "#161616",
+                      "primary-fixed": "#d0e2ff",
+                      "on-surface-variant": "#525252",
+                      "tertiary-fixed-dim": "#42be65",
+                      "outline-variant": "#e0e0e0",
+                      "on-secondary": "#ffffff",
+                      "inverse-surface": "#393939",
+                      "secondary-container": "#e0e0e0",
+                      "surface-container": "#f4f4f4",
+                      "tertiary": "#198038",
+                      "error-container": "#fff1f1",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-fixed-variant": "#044317",
+                      "error": "#da1e28",
+                      "surface-container-highest": "#c6c6c6",
+                      "on-tertiary-fixed": "#022d0d",
+                      "on-error": "#ffffff",
+                      "secondary-fixed": "#e0e0e0",
+                      "inverse-primary": "#78a9ff",
+                      "surface-dim": "#e0e0e0",
+                      "on-tertiary": "#ffffff",
+                      "on-background": "#161616",
+                      "secondary": "#6f6f6f",
+                      "surface-tint": "#0f62fe"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "fontFamily": {
+                      "headline": ["IBM Plex Sans"],
+                      "display": ["IBM Plex Sans"],
+                      "body": ["IBM Plex Sans"],
+                      "label": ["IBM Plex Sans"]
+              }
+            }
+          }
+        }
+      </script>
+</head>
+<body class="h-full flex overflow-hidden bg-surface-container-low text-on-surface font-body text-[14px]">
+<!-- SideNavBar from JSON (Suppressed due to Task-Focused 'Close/Back' flow intent) -->
+<!-- However, since the prompt implies being deep in the POS but doesn't explicitly demand suppressing the global nav, and the JSON SideNavBar was provided with active state logic requirement, I will include it but marked inactive for "Sales" or active for "Sales" if we consider this part of the sales flow. Returning is part of sales. Let's make "Sales" active. -->
+<nav class="bg-surface-container-low dark:bg-inverse-surface text-primary dark:text-primary-fixed-dim font-body text-[14px] font-[400] docked h-screen left-0 w-64 border-r border-outline-variant dark:border-secondary flat no shadows transition-all duration-200 flex flex-col h-full py-4 flex-shrink-0 z-40 hidden md:flex">
+<div class="px-6 pb-6 border-b border-outline-variant">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+</div>
+<div>
+<h1 class="text-[18px] font-[600] text-on-surface dark:text-surface-bright">Boutique POS</h1>
+<p class="text-[12px] text-secondary">Flagship Store</p>
+</div>
+</div>
+</div>
+<div class="px-4 py-4">
+<button class="w-full bg-primary text-on-primary h-12 rounded flex items-center justify-center gap-2 hover:bg-on-primary-fixed-variant transition-colors font-[600]">
+<span class="material-symbols-outlined text-[20px]" data-icon="add">add</span>
+                New Sale
+            </button>
+</div>
+<ul class="flex-1 overflow-y-auto px-2 space-y-1 mt-2">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                    Dashboard
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="checkroom">checkroom</span>
+                    Inventory
+                </a>
+</li>
+<li>
+<!-- ACTIVE TAB -->
+<a class="flex items-center gap-3 px-4 py-3 rounded bg-surface dark:bg-surface-variant text-primary dark:text-primary-fixed-dim border-l-4 border-primary font-[600] transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+                    Sales
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+                    Customers
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+                    Reports
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                    Settings
+                </a>
+</li>
+</ul>
+<ul class="px-2 pt-4 border-t border-outline-variant space-y-1">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="contact_support">contact_support</span>
+                    Support
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+                    Log Out
+                </a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0 bg-surface-container-low overflow-hidden">
+<!-- Header -->
+<header class="bg-surface px-8 py-6 border-b border-outline-variant flex items-center justify-between flex-shrink-0 z-10 relative shadow-[0_2px_6px_rgba(0,0,0,0.05)]">
+<div class="flex items-center gap-4">
+<button aria-label="Go back" class="w-10 h-10 rounded flex items-center justify-center hover:bg-surface-container-high transition-colors text-secondary">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div>
+<div class="flex items-center gap-3">
+<h2 class="text-[24px] font-[600] text-on-surface tracking-tight">Process Return</h2>
+<span class="px-2 py-0.5 rounded text-[12px] font-[600] bg-surface-container-high text-on-surface-variant">Order #ORD-88291</span>
+</div>
+<p class="text-[14px] text-secondary mt-1">Oct 24, 2023 at 14:32 • Customer: Emma Roberts</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-4 py-2 border border-outline rounded text-on-surface hover:bg-surface-container-high transition-colors font-[600]">
+                    Cancel
+                </button>
+</div>
+</header>
+<!-- Two Column Layout -->
+<div class="flex-1 overflow-hidden flex flex-col lg:flex-row p-6 gap-6">
+<!-- Items List (Left Column) -->
+<div class="flex-1 bg-surface border border-outline-variant rounded flex flex-col overflow-hidden shadow-[0_2px_6px_rgba(0,0,0,0.02)]">
+<div class="px-6 py-4 border-b border-outline-variant bg-surface-container-low flex justify-between items-center flex-shrink-0">
+<h3 class="text-[16px] font-[600] text-on-surface">Select Items to Return</h3>
+<button class="text-primary text-[14px] font-[600] hover:underline">Select All</button>
+</div>
+<div class="flex-1 overflow-y-auto p-0">
+<!-- Table Header -->
+<div class="grid grid-cols-[auto_1fr_auto_auto_auto] gap-4 px-6 py-3 border-b border-outline-variant text-[12px] font-[600] text-secondary uppercase tracking-wider bg-surface-container-lowest">
+<div class="w-6"></div>
+<div>Item</div>
+<div class="text-right w-24">Price</div>
+<div class="text-center w-32">Qty to Return</div>
+<div class="text-right w-24">Total</div>
+</div>
+<!-- Item Row 1 -->
+<div class="grid grid-cols-[auto_1fr_auto_auto_auto] gap-4 px-6 py-4 border-b border-outline-variant items-center hover:bg-surface-container-low transition-colors group">
+<div>
+<input checked="" class="w-5 h-5 rounded border-outline text-primary focus:ring-primary focus:ring-offset-0 cursor-pointer" type="checkbox"/>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-high rounded flex-shrink-0 overflow-hidden border border-outline-variant" data-alt="A clean, minimalist product photography shot of a pink floral summer dress folded neatly on a pristine white background. High key studio lighting, professional enterprise e-commerce aesthetic, soft shadows, vibrant yet sophisticated pink tones." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDj7tverjyXAEFEHyuTwaeM0OY7lugXRLafB5pHrgL1Q_jjGfZid53K1kcJpSot7UWRBc51fLswlEkYjNt8lqoAodBeNBxhCdMPv0wqZHvU5MlrpvosHWecUw3wJsdhmLjJTR00L_fkO9PS42JGp3Z1guhRpsl2Fu9rih_vOcOCnVeiyGFHjlE0-Dy0lRBCOhQCqw8r1ttFlwhq3u1c32S7EzqojbF_HUQd5MQNoJFDB9X9rYa3CqNW')"></div>
+<div>
+<p class="font-[600] text-on-surface text-[14px]">Floral Summer Dress</p>
+<p class="text-secondary text-[12px] mt-0.5">SKU: DR-FL-M-PK • Variant: M / Pink</p>
+</div>
+</div>
+<div class="text-right text-[14px] text-on-surface-variant">$85.00</div>
+<div class="flex justify-center">
+<div class="flex items-center border border-outline-variant rounded bg-surface">
+<button class="w-8 h-8 flex items-center justify-center text-secondary hover:bg-surface-container-high hover:text-on-surface rounded-l transition-colors border-r border-outline-variant">
+<span class="material-symbols-outlined text-[18px]" data-icon="remove">remove</span>
+</button>
+<span class="w-12 text-center text-[14px] font-[600]">1</span>
+<button class="w-8 h-8 flex items-center justify-center text-secondary hover:bg-surface-container-high hover:text-on-surface rounded-r transition-colors border-l border-outline-variant disabled:opacity-30 disabled:hover:bg-transparent" disabled="">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+</button>
+</div>
+<span class="text-[12px] text-secondary ml-2 self-center">of 1</span>
+</div>
+<div class="text-right font-[600] text-on-surface text-[14px]">$85.00</div>
+</div>
+<!-- Item Row 2 -->
+<div class="grid grid-cols-[auto_1fr_auto_auto_auto] gap-4 px-6 py-4 border-b border-outline-variant items-center hover:bg-surface-container-low transition-colors group">
+<div>
+<input class="w-5 h-5 rounded border-outline text-primary focus:ring-primary focus:ring-offset-0 cursor-pointer" type="checkbox"/>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-high rounded flex-shrink-0 overflow-hidden border border-outline-variant" data-alt="A clean, minimalist product photography shot of a classic white cotton t-shirt neatly laid flat on a crisp white background. High key studio lighting, professional enterprise e-commerce aesthetic, soft shadows, neutral clean tones." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDHTmFYneDD2s4NK3of3zgxlWJorUXlV36nA_Yz-Kofc7hZgwzm_2HpV08hswupqz1vi4GY-xW7Zum3g9cRXuueK0E0QYP4GtaojVBrAGNgdyZ9s5DdIIJ_AaFTBeU29ly6wl0PjR8Izzo1tO8zDqjGmzFVHxq20UY-KxRfbmSTvaxz1lM3zQTGJHaxD_qM_TB_7U1CHF3Y-cDIhGo9lgoq6RPeTxRSfDWkj8X3txHi6QJscxlZUOBG')"></div>
+<div>
+<p class="font-[600] text-on-surface text-[14px]">Classic Basic Tee</p>
+<p class="text-secondary text-[12px] mt-0.5">SKU: TE-BA-S-WH • Variant: S / White</p>
+</div>
+</div>
+<div class="text-right text-[14px] text-on-surface-variant">$25.00</div>
+<div class="flex justify-center">
+<div class="flex items-center border border-outline-variant rounded bg-surface opacity-50 pointer-events-none">
+<button class="w-8 h-8 flex items-center justify-center text-secondary hover:bg-surface-container-high hover:text-on-surface rounded-l transition-colors border-r border-outline-variant">
+<span class="material-symbols-outlined text-[18px]" data-icon="remove">remove</span>
+</button>
+<span class="w-12 text-center text-[14px] font-[600]">0</span>
+<button class="w-8 h-8 flex items-center justify-center text-secondary hover:bg-surface-container-high hover:text-on-surface rounded-r transition-colors border-l border-outline-variant">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+</button>
+</div>
+<span class="text-[12px] text-secondary ml-2 self-center">of 2</span>
+</div>
+<div class="text-right font-[600] text-secondary text-[14px]">$0.00</div>
+</div>
+<!-- Item Row 3 (Returned previously) -->
+<div class="grid grid-cols-[auto_1fr_auto_auto_auto] gap-4 px-6 py-4 border-b border-outline-variant items-center bg-surface-container-lowest opacity-60">
+<div>
+<input class="w-5 h-5 rounded border-outline text-primary focus:ring-primary focus:ring-offset-0" disabled="" type="checkbox"/>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-high rounded flex-shrink-0 overflow-hidden border border-outline-variant flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="image">image</span>
+</div>
+<div>
+<p class="font-[600] text-on-surface text-[14px] line-through">Denim Jacket</p>
+<p class="text-secondary text-[12px] mt-0.5">Already returned (Oct 25)</p>
+</div>
+</div>
+<div class="text-right text-[14px] text-secondary line-through">$120.00</div>
+<div class="flex justify-center">
+<span class="text-[12px] text-secondary italic">Returned 1 of 1</span>
+</div>
+<div class="text-right font-[600] text-secondary text-[14px] line-through">$0.00</div>
+</div>
+</div>
+</div>
+<!-- Summary Sidebar (Right Column) -->
+<div class="w-full lg:w-80 flex flex-col gap-6 flex-shrink-0">
+<div class="bg-surface border border-outline-variant rounded flex flex-col overflow-hidden shadow-[0_2px_6px_rgba(0,0,0,0.02)]">
+<div class="px-6 py-4 border-b border-outline-variant bg-surface-container-low">
+<h3 class="text-[16px] font-[600] text-on-surface">Refund Summary</h3>
+</div>
+<div class="p-6 space-y-4">
+<div class="flex justify-between items-center text-[14px]">
+<span class="text-on-surface-variant">Selected Items (1)</span>
+<span class="font-[600] text-on-surface">$85.00</span>
+</div>
+<div class="flex justify-between items-center text-[14px]">
+<span class="text-on-surface-variant">Tax Adjustment (8.5%)</span>
+<span class="font-[600] text-on-surface">$7.23</span>
+</div>
+<div class="flex justify-between items-center text-[14px] text-error pt-2">
+<span class="text-error flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="local_shipping">local_shipping</span>
+                                Restocking Fee
+                            </span>
+<span class="font-[600]">-$5.00</span>
+</div>
+<hr class="border-outline-variant my-2"/>
+<div class="flex justify-between items-end">
+<span class="text-[16px] font-[600] text-on-surface">Total Refund</span>
+<span class="text-[24px] font-[600] text-on-surface tracking-tight">$87.23</span>
+</div>
+</div>
+<div class="p-6 pt-0 border-t border-outline-variant mt-2 bg-surface-container-lowest">
+<div class="mt-4 space-y-3">
+<label class="block text-[12px] font-[600] text-on-surface uppercase tracking-wide">Refund Method</label>
+<div class="flex items-center gap-3 p-3 border border-outline-variant rounded bg-surface">
+<span class="material-symbols-outlined text-primary" data-icon="credit_card">credit_card</span>
+<div>
+<p class="text-[14px] font-[600] text-on-surface">Original Payment</p>
+<p class="text-[12px] text-secondary">Visa ending in •••• 4242</p>
+</div>
+</div>
+</div>
+<div class="mt-6">
+<button class="w-full h-12 bg-primary text-on-primary rounded font-[600] text-[16px] hover:bg-on-primary-fixed-variant transition-colors flex items-center justify-center gap-2 shadow-[0_2px_6px_rgba(15,98,254,0.3)]">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+                                Complete Refund
+                            </button>
+</div>
+</div>
+</div>
+<div class="bg-surface border border-outline-variant rounded p-4 shadow-[0_2px_6px_rgba(0,0,0,0.02)]">
+<label class="block text-[12px] font-[600] text-on-surface uppercase tracking-wide mb-2">Return Reason</label>
+<select class="w-full border-b border-outline-variant border-x-0 border-t-0 bg-surface-container-low h-10 px-3 text-[14px] text-on-surface focus:ring-0 focus:border-primary">
+<option>Wrong size</option>
+<option>Defective item</option>
+<option>Changed mind</option>
+<option>Not as described</option>
+</select>
+<label class="block text-[12px] font-[600] text-on-surface uppercase tracking-wide mt-4 mb-2">Notes (Optional)</label>
+<textarea class="w-full border border-outline-variant rounded bg-surface-container-low p-3 text-[14px] text-on-surface focus:ring-1 focus:ring-primary focus:border-primary min-h-[80px] resize-none" placeholder="Add internal notes..."></textarea>
+</div>
+</div>
+</div>
+</main>
+</body></html>

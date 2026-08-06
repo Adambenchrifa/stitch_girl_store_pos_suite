@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Settings &amp; Backup - Girl Store POS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#ffffff",
+                    "error-container": "#fff1f1",
+                    "background": "#ffffff",
+                    "surface": "#ffffff",
+                    "inverse-primary": "#78a9ff",
+                    "on-tertiary-fixed-variant": "#044317",
+                    "on-surface-variant": "#525252",
+                    "on-primary-container": "#161616",
+                    "on-secondary-fixed-variant": "#525252",
+                    "surface-dim": "#e0e0e0",
+                    "inverse-surface": "#393939",
+                    "primary-container": "#d0e2ff",
+                    "on-primary": "#ffffff",
+                    "surface-container": "#f4f4f4",
+                    "primary-fixed-dim": "#78a9ff",
+                    "tertiary-fixed-dim": "#42be65",
+                    "on-tertiary-fixed": "#022d0d",
+                    "on-primary-fixed-variant": "#0043ce",
+                    "tertiary-fixed": "#a7f0ba",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed": "#e0e0e0",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed": "#001d6c",
+                    "on-tertiary-container": "#044317",
+                    "surface-container-high": "#e0e0e0",
+                    "surface-tint": "#0f62fe",
+                    "on-error": "#ffffff",
+                    "on-error-container": "#750e13",
+                    "secondary": "#6f6f6f",
+                    "on-secondary-container": "#525252",
+                    "on-surface": "#161616",
+                    "surface-container-highest": "#c6c6c6",
+                    "surface-container-lowest": "#ffffff",
+                    "primary": "#0f62fe",
+                    "on-secondary-fixed": "#161616",
+                    "primary-fixed": "#d0e2ff",
+                    "outline": "#8d8d8d",
+                    "error": "#da1e28",
+                    "surface-container-low": "#f4f4f4",
+                    "tertiary": "#198038",
+                    "secondary-container": "#e0e0e0",
+                    "secondary-fixed-dim": "#c6c6c6",
+                    "inverse-on-surface": "#f4f4f4",
+                    "tertiary-container": "#a7f0ba",
+                    "surface-variant": "#f4f4f4",
+                    "on-background": "#161616",
+                    "outline-variant": "#e0e0e0"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {},
+            "fontFamily": {
+                    "headline": [
+                            "Ibm Plex Sans"
+                    ],
+                    "display": [
+                            "Ibm Plex Sans"
+                    ],
+                    "body": [
+                            "Ibm Plex Sans"
+                    ],
+                    "label": [
+                            "Ibm Plex Sans"
+                    ]
+            },
+            "fontSize": {}
+    },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'IBM Plex Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background flex h-screen overflow-hidden antialiased">
+<!-- SideNavBar -->
+<nav class="bg-surface-container dark:bg-surface-container font-body text-label-sm font-normal h-screen w-64 flex-shrink-0 border-r border-outline-variant flex flex-col h-full py-4">
+<div class="px-6 mb-8 flex flex-col">
+<span class="text-xl font-headline font-semibold text-primary dark:text-primary">Girl Store POS</span>
+<span class="text-on-surface-variant text-xs mt-1">Admin Terminal</span>
+</div>
+<div class="px-4 mb-6">
+<button class="w-full bg-primary text-on-primary py-2.5 px-4 rounded font-semibold text-sm flex items-center justify-center gap-2 hover:bg-on-primary-fixed-variant transition-colors">
+<span class="material-symbols-outlined" style="font-size: 20px;">add</span>
+                New Sale
+            </button>
+</div>
+<ul class="flex-1 overflow-y-auto px-2 space-y-1">
+<li>
+<a class="flex items-center gap-3 px-4 py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="point_of_sale">point_of_sale</span>
+<span>POS</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span>Products</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="inventory">inventory</span>
+<span>Inventory</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span>Customers</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span>Sales</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span>Expenses</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="assessment">assessment</span>
+<span>Reports</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span>Analytics</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="manage_accounts">manage_accounts</span>
+<span>User Management</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-2 rounded text-primary font-semibold border-r-2 border-primary bg-primary-container/10 Active: opacity-80 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="settings" data-weight="fill" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span>Settings</span>
+</a>
+</li>
+</ul>
+<div class="px-4 mt-auto pt-4 border-t border-outline-variant mx-2">
+<div class="flex items-center gap-3">
+<img class="w-8 h-8 rounded-full object-cover bg-surface-container-high" data-alt="A small, professional headshot portrait of a store manager. The lighting is bright and even, set against a clean, light mode enterprise background. The manager appears confident and approachable, wearing smart-casual attire. The color palette incorporates subtle shades of corporate blue and soft whites, aligning perfectly with a modern, high-contrast POS system interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBep6yVvxcU_1rDMknaiJv8br-nRki1Cq8zmObDASaqytIm_YFSQKXzE1Y_Hc0XGbJhrbUL23mlBAVd9Et7VKkxTE7PHmATEvgldwOehO6Uvb6DaXf0mfET6vRcx3EEvqMITK68dOpYt1LM9msuI85TdkvExr_wd62i2QTYyb886kwlfrkkBysbky511I_bOKOZgLyk3oi3s50mWkMxYGv0foRQrKLuV8HQbHUcmV0pT5Y1JMV7oFFg"/>
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-on-surface">Store Manager Profile</span>
+<span class="text-xs text-on-surface-variant">Admin</span>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col h-screen overflow-hidden bg-surface-container-lowest">
+<!-- TopAppBar (Minimal for settings context) -->
+<header class="bg-surface dark:bg-surface font-body text-label-md border-b border-outline-variant flex justify-between items-center h-16 w-full px-6 flex-shrink-0">
+<div class="flex items-center gap-4">
+<h1 class="text-xl font-headline font-semibold text-on-surface">Settings &amp; Backup</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low transition-all rounded-full">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</div>
+</header>
+<!-- Canvas -->
+<main class="flex-1 overflow-y-auto p-8">
+<div class="max-w-4xl mx-auto">
+<!-- Settings Tabs layout -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<!-- Settings Navigation (Internal) -->
+<div class="md:col-span-1">
+<nav class="flex flex-col space-y-1">
+<button class="text-left px-4 py-3 rounded text-sm font-semibold text-primary bg-primary-container/10 border-l-2 border-primary">General</button>
+<button class="text-left px-4 py-3 rounded text-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors">Receipt</button>
+<button class="text-left px-4 py-3 rounded text-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors">Backup &amp; Restore</button>
+<button class="text-left px-4 py-3 rounded text-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors">Hardware</button>
+</nav>
+</div>
+<!-- Settings Forms -->
+<div class="md:col-span-3 space-y-8">
+<!-- General Settings Section -->
+<section class="bg-surface p-6 rounded border border-outline-variant shadow-sm">
+<h2 class="text-lg font-headline font-semibold text-on-surface mb-6 border-b border-outline-variant pb-2">General Information</h2>
+<div class="space-y-5">
+<div>
+<label class="block text-sm font-medium text-on-surface mb-1">Store Name</label>
+<input class="w-full bg-surface-container h-10 px-3 border-b border-outline-variant focus:border-primary focus:outline-none text-sm text-on-surface" type="text" value="Girl Store Main Branch"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-sm font-medium text-on-surface mb-1">Currency</label>
+<select class="w-full bg-surface-container h-10 px-3 border-b border-outline-variant focus:border-primary focus:outline-none text-sm text-on-surface appearance-none">
+<option>USD ($)</option>
+<option>EUR (€)</option>
+<option>GBP (£)</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-on-surface mb-1">Default Tax Rate (%)</label>
+<input class="w-full bg-surface-container h-10 px-3 border-b border-outline-variant focus:border-primary focus:outline-none text-sm text-on-surface" type="number" value="8.5"/>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-on-surface mb-1">Timezone</label>
+<select class="w-full bg-surface-container h-10 px-3 border-b border-outline-variant focus:border-primary focus:outline-none text-sm text-on-surface appearance-none">
+<option>America/New_York (EST)</option>
+<option>America/Chicago (CST)</option>
+<option>America/Los_Angeles (PST)</option>
+</select>
+</div>
+</div>
+<div class="mt-8 flex justify-end">
+<button class="bg-primary text-on-primary px-6 py-2 rounded text-sm font-semibold hover:bg-on-primary-fixed-variant transition-colors">Save Changes</button>
+</div>
+</section>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

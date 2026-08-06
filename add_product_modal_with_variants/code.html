@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Add New Product - Girl Store POS</title>
+<!-- Google Fonts: IBM Plex Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#78a9ff",
+                    "surface-container": "#f4f4f4",
+                    "surface": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "on-secondary-fixed-variant": "#525252",
+                    "on-error-container": "#750e13",
+                    "primary-fixed-dim": "#78a9ff",
+                    "surface-tint": "#0f62fe",
+                    "tertiary-fixed-dim": "#42be65",
+                    "inverse-on-surface": "#f4f4f4",
+                    "inverse-surface": "#393939",
+                    "on-surface": "#161616",
+                    "error": "#da1e28",
+                    "surface-container-highest": "#c6c6c6",
+                    "secondary-fixed-dim": "#c6c6c6",
+                    "on-primary-container": "#161616",
+                    "secondary-fixed": "#e0e0e0",
+                    "primary": "#0f62fe",
+                    "on-error": "#ffffff",
+                    "secondary": "#6f6f6f",
+                    "error-container": "#fff1f1",
+                    "on-secondary-fixed": "#161616",
+                    "tertiary-container": "#a7f0ba",
+                    "primary-container": "#d0e2ff",
+                    "surface-container-low": "#f4f4f4",
+                    "background": "#ffffff",
+                    "surface-bright": "#ffffff",
+                    "on-tertiary-fixed-variant": "#044317",
+                    "on-secondary": "#ffffff",
+                    "surface-variant": "#f4f4f4",
+                    "on-tertiary-fixed": "#022d0d",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-container": "#044317",
+                    "surface-container-high": "#e0e0e0",
+                    "tertiary": "#198038",
+                    "on-primary-fixed": "#001d6c",
+                    "on-primary-fixed-variant": "#0043ce",
+                    "secondary-container": "#e0e0e0",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-dim": "#e0e0e0",
+                    "outline-variant": "#e0e0e0",
+                    "tertiary-fixed": "#a7f0ba",
+                    "on-surface-variant": "#525252",
+                    "outline": "#8d8d8d",
+                    "on-background": "#161616",
+                    "on-secondary-container": "#525252",
+                    "primary-fixed": "#d0e2ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px", // Carbon uses square corners
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "0px"
+            },
+            "spacing": {},
+            "fontFamily": {
+                    "headline": ["IBM Plex Sans", "sans-serif"],
+                    "display": ["IBM Plex Sans", "sans-serif"],
+                    "body": ["IBM Plex Sans", "sans-serif"],
+                    "label": ["IBM Plex Sans", "sans-serif"]
+            },
+            "fontSize": {
+                "body": ["14px", "20px"],
+                "label": ["12px", "16px"],
+                "heading-sm": ["20px", "28px"],
+                "heading-md": ["28px", "36px"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'IBM Plex Sans', sans-serif; }
+        .carbon-input {
+            border: none;
+            border-bottom: 1px solid #8d8d8d;
+            background-color: #f4f4f4;
+            height: 40px;
+            padding: 0 16px;
+            width: 100%;
+            transition: all 0.2s ease;
+        }
+        .carbon-input:focus {
+            outline: 2px solid #0f62fe;
+            outline-offset: -2px;
+            border-bottom-color: transparent;
+        }
+        .carbon-textarea {
+            border: none;
+            border-bottom: 1px solid #8d8d8d;
+            background-color: #f4f4f4;
+            padding: 12px 16px;
+            width: 100%;
+            resize: vertical;
+            min-height: 80px;
+        }
+        .carbon-textarea:focus {
+            outline: 2px solid #0f62fe;
+            outline-offset: -2px;
+            border-bottom-color: transparent;
+        }
+        .carbon-btn-primary {
+            background-color: #0f62fe;
+            color: #ffffff;
+            min-height: 48px;
+            padding: 0 16px;
+            font-weight: 400;
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background-color 0.2s ease;
+        }
+        .carbon-btn-primary:hover { background-color: #0043ce; }
+        
+        .carbon-btn-secondary {
+            background-color: transparent;
+            color: #0f62fe;
+            border: 1px solid #0f62fe;
+            min-height: 48px;
+            padding: 0 16px;
+            font-weight: 400;
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.2s ease;
+        }
+        .carbon-btn-secondary:hover { background-color: #0f62fe; color: #ffffff; }
+        
+        .carbon-btn-ghost {
+            color: #0f62fe;
+            min-height: 48px;
+            padding: 0 16px;
+            display: inline-flex;
+            align-items: center;
+            transition: background-color 0.2s ease;
+        }
+        .carbon-btn-ghost:hover { background-color: #e5e5e5; }
+        
+        /* Modal Animation */
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.98) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .modal-animate {
+            animation: modalFadeIn 0.3s cubic-bezier(0.2, 0, 0.38, 0.9) forwards;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased overflow-hidden h-screen w-screen relative">
+<!-- Background Context (Products Screen) -->
+<div class="absolute inset-0 z-0 opacity-40 grayscale blur-[2px] pointer-events-none">
+<iframe class="w-full h-full border-none" src="{{DATA:SCREEN:SCREEN_11}}"></iframe>
+</div>
+<!-- Modal Overlay -->
+<div class="absolute inset-0 bg-on-surface/50 z-40 flex items-center justify-center p-4 sm:p-6 md:p-12 overflow-y-auto">
+<!-- Modal Container -->
+<div class="bg-surface w-full max-w-4xl shadow-[0_4px_12px_rgba(0,0,0,0.12)] relative flex flex-col max-h-full modal-animate">
+<!-- Modal Header -->
+<div class="flex justify-between items-center p-6 border-b border-secondary-fixed">
+<h2 class="font-headline text-heading-sm font-semibold text-on-surface">Add New Product</h2>
+<button aria-label="Close modal" class="text-on-surface hover:text-primary transition-colors p-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">close</span>
+</button>
+</div>
+<!-- Modal Body (Scrollable) -->
+<div class="p-6 md:p-8 overflow-y-auto flex-grow bg-surface">
+<form class="space-y-10">
+<!-- Basic Info Section -->
+<section>
+<h3 class="text-label text-secondary uppercase tracking-wider mb-6 font-semibold border-b border-outline-variant pb-2">Basic Information</h3>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Image Upload (Left Column) -->
+<div class="col-span-1 lg:col-span-4 flex flex-col gap-2">
+<label class="text-body text-on-surface">Product Image</label>
+<div class="w-full aspect-square bg-surface-container border border-dashed border-outline hover:border-primary cursor-pointer transition-colors flex flex-col items-center justify-center text-center p-4 group">
+<span class="material-symbols-outlined text-4xl text-secondary group-hover:text-primary mb-2">add_photo_alternate</span>
+<span class="text-body text-on-surface font-medium group-hover:text-primary">Upload Image</span>
+<span class="text-label text-secondary mt-1">JPEG or PNG, max 2MB</span>
+</div>
+</div>
+<!-- Core Details (Right Column) -->
+<div class="col-span-1 lg:col-span-8 space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="text-body text-on-surface" for="product-name">Product Name <span class="text-error">*</span></label>
+<input class="carbon-input" id="product-name" placeholder="e.g. Silk Evening Dress" required="" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-body text-on-surface" for="sku">SKU / Barcode <span class="text-error">*</span></label>
+<input class="carbon-input" id="sku" placeholder="Scan or enter manually" required="" type="text"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="text-body text-on-surface" for="category">Category</label>
+<div class="relative">
+<select class="carbon-input appearance-none w-full" id="category">
+<option disabled="" selected="" value="">Select category</option>
+<option value="apparel">Apparel</option>
+<option value="accessories">Accessories</option>
+<option value="bags">Bags &amp; Purses</option>
+<option value="beauty">Beauty</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-secondary pointer-events-none">expand_more</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-body text-on-surface" for="brand">Brand</label>
+<div class="relative">
+<select class="carbon-input appearance-none w-full" id="brand">
+<option disabled="" selected="" value="">Select brand</option>
+<option value="lumiere">Lumière</option>
+<option value="vera">Vera Beauty</option>
+<option value="aura">Aura Zen</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-secondary pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-body text-on-surface" for="description">Description</label>
+<textarea class="carbon-textarea" id="description" placeholder="Add detailed product description..."></textarea>
+</div>
+</div>
+</div>
+</section>
+<!-- Pricing & Inventory Section -->
+<section>
+<h3 class="text-label text-secondary uppercase tracking-wider mb-6 font-semibold border-b border-outline-variant pb-2">Pricing &amp; Inventory</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="flex flex-col gap-2">
+<label class="text-body text-on-surface" for="cost-price">Cost Price</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-secondary">$</span>
+<input class="carbon-input pl-8" id="cost-price" placeholder="0.00" step="0.01" type="number"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-body text-on-surface" for="selling-price">Selling Price <span class="text-error">*</span></label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-secondary">$</span>
+<input class="carbon-input pl-8" id="selling-price" placeholder="0.00" required="" step="0.01" type="number"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-body text-on-surface" for="stock-level">Initial Stock Level</label>
+<input class="carbon-input" id="stock-level" min="0" placeholder="0" type="number"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-body text-on-surface" for="low-stock">Low Stock Alert</label>
+<input class="carbon-input" id="low-stock" min="0" placeholder="5" type="number"/>
+</div>
+</div>
+</section><section class="mt-10">
+<div class="flex justify-between items-center mb-6 border-b border-outline-variant pb-2">
+<h3 class="text-label text-secondary uppercase tracking-wider font-semibold">Variants</h3>
+<button class="carbon-btn-ghost border border-primary text-primary hover:bg-primary/5 px-4 h-8 min-h-0 flex items-center gap-2" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+      Add Variant
+    </button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low">
+<th class="p-2 text-label font-semibold text-secondary uppercase tracking-wider border-b border-outline-variant">Size</th>
+<th class="p-2 text-label font-semibold text-secondary uppercase tracking-wider border-b border-outline-variant">Color</th>
+<th class="p-2 text-label font-semibold text-secondary uppercase tracking-wider border-b border-outline-variant">SKU</th>
+<th class="p-2 text-label font-semibold text-secondary uppercase tracking-wider border-b border-outline-variant">Price Override</th>
+<th class="p-2 text-label font-semibold text-secondary uppercase tracking-wider border-b border-outline-variant">Stock</th>
+<th class="p-2 text-label font-semibold text-secondary uppercase tracking-wider border-b border-outline-variant text-center">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr>
+<td class="p-2">
+<input class="carbon-input !h-8 !px-2 text-body" placeholder="e.g. M" type="text"/>
+</td>
+<td class="p-2">
+<input class="carbon-input !h-8 !px-2 text-body" placeholder="e.g. Black" type="text"/>
+</td>
+<td class="p-2">
+<input class="carbon-input !h-8 !px-2 text-body" placeholder="SKU-001" type="text"/>
+</td>
+<td class="p-2">
+<div class="relative">
+<span class="absolute left-2 top-1/2 -translate-y-1/2 text-secondary text-label">$</span>
+<input class="carbon-input !h-8 !pl-5 !px-2 text-body" placeholder="Default" type="number"/>
+</div>
+</td>
+<td class="p-2">
+<input class="carbon-input !h-8 !px-2 text-body" placeholder="0" type="number"/>
+</td>
+<td class="p-2 text-center">
+<button class="text-secondary hover:text-error transition-colors" type="button">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</form>
+</div>
+<!-- Modal Footer -->
+<div class="p-6 border-t border-secondary-fixed bg-surface-container flex justify-end gap-4 mt-auto">
+<button class="carbon-btn-ghost" type="button">
+                    Cancel
+                </button>
+<button class="carbon-btn-primary" type="button">
+                    Save Product
+                    <span class="material-symbols-outlined ml-4 text-[20px]">save</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>
