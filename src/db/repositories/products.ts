@@ -179,6 +179,32 @@ export async function searchVariantsByNameOrSku(query: string) {
 }
 
 /**
+ * Lists all products with their associated variants and category name.
+ */
+export async function listProductsWithVariants() {
+  const allProducts = await db.select().from(products).all();
+  const results = [];
+  for (const prod of allProducts) {
+    const variants = await db
+      .select()
+      .from(productVariants)
+      .where(eq(productVariants.productId, prod.id))
+      .all();
+    const category = await db
+      .select()
+      .from(categories)
+      .where(eq(categories.id, prod.categoryId))
+      .get();
+    results.push({
+      ...prod,
+      categoryName: category ? category.name : 'Unknown',
+      variants,
+    });
+  }
+  return results;
+}
+
+/**
  * Lists product variants, optionally filtered by product ID.
  * Calculates the effective price as variant's priceOverride, or product's basePrice as fallback.
  */

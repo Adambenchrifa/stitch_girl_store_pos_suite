@@ -1,380 +1,962 @@
 <!DOCTYPE html>
-
-<html class="h-full" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Product Management - Girl Store POS</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                    "surface-bright": "#ffffff",
-                    "error-container": "#fff1f1",
-                    "background": "#ffffff",
-                    "surface": "#ffffff",
-                    "inverse-primary": "#78a9ff",
-                    "on-tertiary-fixed-variant": "#044317",
-                    "on-surface-variant": "#525252",
-                    "on-primary-container": "#161616",
-                    "on-secondary-fixed-variant": "#525252",
-                    "surface-dim": "#e0e0e0",
-                    "inverse-surface": "#393939",
-                    "primary-container": "#d0e2ff",
-                    "on-primary": "#ffffff",
-                    "surface-container": "#f4f4f4",
-                    "primary-fixed-dim": "#78a9ff",
-                    "tertiary-fixed-dim": "#42be65",
-                    "on-tertiary-fixed": "#022d0d",
-                    "on-primary-fixed-variant": "#0043ce",
-                    "tertiary-fixed": "#a7f0ba",
-                    "on-secondary": "#ffffff",
-                    "secondary-fixed": "#e0e0e0",
-                    "on-tertiary": "#ffffff",
-                    "on-primary-fixed": "#001d6c",
-                    "on-tertiary-container": "#044317",
-                    "surface-container-high": "#e0e0e0",
-                    "surface-tint": "#0f62fe",
-                    "on-error": "#ffffff",
-                    "on-error-container": "#750e13",
-                    "secondary": "#6f6f6f",
-                    "on-secondary-container": "#525252",
-                    "on-surface": "#161616",
-                    "surface-container-highest": "#c6c6c6",
-                    "surface-container-lowest": "#ffffff",
-                    "primary": "#0f62fe",
-                    "on-secondary-fixed": "#161616",
-                    "primary-fixed": "#d0e2ff",
-                    "outline": "#8d8d8d",
-                    "error": "#da1e28",
-                    "surface-container-low": "#f4f4f4",
-                    "tertiary": "#198038",
-                    "secondary-container": "#e0e0e0",
-                    "secondary-fixed-dim": "#c6c6c6",
-                    "inverse-on-surface": "#f4f4f4",
-                    "tertiary-container": "#a7f0ba",
-                    "surface-variant": "#f4f4f4",
-                    "on-background": "#161616",
-                    "outline-variant": "#e0e0e0"
-            },
-            "borderRadius": {
-                    "DEFAULT": "0.125rem",
-                    "lg": "0.25rem",
-                    "xl": "0.5rem",
-                    "full": "0.75rem"
-            },
-            "spacing": {},
-            "fontFamily": {
-                    "headline": [
-                            "Ibm Plex Sans"
-                    ],
-                    "display": [
-                            "Ibm Plex Sans"
-                    ],
-                    "body": [
-                            "Ibm Plex Sans"
-                    ],
-                    "label": [
-                            "Ibm Plex Sans"
-                    ]
-            },
-            "fontSize": {}
-    },
-        },
-      }
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Products Management - Girl Store</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#ffffff",
+                        "error-container": "#fff1f1",
+                        "background": "#ffffff",
+                        "surface": "#ffffff",
+                        "inverse-primary": "#78a9ff",
+                        "on-tertiary-fixed-variant": "#044317",
+                        "on-surface-variant": "#525252",
+                        "on-primary-container": "#161616",
+                        "on-secondary-fixed-variant": "#525252",
+                        "surface-dim": "#e0e0e0",
+                        "inverse-surface": "#393939",
+                        "primary-container": "#d0e2ff",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#f4f4f4",
+                        "primary-fixed-dim": "#78a9ff",
+                        "tertiary-fixed-dim": "#42be65",
+                        "on-tertiary-fixed": "#022d0d",
+                        "on-primary-fixed-variant": "#0043ce",
+                        "tertiary-fixed": "#a7f0ba",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#e0e0e0",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#001d6c",
+                        "on-tertiary-container": "#044317",
+                        "surface-container-high": "#e0e0e0",
+                        "surface-tint": "#0f62fe",
+                        "on-error": "#ffffff",
+                        "on-error-container": "#750e13",
+                        "secondary": "#6f6f6f",
+                        "on-secondary-container": "#525252",
+                        "on-surface": "#161616",
+                        "surface-container-highest": "#c6c6c6",
+                        "surface-container-lowest": "#ffffff",
+                        "primary": "#0f62fe",
+                        "on-secondary-fixed": "#161616",
+                        "primary-fixed": "#d0e2ff",
+                        "outline": "#8d8d8d",
+                        "error": "#da1e28",
+                        "surface-container-low": "#f4f4f4",
+                        "tertiary": "#198038",
+                        "secondary-container": "#e0e0e0",
+                        "secondary-fixed-dim": "#c6c6c6",
+                        "inverse-on-surface": "#f4f4f4",
+                        "tertiary-container": "#a7f0ba",
+                        "surface-variant": "#f4f4f4",
+                        "on-background": "#161616",
+                        "outline-variant": "#e0e0e0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "fontFamily": {
+                        "headline": ["IBM Plex Sans", "sans-serif"],
+                        "display": ["IBM Plex Sans", "sans-serif"],
+                        "body": ["IBM Plex Sans", "sans-serif"],
+                        "label": ["IBM Plex Sans", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "label-sm": "12px",
+                        "label-md": "14px",
+                        "body-md": "14px",
+                        "headline-sm": "20px"
+                    }
+                }
+            }
+        }
     </script>
-<style>
-        body { font-family: 'IBM Plex Sans', sans-serif; }
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .carbon-input {
+            width: 100%;
+            height: 40px;
+            padding: 0 12px;
+            background-color: #f4f4f4;
+            border: none;
+            border-bottom: 1px solid #8d8d8d;
+            font-size: 14px;
+            color: #161616;
+            transition: border-color 0.2s ease, background-color 0.2s ease;
+        }
+        .carbon-input:focus {
+            outline: none;
+            border-bottom: 2px solid #0f62fe;
+            background-color: #e5e5e5;
+        }
     </style>
 </head>
-<body class="h-full bg-background text-on-background flex overflow-hidden">
-<!-- SideNavBar -->
-<nav class="bg-surface-container dark:bg-surface-container h-screen w-64 flex-shrink-0 border-r border-outline-variant flex flex-col h-full py-4 hidden md:flex">
-<div class="px-6 mb-8 flex items-center gap-3">
-<span class="material-symbols-outlined text-primary text-3xl" data-icon="storefront">storefront</span>
-<div>
-<h1 class="text-xl font-headline font-semibold text-primary dark:text-primary">Girl Store POS</h1>
-<p class="text-xs text-on-surface-variant">Admin Terminal</p>
-</div>
-</div>
-<div class="px-4 mb-6">
-<button class="w-full bg-primary text-on-primary py-2 px-4 rounded font-semibold flex items-center justify-center gap-2 hover:bg-on-primary-fixed-variant transition-colors">
-<span class="material-symbols-outlined" data-icon="add">add</span>
-                New Sale
+<body class="bg-background text-on-surface font-body h-screen w-screen overflow-hidden flex selection:bg-primary-container selection:text-on-primary-container">
+
+<!-- SideNavBar (Always visible) -->
+<aside class="h-screen w-64 flex-shrink-0 bg-surface-container dark:bg-surface-container border-r border-outline-variant flex flex-col py-4 z-20">
+    <div class="px-6 mb-8 flex items-center gap-3">
+        <div class="w-10 h-10 bg-primary flex items-center justify-center text-on-primary font-bold text-headline-sm rounded-none">GS</div>
+        <div>
+            <h1 class="text-label-md font-bold text-on-surface leading-none uppercase">Girl Store</h1>
+            <p class="text-label-sm text-on-surface-variant leading-none mt-1">POS Suite v1.0</p>
+        </div>
+    </div>
+    <nav class="flex-1">
+        <ul>
+            <li>
+                <a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="../pos_with_variant_selector/code.html">
+                    <span class="material-symbols-outlined">point_of_sale</span>
+                    <span>Point of Sale</span>
+                </a>
+            </li>
+            <li>
+                <a class="flex items-center gap-3 px-6 py-3 bg-primary-container/20 border-l-4 border-primary text-primary font-semibold transition-all duration-200" href="#">
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">inventory</span>
+                    <span>Products Management</span>
+                </a>
+            </li>
+            <li>
+                <a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+                    <span class="material-symbols-outlined">analytics</span>
+                    <span>Analytics</span>
+                </a>
+            </li>
+            <li>
+                <a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+                    <span class="material-symbols-outlined">group</span>
+                    <span>Customers</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="px-6 mt-auto border-t border-outline-variant pt-4 flex items-center gap-3">
+        <img alt="Store Manager Profile" class="w-10 h-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvepFqgtazEhP0qdYCeaFpdhzMGacG7u0Y5HBfRmhffJMeEB7mc8xpKntxYI8rNEXFMgHg-W9OKwP0_OghWmlw72mSKXH_t3m59eqQrHDj3dmZxYNFCn6t7elEzPK-9R2CqM7N0X2UUdOW3NYmC3I-dR-EebTNbCoJPu2f7qZvJ8Bc0u-nePuXkgGi7Ftdhz7HyqlCjMs16_FV5_8ZzQEyBwTOavTHUsAWRLjm4RNcVEOS4FhJqB4L"/>
+        <div class="flex-1 overflow-hidden">
+            <p class="text-label-md font-semibold truncate">Jane Doe</p>
+            <p class="text-label-sm text-on-surface-variant truncate">Manager</p>
+        </div>
+    </div>
+</aside>
+
+<!-- Products Screen Container -->
+<div class="flex-1 flex flex-col h-screen min-w-0 bg-surface-container-low" id="products-interface">
+    <!-- TopAppBar -->
+    <header class="flex justify-between items-center h-16 w-full px-6 bg-surface border-b border-outline-variant font-body text-label-md z-10 flex-shrink-0">
+        <div class="flex items-center gap-6">
+            <h1 class="text-lg font-bold text-on-surface">Girl Store Catalog</h1>
+        </div>
+        <!-- Actions -->
+        <div class="flex gap-2">
+            <button id="btn-manage-categories" class="border border-primary text-primary hover:bg-primary-container/10 transition-colors py-2 px-4 rounded font-semibold flex items-center gap-2 h-10 text-sm">
+                <span class="material-symbols-outlined text-sm">category</span>
+                Manage Categories
             </button>
+            <button id="btn-add-product" class="bg-primary text-on-primary hover:bg-on-primary-fixed-variant transition-colors py-2 px-4 rounded font-semibold flex items-center gap-2 h-10 text-sm">
+                <span class="material-symbols-outlined text-sm">add</span>
+                Add Product
+            </button>
+        </div>
+    </header>
+
+    <main class="flex-1 overflow-y-auto bg-surface-container-low p-6 md:p-8">
+        <div class="max-w-7xl mx-auto space-y-6">
+            <!-- Title banner -->
+            <div>
+                <h2 class="text-2xl font-headline font-semibold text-on-background">Products Management</h2>
+                <p class="text-on-surface-variant text-sm mt-1">Create, edit, or delete products and product variants in your catalog.</p>
+            </div>
+
+            <!-- Filters & Search Bar -->
+            <div class="bg-surface p-4 rounded border border-outline-variant flex flex-col lg:flex-row gap-4 items-center justify-between">
+                <div class="flex flex-wrap gap-2 items-center w-full lg:w-auto">
+                    <span class="text-sm font-semibold text-on-surface-variant mr-2">Category Filter:</span>
+                    <select id="filter-category" class="bg-surface border border-outline rounded px-3 py-1.5 text-sm focus:ring-0 focus:outline-none">
+                        <option value="">All Categories</option>
+                        <!-- Injected dynamically -->
+                    </select>
+                </div>
+                <div class="relative w-full lg:w-80">
+                    <span class="material-symbols-outlined absolute left-3 top-1/2 transform -translate-y-1/2 text-on-surface-variant">search</span>
+                    <input id="search-input" class="w-full pl-10 pr-4 py-2 bg-surface-container rounded border-b border-outline-variant focus:outline-none focus:border-primary focus:bg-surface transition-colors h-10 text-sm" placeholder="Search by SKU or Name..." type="text"/>
+                </div>
+            </div>
+
+            <!-- Products List Table -->
+            <div class="bg-surface rounded border border-outline-variant overflow-hidden shadow-sm">
+                <table class="w-full text-left text-sm whitespace-nowrap">
+                    <thead class="bg-surface-container border-b border-outline-variant">
+                        <tr>
+                            <th class="px-6 py-4 font-semibold text-on-surface-variant w-16">Image</th>
+                            <th class="px-6 py-4 font-semibold text-on-surface-variant">Product Name</th>
+                            <th class="px-6 py-4 font-semibold text-on-surface-variant">Category</th>
+                            <th class="px-6 py-4 font-semibold text-on-surface-variant">Brand</th>
+                            <th class="px-6 py-4 font-semibold text-on-surface-variant text-right">Base Price</th>
+                            <th class="px-6 py-4 font-semibold text-on-surface-variant text-center">Variants Count</th>
+                            <th class="px-6 py-4 font-semibold text-on-surface-variant text-right">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-outline-variant" id="products-table-body">
+                        <!-- Grouped Product rows injected dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
 </div>
-<ul class="flex-1 overflow-y-auto px-2 space-y-1 font-body text-label-sm font-normal text-primary dark:text-primary">
-<li>
-<a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 opacity-80 transition-all" href="#">
-<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
-                    Dashboard
-                </a>
-</li>
-<li>
-<a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 opacity-80 transition-all" href="#">
-<span class="material-symbols-outlined" data-icon="point_of_sale">point_of_sale</span>
-                    POS
-                </a>
-</li>
-<li>
-<a class="flex items-center gap-3 px-4 py-3 rounded text-primary font-semibold border-r-2 border-primary bg-primary-container/10 opacity-80 transition-all" href="#">
-<span class="material-symbols-outlined" data-icon="inventory_2" data-weight="fill">inventory_2</span>
-                    Products
-                </a>
-</li>
-<li>
-<a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 opacity-80 transition-all" href="#">
-<span class="material-symbols-outlined" data-icon="inventory">inventory</span>
-                    Inventory
-                </a>
-</li>
-<li>
-<a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 opacity-80 transition-all" href="#">
-<span class="material-symbols-outlined" data-icon="group">group</span>
-                    Customers
-                </a>
-</li>
-<li>
-<a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 opacity-80 transition-all" href="#">
-<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
-                    Sales
-                </a>
-</li>
-<li>
-<a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 opacity-80 transition-all" href="#">
-<span class="material-symbols-outlined" data-icon="payments">payments</span>
-                    Expenses
-                </a>
-</li>
-<li>
-<a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 opacity-80 transition-all" href="#">
-<span class="material-symbols-outlined" data-icon="assessment">assessment</span>
-                    Reports
-                </a>
-</li>
-<li>
-<a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 opacity-80 transition-all" href="#">
-<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
-                    Analytics
-                </a>
-</li>
-<li>
-<a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 opacity-80 transition-all" href="#">
-<span class="material-symbols-outlined" data-icon="manage_accounts">manage_accounts</span>
-                    User Management
-                </a>
-</li>
-<li>
-<a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 opacity-80 transition-all" href="#">
-<span class="material-symbols-outlined" data-icon="settings">settings</span>
-                    Settings
-                </a>
-</li>
-</ul>
-<div class="px-6 mt-auto pt-4 border-t border-outline-variant flex items-center gap-3">
-<img class="w-8 h-8 rounded-full object-cover" data-alt="A small, professional headshot of a store manager, confident and smiling slightly, well-lit studio photography, high contrast against a light background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcH5LPEttyHPx9wKcsQxjK3it8BCNxkmLfAb_O-VLRRw9BikAn1jvqELk_mA_3T7JRVk4bsf44YMt6RDzQ91uWo2-OJlufDx84m87CeoDjf1JX7jv1AqdTAKcx1Yh-jOPsvqFqyxmUbKapR6flRTqO22BEXlmq6FhqIH392Ax_eMIe-jrhbT6YhO5UXXLoYqVuvPp-tnV_p5Z4FOoD4akT5F84emR4h9Gfqf3fldY9ViD0s-vUiz9f"/>
-<div class="flex-1 min-w-0">
-<p class="text-sm font-semibold truncate">Jane Doe</p>
-<p class="text-xs text-on-surface-variant truncate">Manager</p>
+
+<!-- =================================--------- -->
+<!-- PRODUCT EDIT / ADD MODAL (Carbon Styled)    -->
+<!-- =================================--------- -->
+<div class="fixed inset-0 bg-on-surface/50 z-40 flex items-center justify-center p-4 md:p-8 overflow-y-auto hidden" id="product-modal">
+    <div class="bg-surface w-full max-w-4xl shadow-2xl border border-outline-variant flex flex-col max-h-[90vh] modal-animate">
+        <!-- Modal Header -->
+        <div class="flex justify-between items-center p-6 border-b border-outline-variant bg-surface-container-low">
+            <h2 class="font-headline text-lg font-semibold text-on-surface" id="product-modal-title">Add New Product</h2>
+            <button aria-label="Close modal" class="text-on-surface hover:text-primary transition-colors p-2" id="btn-close-product-modal">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        <!-- Modal Body (Scrollable) -->
+        <div class="p-6 md:p-8 overflow-y-auto flex-grow bg-surface space-y-6">
+            <!-- Error Banner -->
+            <div id="modal-error-banner" class="hidden p-4 bg-error-container text-error text-sm font-semibold border-l-4 border-error flex items-center gap-2">
+                <span class="material-symbols-outlined">error</span>
+                <span id="modal-error-text">An error occurred.</span>
+            </div>
+
+            <!-- Form -->
+            <form id="product-form" class="space-y-6">
+                <h3 class="text-label-sm font-bold text-secondary uppercase tracking-wider border-b border-outline-variant pb-2">Product details</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="flex flex-col gap-1">
+                        <label class="text-xs font-semibold text-on-surface-variant" for="input-name">Product Name *</label>
+                        <input class="carbon-input" id="input-name" required placeholder="e.g. Silk Blouse" type="text"/>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <label class="text-xs font-semibold text-on-surface-variant" for="input-sku">Product SKU *</label>
+                        <input class="carbon-input" id="input-sku" required placeholder="e.g. BLOUSE-SILK" type="text"/>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="flex flex-col gap-1">
+                        <label class="text-xs font-semibold text-on-surface-variant" for="input-category">Category *</label>
+                        <select class="carbon-input bg-surface-container" id="input-category" required>
+                            <option value="" disabled selected>Select category</option>
+                            <!-- categories injected here -->
+                        </select>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <label class="text-xs font-semibold text-on-surface-variant" for="input-brand">Brand</label>
+                        <input class="carbon-input" id="input-brand" placeholder="e.g. Girl Store Design" type="text"/>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <label class="text-xs font-semibold text-on-surface-variant" for="input-price">Base Price ($) *</label>
+                        <input class="carbon-input" id="input-price" required placeholder="e.g. 59.99" type="number" step="0.01" min="0"/>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-1">
+                    <label class="text-xs font-semibold text-on-surface-variant" for="input-description">Description</label>
+                    <textarea class="carbon-input h-20 py-2 resize-none" id="input-description" placeholder="Product description..."></textarea>
+                </div>
+
+                <!-- Variants Table Section -->
+                <div class="space-y-4 pt-4">
+                    <div class="flex justify-between items-center border-b border-outline-variant pb-2">
+                        <h3 class="text-label-sm font-bold text-secondary uppercase tracking-wider">Product Variants</h3>
+                        <button type="button" id="btn-add-variant-row" class="text-primary text-xs font-semibold hover:underline flex items-center gap-1">
+                            <span class="material-symbols-outlined text-sm">add_circle</span> Add Variant Option
+                        </button>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs whitespace-nowrap">
+                            <thead class="bg-surface-container border-b border-outline-variant">
+                                <tr>
+                                    <th class="px-3 py-2 font-semibold text-on-surface-variant">Size</th>
+                                    <th class="px-3 py-2 font-semibold text-on-surface-variant">Color</th>
+                                    <th class="px-3 py-2 font-semibold text-on-surface-variant">SKU *</th>
+                                    <th class="px-3 py-2 font-semibold text-on-surface-variant">Price Override ($)</th>
+                                    <th class="px-3 py-2 font-semibold text-on-surface-variant">Stock</th>
+                                    <th class="px-3 py-2 font-semibold text-on-surface-variant">Image URL</th>
+                                    <th class="px-3 py-2 font-semibold text-on-surface-variant text-center">Remove</th>
+                                </tr>
+                            </thead>
+                            <tbody id="variants-modal-table-body" class="divide-y divide-outline-variant">
+                                <!-- Variant Rows injected dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- Modal Footer -->
+        <div class="p-6 bg-surface-container-low border-t border-outline-variant flex justify-end gap-3">
+            <button class="px-5 py-2.5 border border-outline text-on-surface hover:bg-surface-container transition-colors text-sm font-semibold" id="btn-cancel-product-modal" type="button">Cancel</button>
+            <button class="px-5 py-2.5 bg-primary text-on-primary hover:bg-primary/90 transition-all text-sm font-semibold" id="btn-save-product" type="button">Save Product</button>
+        </div>
+    </div>
 </div>
+
+<!-- =================================--------- -->
+<!-- CATEGORY MANAGER MODAL (Carbon Styled)      -->
+<!-- =================================--------- -->
+<div class="fixed inset-0 bg-on-surface/50 z-40 flex items-center justify-center p-4 overflow-y-auto hidden" id="categories-modal">
+    <div class="bg-surface w-full max-w-md shadow-2xl border border-outline-variant flex flex-col modal-animate">
+        <!-- Header -->
+        <div class="flex justify-between items-center p-6 border-b border-outline-variant bg-surface-container-low">
+            <h2 class="font-headline text-lg font-semibold text-on-surface">Manage Categories</h2>
+            <button aria-label="Close modal" class="text-on-surface hover:text-primary transition-colors p-2" id="btn-close-categories-modal">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        <!-- Body -->
+        <div class="p-6 overflow-y-auto space-y-4">
+            <!-- Category Alert Banner -->
+            <div id="category-error-banner" class="hidden p-4 bg-error-container text-error text-sm font-semibold border-l-4 border-error flex items-center gap-2">
+                <span class="material-symbols-outlined">error</span>
+                <span id="category-error-text">Error</span>
+            </div>
+
+            <!-- Categories List -->
+            <div class="space-y-2 max-h-60 overflow-y-auto" id="categories-list-container">
+                <!-- dynamic list -->
+            </div>
+        </div>
+        <div class="p-6 bg-surface-container-low border-t border-outline-variant flex justify-end">
+            <button class="px-5 py-2.5 bg-primary text-on-primary hover:bg-primary/90 transition-all text-sm font-semibold w-full" id="btn-close-categories-ok" type="button">Done</button>
+        </div>
+    </div>
 </div>
-</nav>
-<!-- Main Content Area -->
-<div class="flex-1 flex flex-col h-screen overflow-hidden">
-<!-- TopAppBar (Mobile Fallback) -->
-<header class="bg-surface dark:bg-surface border-b border-outline-variant docked full-width top-0 flex justify-between items-center h-16 w-full px-6 md:hidden">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-on-surface-variant text-2xl" data-icon="menu">menu</span>
-<span class="font-headline font-bold text-lg text-primary">Girl Store POS</span>
-</div>
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-on-surface-variant scale-95 active:scale-90" data-icon="barcode_scanner">barcode_scanner</span>
-<span class="material-symbols-outlined text-on-surface-variant scale-95 active:scale-90" data-icon="notifications">notifications</span>
-<img class="w-8 h-8 rounded-full object-cover" data-alt="A small, professional headshot of a store manager, confident and smiling slightly, well-lit studio photography, high contrast against a light background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVNgR2yN7EgnNoVCojKpLsGjd7dYFG_OXWaBvXKDVcTA-x7S3ZURZsE-RmpjnzK-b3MTmt4cfPqc9yTeawFZkOJSS322v_j1UOboEDl1hwO52ZbHTZkKABSCD10fp5JWHxg0Gtmbo2rMF120KrOCiXvRFvXvzMLgSGHLVUvBsEFY7wdqTjyOfDlmtgsMVDEfWCUN4NVQMUTfYTD4LQZys-Fp1uGe9s0jhW3ChYBSpnxH4mj8rB5Pnk"/>
-</div>
-</header>
-<main class="flex-1 overflow-y-auto bg-surface-container-low p-6 md:p-8">
-<div class="max-w-7xl mx-auto space-y-6">
-<!-- Page Header -->
-<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-outline-variant pb-6">
-<div>
-<h2 class="text-2xl font-headline font-semibold text-on-background">Products</h2>
-<p class="text-on-surface-variant text-sm mt-1">Manage your catalog, inventory, and pricing.</p>
-</div>
-<button class="bg-primary text-on-primary hover:bg-on-primary-fixed-variant transition-colors py-2 px-5 rounded font-semibold flex items-center gap-2 h-12">
-<span class="material-symbols-outlined" data-icon="add">add</span>
-                        Add Product
+
+<script>
+    // -----------------------------------------------------
+    // 1. Core State & IPC / Mock API Fallback Bridge
+    // -----------------------------------------------------
+    let productsList = [];
+    let categoriesList = [];
+    let currentEditingProduct = null; // null for Create, product object for Edit
+
+    // Mock Database Fallback (allows standalone browser running)
+    let MOCK_CATEGORIES = [
+        { id: 1, name: "Clothing", type: "clothing" },
+        { id: 2, name: "Accessories", type: "accessory" }
+    ];
+
+    let MOCK_PRODUCTS = [
+        {
+            id: 101,
+            name: "Floral Summer Dress",
+            sku: "DRS-104",
+            categoryId: 1,
+            categoryName: "Clothing",
+            brand: "Girl Store",
+            description: "A gorgeous lightweight summer dress.",
+            basePrice: 8999,
+            variants: [
+                { id: 1, productId: 101, sku: "DRS-104-M-PNK", priceOverride: 8999, stock: 9, size: "M", color: "Pink", imageUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuDpKPBFu7sMzsXIEWkxauxSjJ74277jRHk3cDvrwBIMPFO5Yu6NqEcu7KQ9rwEwC-qaG5j4LJ064VCw69_tzGKAXCNpOMLhaJt2OGXdPeI1deeOFH-MtL_AtqOZNtxuvhmhCFCILE-49N4UbikP5tv9HjyhFRm4JKe3JhiRHMd8OzUAALXuXvcQLG4S6_iwHKIGjKl7VY6bZD1cbXLpPqRPJdH9p7lJOJLwMsMzbtYhLYorUJbuyeu0" },
+                { id: 2, productId: 101, sku: "DRS-104-S-PNK", priceOverride: null, stock: 4, size: "S", color: "Pink", imageUrl: null }
+            ]
+        },
+        {
+            id: 102,
+            name: "Leather Crossbody Bag",
+            sku: "ACC-405",
+            categoryId: 2,
+            categoryName: "Accessories",
+            brand: "Girl Store Design",
+            description: "Handcrafted premium leather crossbody bag.",
+            basePrice: 14550,
+            variants: [
+                { id: 3, productId: 102, sku: "ACC-405-ONE-BLK", priceOverride: null, stock: 12, size: "One Size", color: "Black", imageUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuDgHaMF6xF2uopxHOPZvfMwsgRY46F_3-gzXw3b_HVtypnDtzxWuEwZSigctkYZE6Og9bO-gbBOn30I1vFEll5yE17rC07NQQtZxljh5pRgVRa2tuBddTxoEgTKOqAII6HczluaCAsHjeZGoogodvVI_RMa946LSA6Mf3b6PMn5IwqxD6Y5ecXqxXy39t1cf8vDr29V7uDOJrXZhuafptGE2DQjHh0R2d8q28aUnWF20IPaU0f23A2P" }
+            ]
+        }
+    ];
+
+    const isElectron = typeof window !== 'undefined' && window.api !== undefined;
+
+    const apiBridge = {
+        listProducts: async () => {
+            if (isElectron) return await window.api.products.list();
+            return MOCK_PRODUCTS;
+        },
+        createProduct: async (input) => {
+            if (isElectron) return await window.api.products.create(input);
+
+            // Validate SKU uniqueness
+            const skuExists = MOCK_PRODUCTS.some(p => p.sku === input.sku) || MOCK_PRODUCTS.some(p => p.variants.some(v => v.sku === input.sku));
+            if (skuExists) throw new Error(`The SKU "${input.sku}" is already in use.`);
+
+            const newId = Math.floor(200 + Math.random() * 1000);
+            const newProduct = {
+                id: newId,
+                ...input,
+                categoryName: MOCK_CATEGORIES.find(c => c.id === input.categoryId)?.name || "Unknown",
+                variants: []
+            };
+            MOCK_PRODUCTS.push(newProduct);
+            return newProduct;
+        },
+        updateProduct: async (id, input) => {
+            if (isElectron) return await window.api.products.update(id, input);
+
+            const prod = MOCK_PRODUCTS.find(p => p.id === id);
+            if (!prod) throw new Error("Product not found");
+            Object.assign(prod, input);
+            prod.categoryName = MOCK_CATEGORIES.find(c => c.id === prod.categoryId)?.name || "Unknown";
+            return prod;
+        },
+        deleteProduct: async (id) => {
+            if (isElectron) return await window.api.products.delete(id);
+            MOCK_PRODUCTS = MOCK_PRODUCTS.filter(p => p.id !== id);
+            return true;
+        },
+        createVariant: async (input) => {
+            if (isElectron) return await window.api.variants.create(input);
+
+            // Validate SKU uniqueness
+            const skuExists = MOCK_PRODUCTS.some(p => p.sku === input.sku) || MOCK_PRODUCTS.some(p => p.variants.some(v => v.sku === input.sku));
+            if (skuExists) throw new Error(`The SKU "${input.sku}" is already in use.`);
+
+            const newId = Math.floor(1000 + Math.random() * 5000);
+            const variantObj = { id: newId, ...input };
+            const prod = MOCK_PRODUCTS.find(p => p.id === input.productId);
+            if (prod) prod.variants.push(variantObj);
+            return variantObj;
+        },
+        updateVariant: async (id, input) => {
+            if (isElectron) return await window.api.variants.update(id, input);
+
+            let found = null;
+            MOCK_PRODUCTS.forEach(p => {
+                const v = p.variants.find(item => item.id === id);
+                if (v) found = v;
+            });
+            if (!found) throw new Error("Variant not found");
+            Object.assign(found, input);
+            return found;
+        },
+        deleteVariant: async (id) => {
+            if (isElectron) return await window.api.variants.delete(id);
+            MOCK_PRODUCTS.forEach(p => {
+                p.variants = p.variants.filter(item => item.id !== id);
+            });
+            return true;
+        },
+        listCategories: async () => {
+            if (isElectron) return await window.api.categories.list();
+            return MOCK_CATEGORIES;
+        },
+        deleteCategory: async (id) => {
+            if (isElectron) return await window.api.categories.delete(id);
+
+            // Check reference constraint
+            const inUse = MOCK_PRODUCTS.some(p => p.categoryId === id);
+            if (inUse) throw new Error(`Cannot delete category with ID ${id} because it is referenced by existing products.`);
+
+            MOCK_CATEGORIES = MOCK_CATEGORIES.filter(c => c.id !== id);
+            return true;
+        }
+    };
+
+    // -----------------------------------------------------
+    // 2. DOM Elements & Event Bindings
+    // -----------------------------------------------------
+    const productsTableBody = document.getElementById("products-table-body");
+    const filterCategory = document.getElementById("filter-category");
+    const searchInput = document.getElementById("search-input");
+
+    // Top Bar actions
+    const btnAddProduct = document.getElementById("btn-add-product");
+    const btnManageCategories = document.getElementById("btn-manage-categories");
+
+    // Product Modal Elements
+    const productModal = document.getElementById("product-modal");
+    const productModalTitle = document.getElementById("product-modal-title");
+    const btnCloseProductModal = document.getElementById("btn-close-product-modal");
+    const btnCancelProductModal = document.getElementById("btn-cancel-product-modal");
+    const btnSaveProduct = document.getElementById("btn-save-product");
+    const modalErrorBanner = document.getElementById("modal-error-banner");
+    const modalErrorText = document.getElementById("modal-error-text");
+
+    // Form inputs
+    const inputName = document.getElementById("input-name");
+    const inputSku = document.getElementById("input-sku");
+    const inputCategory = document.getElementById("input-category");
+    const inputBrand = document.getElementById("input-brand");
+    const inputPrice = document.getElementById("input-price");
+    const inputDescription = document.getElementById("input-description");
+    const btnAddVariantRow = document.getElementById("btn-add-variant-row");
+    const variantsModalTableBody = document.getElementById("variants-modal-table-body");
+
+    // Category Modal Elements
+    const categoriesModal = document.getElementById("categories-modal");
+    const btnCloseCategoriesModal = document.getElementById("btn-close-categories-modal");
+    const btnCloseCategoriesOk = document.getElementById("btn-close-categories-ok");
+    const categoriesListContainer = document.getElementById("categories-list-container");
+    const categoryErrorBanner = document.getElementById("category-error-banner");
+    const categoryErrorText = document.getElementById("category-error-text");
+
+    // Initialize Page
+    async function init() {
+        await loadInitialData();
+        setupEventListeners();
+    }
+
+    async function loadInitialData() {
+        try {
+            productsList = await apiBridge.listProducts();
+            categoriesList = await apiBridge.listCategories();
+
+            populateCategoryDropdowns();
+            renderProductsTable();
+        } catch (error) {
+            console.error("Failed to load initial data:", error);
+        }
+    }
+
+    function populateCategoryDropdowns() {
+        // Clear options except first
+        filterCategory.innerHTML = `<option value="">All Categories</option>`;
+        inputCategory.innerHTML = `<option value="" disabled selected>Select category</option>`;
+
+        categoriesList.forEach((cat) => {
+            // Filter dropdown
+            const optFilter = document.createElement("option");
+            optFilter.value = cat.id;
+            optFilter.textContent = cat.name;
+            filterCategory.appendChild(optFilter);
+
+            // Modal form dropdown
+            const optModal = document.createElement("option");
+            optModal.value = cat.id;
+            optModal.textContent = cat.name;
+            inputCategory.appendChild(optModal);
+        });
+    }
+
+    function formatCurrency(cents) {
+        return "$" + (cents / 100).toFixed(2);
+    }
+
+    // -----------------------------------------------------
+    // 3. Products List Rendering
+    // -----------------------------------------------------
+    function renderProductsTable() {
+        productsTableBody.innerHTML = "";
+
+        const searchQuery = searchInput.value.trim().toLowerCase();
+        const selectedCat = filterCategory.value;
+
+        // Apply local filtering for responsiveness
+        const filtered = productsList.filter(prod => {
+            // Category filter
+            if (selectedCat && String(prod.categoryId) !== String(selectedCat)) {
+                return false;
+            }
+            // Search filter
+            if (searchQuery) {
+                const matchesName = prod.name.toLowerCase().includes(searchQuery);
+                const matchesParentSku = prod.sku.toLowerCase().includes(searchQuery);
+                const matchesVariantSku = prod.variants.some(v => v.sku.toLowerCase().includes(searchQuery));
+                return matchesName || matchesParentSku || matchesVariantSku;
+            }
+            return true;
+        });
+
+        if (filtered.length === 0) {
+            productsTableBody.innerHTML = `
+                <tr>
+                    <td colspan="7" class="px-6 py-12 text-center text-on-surface-variant font-semibold">
+                        No products match the selected criteria.
+                    </td>
+                </tr>
+            `;
+            return;
+        }
+
+        filtered.forEach((prod) => {
+            // Find representative image
+            const firstImg = prod.variants.find(v => v.imageUrl)?.imageUrl;
+            const imgSrc = firstImg || "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=100&auto=format&fit=crop";
+
+            const tr = document.createElement("tr");
+            tr.className = "hover:bg-surface-container-high transition-colors group";
+            tr.innerHTML = `
+                <td class="px-6 py-3">
+                    <img class="w-10 h-10 rounded object-cover border border-outline-variant" src="${imgSrc}" alt="${prod.name}"/>
+                </td>
+                <td class="px-6 py-3">
+                    <div class="font-semibold text-on-background">${prod.name}</div>
+                    <div class="text-xs text-on-surface-variant">SKU: ${prod.sku}</div>
+                </td>
+                <td class="px-6 py-3 text-on-surface-variant">${prod.categoryName || 'General'}</td>
+                <td class="px-6 py-3 text-on-surface-variant">${prod.brand || '—'}</td>
+                <td class="px-6 py-3 text-right font-semibold">${formatCurrency(prod.basePrice)}</td>
+                <td class="px-6 py-3 text-center text-primary font-bold">${prod.variants.length}</td>
+                <td class="px-6 py-3 text-right">
+                    <div class="flex items-center justify-end gap-2">
+                        <button class="p-1.5 text-on-surface-variant hover:text-primary transition-colors rounded hover:bg-primary-container/20 btn-edit" title="Edit Product">
+                            <span class="material-symbols-outlined text-[20px]">edit</span>
+                        </button>
+                        <button class="p-1.5 text-on-surface-variant hover:text-error transition-colors rounded hover:bg-error-container/50 btn-delete" title="Delete Product">
+                            <span class="material-symbols-outlined text-[20px]">delete</span>
+                        </button>
+                    </div>
+                </td>
+            `;
+
+            // Actions hook
+            tr.querySelector(".btn-edit").addEventListener("click", () => openProductModal(prod));
+            tr.querySelector(".btn-delete").addEventListener("click", () => handleDeleteProduct(prod));
+
+            productsTableBody.appendChild(tr);
+        });
+    }
+
+    // -----------------------------------------------------
+    // 4. Create / Edit Product Form Modal Management
+    // -----------------------------------------------------
+    let modalVariantRowsData = []; // Array of { id, size, sizeType, color, sku, priceOverride, stock, imageUrl }
+
+    function openProductModal(prod = null) {
+        currentEditingProduct = prod;
+        modalErrorBanner.classList.add("hidden");
+
+        if (prod) {
+            // Edit Mode
+            productModalTitle.innerText = "Edit Product: " + prod.name;
+            inputName.value = prod.name;
+            inputSku.value = prod.sku;
+            inputCategory.value = prod.categoryId;
+            inputBrand.value = prod.brand || "";
+            inputPrice.value = (prod.basePrice / 100).toFixed(2);
+            inputDescription.value = prod.description || "";
+
+            // Map variants
+            modalVariantRowsData = prod.variants.map(v => ({
+                id: v.id,
+                size: v.size || "",
+                sizeType: v.sizeType || "one_size",
+                color: v.color || "",
+                sku: v.sku || "",
+                priceOverride: v.priceOverride ? (v.priceOverride / 100).toFixed(2) : "",
+                stock: v.stock || 0,
+                imageUrl: v.imageUrl || "",
+                isExisting: true // marker to know it came from backend
+            }));
+        } else {
+            // Add Mode
+            productModalTitle.innerText = "Add New Product";
+            inputName.value = "";
+            inputSku.value = "";
+            inputCategory.value = "";
+            inputBrand.value = "";
+            inputPrice.value = "";
+            inputDescription.value = "";
+
+            // Initialize with one default blank variant row
+            modalVariantRowsData = [
+                { id: Date.now(), size: "", sizeType: "one_size", color: "", sku: "", priceOverride: "", stock: 0, imageUrl: "", isExisting: false }
+            ];
+        }
+
+        renderModalVariantRows();
+        productModal.classList.remove("hidden");
+    }
+
+    function renderModalVariantRows() {
+        variantsModalTableBody.innerHTML = "";
+
+        if (modalVariantRowsData.length === 0) {
+            variantsModalTableBody.innerHTML = `
+                <tr>
+                    <td colspan="7" class="px-3 py-4 text-center text-on-surface-variant text-xs">
+                        No variants added yet. Press 'Add Variant Option' above.
+                    </td>
+                </tr>
+            `;
+            return;
+        }
+
+        modalVariantRowsData.forEach((rowObj, index) => {
+            const tr = document.createElement("tr");
+            tr.className = "hover:bg-surface-container-low transition-colors";
+            tr.innerHTML = `
+                <td class="px-2 py-2">
+                    <input class="w-16 h-8 px-2 border-b border-outline-variant bg-transparent text-xs size-input" type="text" value="${rowObj.size}" placeholder="S, M, 9"/>
+                </td>
+                <td class="px-2 py-2">
+                    <input class="w-20 h-8 px-2 border-b border-outline-variant bg-transparent text-xs color-input" type="text" value="${rowObj.color}" placeholder="Pink, Blue"/>
+                </td>
+                <td class="px-2 py-2">
+                    <input class="w-32 h-8 px-2 border-b border-outline-variant bg-transparent text-xs font-semibold sku-input" required type="text" value="${rowObj.sku}" placeholder="Variant SKU"/>
+                </td>
+                <td class="px-2 py-2">
+                    <input class="w-24 h-8 px-2 border-b border-outline-variant bg-transparent text-xs price-input" type="number" step="0.01" min="0" value="${rowObj.priceOverride}" placeholder="Inherit"/>
+                </td>
+                <td class="px-2 py-2">
+                    <input class="w-16 h-8 px-2 border-b border-outline-variant bg-transparent text-xs stock-input" type="number" value="${rowObj.stock}" placeholder="0" ${rowObj.isExisting ? 'disabled' : ''}/>
+                </td>
+                <td class="px-2 py-2">
+                    <input class="w-32 h-8 px-2 border-b border-outline-variant bg-transparent text-xs image-input" type="text" value="${rowObj.imageUrl}" placeholder="http://..."/>
+                </td>
+                <td class="px-2 py-2 text-center">
+                    <button type="button" class="text-error hover:text-error/80 p-1.5 btn-remove-row" data-index="${index}">
+                        <span class="material-symbols-outlined text-sm">remove_circle</span>
                     </button>
-</div>
-<!-- Filters & Search Bar -->
-<div class="bg-surface p-4 rounded shadow-sm border border-outline-variant flex flex-col lg:flex-row gap-4 items-center justify-between">
-<div class="flex flex-wrap gap-2 items-center w-full lg:w-auto">
-<span class="text-sm font-semibold text-on-surface-variant mr-2">Filters:</span>
-<button class="px-3 py-1.5 rounded-full border border-outline text-sm text-on-surface hover:bg-surface-container transition-colors flex items-center gap-1">
-                            Category <span class="material-symbols-outlined text-sm" data-icon="arrow_drop_down">arrow_drop_down</span>
-</button>
-<button class="px-3 py-1.5 rounded-full border border-outline text-sm text-on-surface hover:bg-surface-container transition-colors flex items-center gap-1">
-                            Brand <span class="material-symbols-outlined text-sm" data-icon="arrow_drop_down">arrow_drop_down</span>
-</button>
-<button class="px-3 py-1.5 rounded-full border border-outline text-sm text-on-surface hover:bg-surface-container transition-colors flex items-center gap-1">
-                            Status <span class="material-symbols-outlined text-sm" data-icon="arrow_drop_down">arrow_drop_down</span>
-</button>
-</div>
-<div class="relative w-full lg:w-80">
-<span class="material-symbols-outlined absolute left-3 top-1/2 transform -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
-<input class="w-full pl-10 pr-4 py-2 bg-surface-container rounded border-b border-outline-variant focus:outline-none focus:border-primary focus:bg-surface transition-colors h-10 text-sm" placeholder="Search by SKU or Name..." type="text"/>
-</div>
-</div>
-<!-- Data Table -->
-<div class="bg-surface rounded border border-outline-variant overflow-hidden">
-<table class="w-full text-left text-sm whitespace-nowrap">
-<thead class="bg-surface-container border-b border-outline-variant">
-<tr>
-<th class="px-6 py-4 font-semibold text-on-surface-variant w-16">Image</th>
-<th class="px-6 py-4 font-semibold text-on-surface-variant">Product Name</th>
-<th class="px-6 py-4 font-semibold text-on-surface-variant">Category</th>
-<th class="px-6 py-4 font-semibold text-on-surface-variant">Brand</th>
-<th class="px-6 py-4 font-semibold text-on-surface-variant text-right">Price</th>
-<th class="px-6 py-4 font-semibold text-on-surface-variant text-right">Actions</th>
-</tr>
-</thead>
-<tbody class="divide-y divide-outline-variant">
-<!-- Row 1 -->
-<tr class="hover:bg-surface-container-high transition-colors group">
-<td class="px-6 py-3">
-<img class="w-10 h-10 rounded object-cover border border-outline-variant" data-alt="A clean product shot of a minimalist white ceramic coffee mug on a light grey background, studio lighting, crisp and modern." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhOEeZ7d2MoSIicIHrhRHuAjrFVOfiIdsC-JwO5rixqvhKcWVnAWUZDv5JNRlsJMDMsmaEdpFe-DC3VKJY0ebMbdGJxtreou93nUvSEGC19w_MNbQFk9gWAZiX-omVglHUvGI-nJtbKRHkDXb5Tv8s4s0I0Di6u6xjupcdvuymHch2UtzUmWlrP9ADd78mAv3hi8zpxH_ioemiSA9nOK0DbH5_sF-njPpXR-0Yeoa9dZJKLZ3TwHPO"/>
-</td>
-<td class="px-6 py-3">
-<div class="font-semibold text-on-background">Ceramic Mug Classic</div>
-<div class="text-xs text-on-surface-variant">SKU: CM-001</div>
-</td>
-<td class="px-6 py-3">Drinkware</td>
-<td class="px-6 py-3">MugCo</td>
-<td class="px-6 py-3 text-right font-semibold">$12.99</td>
-<td class="px-6 py-3 text-right">
-<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-<button class="p-1.5 text-on-surface-variant hover:text-primary transition-colors rounded hover:bg-primary-container/20" title="Edit">
-<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
-</button>
-<button class="p-1.5 text-on-surface-variant hover:text-error transition-colors rounded hover:bg-error-container/50" title="Delete">
-<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
-</button>
-</div>
-</td>
-</tr>
-<!-- Row 2 -->
-<tr class="bg-surface-container hover:bg-surface-container-high transition-colors group">
-<td class="px-6 py-3">
-<img class="w-10 h-10 rounded object-cover border border-outline-variant" data-alt="A high-quality product photo of a sleek, matte black insulated water bottle standing upright against a pure white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuV-PnVF-mf2pxNQ2N5YIrgRZyn66JUYkvtc33_ZBMU0wmqVQ05qyVf9D8PScq4sZYEN6n6aBzVHsb6euHsIK6J-Ar9k761ARB0BGjLCUVgIdIxJoZl2Z1ejPpbIhWBfDUxJ_UYmRQOuxpSZVYpwzbrWAaxoSsGyyrIa7lhgeGYqY1eWUcMMrai6FtqBaxYsQnHSDDWI_O5thCeUGZYXMgJ69F4Ai3pRkabwA3fgkS7WPMd5N8gCi3"/>
-</td>
-<td class="px-6 py-3">
-<div class="font-semibold text-on-background">Insulated Flask 32oz</div>
-<div class="text-xs text-on-surface-variant">SKU: IF-032</div>
-</td>
-<td class="px-6 py-3">Activewear</td>
-<td class="px-6 py-3">HydrateX</td>
-<td class="px-6 py-3 text-right font-semibold">$34.50</td>
-<td class="px-6 py-3 text-right">
-<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-<button class="p-1.5 text-on-surface-variant hover:text-primary transition-colors rounded hover:bg-primary-container/20" title="Edit">
-<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
-</button>
-<button class="p-1.5 text-on-surface-variant hover:text-error transition-colors rounded hover:bg-error-container/50" title="Delete">
-<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
-</button>
-</div>
-</td>
-</tr>
-<!-- Row 3 -->
-<tr class="hover:bg-surface-container-high transition-colors group">
-<td class="px-6 py-3">
-<img class="w-10 h-10 rounded object-cover border border-outline-variant" data-alt="A bright product image of a set of pastel-colored sticky notes stacked neatly on a white surface, professional studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCm0gdL50XIQ_B74jvsUj55BuAYLRocvUAE0IkM_owx6URIwsm5SIYs0jACdRYUIuUi9iDH3F0OBBdqO7HkLSnSFNxeXgkg9SscIS6_85ajLMyO2mESjKvYxhSmnZSUtW2HKhuFwnyYAm1FmmV9_rLmGYASJQQbjadIx1k288yKB6ZS5wolddVzoAOGzp-uhd3wS3WhN2f27U0OlieeaPX8liXcP0kCH_y8nhj4-g7RttSNvFia6FUH"/>
-</td>
-<td class="px-6 py-3">
-<div class="font-semibold text-on-background">Pastel Sticky Notes Set</div>
-<div class="text-xs text-on-surface-variant">SKU: ST-PST</div>
-</td>
-<td class="px-6 py-3">Stationery</td>
-<td class="px-6 py-3">OfficeEssence</td>
-<td class="px-6 py-3 text-right font-semibold">$5.00</td>
-<td class="px-6 py-3 text-right">
-<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-<button class="p-1.5 text-on-surface-variant hover:text-primary transition-colors rounded hover:bg-primary-container/20" title="Edit">
-<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
-</button>
-<button class="p-1.5 text-on-surface-variant hover:text-error transition-colors rounded hover:bg-error-container/50" title="Delete">
-<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
-</button>
-</div>
-</td>
-</tr>
-<!-- Row 4 -->
-<tr class="bg-surface-container hover:bg-surface-container-high transition-colors group">
-<td class="px-6 py-3">
-<img class="w-10 h-10 rounded object-cover border border-outline-variant" data-alt="A detailed macro shot of a silver ballpoint pen resting on a crisp white notebook page, showcasing the metallic texture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTiM-0lFFo3jqhe5PL2w2Z2BdTzo8mW3uCiH20w9y5GqZdvw8iPPjeCyNTlCHlElGbmXj31ACmqtIJuuVje2kOkwdKhuwucawymBAPJ4JcUHmZ-vX9ePcm4RbjJpSd5DmuVkLrXTRSsK1NP9zmBYCZ2djVN1BcJF-FuipDBOwkX1FfG1UsVoOi_6c6lTI-9JwcjE3cVJGP2VSs4lfdRDrVLFoD14UaZEClIm2-Miw1OJdu0V-zqWvA"/>
-</td>
-<td class="px-6 py-3">
-<div class="font-semibold text-on-background">Executive Silver Pen</div>
-<div class="text-xs text-on-surface-variant">SKU: PEN-EXS</div>
-</td>
-<td class="px-6 py-3">Stationery</td>
-<td class="px-6 py-3">LuxeWrite</td>
-<td class="px-6 py-3 text-right font-semibold">$45.00</td>
-<td class="px-6 py-3 text-right">
-<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-<button class="p-1.5 text-on-surface-variant hover:text-primary transition-colors rounded hover:bg-primary-container/20" title="Edit">
-<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
-</button>
-<button class="p-1.5 text-on-surface-variant hover:text-error transition-colors rounded hover:bg-error-container/50" title="Delete">
-<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
-</button>
-</div>
-</td>
-</tr>
-<!-- Row 5 -->
-<tr class="hover:bg-surface-container-high transition-colors group">
-<td class="px-6 py-3">
-<img class="w-10 h-10 rounded object-cover border border-outline-variant" data-alt="A clean product shot of a modern, minimalist grey fabric mousepad on a white background, soft diffused lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDB6_FC2LEQ_B_euxwF--Czrr2xf2Cgif1kdCOO_SC6ygn4eaaWPRGoShDHyJgjhotFFK4hcp6rLWVymqb5xOZhJtH4-ugqnZFWiaGUQ2cHZ25zWSkkZ4kygrPI34pGzIfVP-HfpQGlJapptm0dkKfLidaaJBuq4lFaPftOKB1vT5SBkzrdgTjhgNMAay-jcq0xxjBiIfFkPfoz_edoW7uXOmRO7yBZBfwMOJmGMOUZ6EiqWa5UyfcH"/>
-</td>
-<td class="px-6 py-3">
-<div class="font-semibold text-on-background">Fabric Mousepad Grey</div>
-<div class="text-xs text-on-surface-variant">SKU: MP-GRY</div>
-</td>
-<td class="px-6 py-3">Electronics</td>
-<td class="px-6 py-3">TechDesk</td>
-<td class="px-6 py-3 text-right font-semibold">$18.99</td>
-<td class="px-6 py-3 text-right">
-<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-<button class="p-1.5 text-on-surface-variant hover:text-primary transition-colors rounded hover:bg-primary-container/20" title="Edit">
-<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
-</button>
-<button class="p-1.5 text-on-surface-variant hover:text-error transition-colors rounded hover:bg-error-container/50" title="Delete">
-<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
-</button>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-<!-- Pagination -->
-<div class="px-6 py-4 bg-surface border-t border-outline-variant flex items-center justify-between">
-<span class="text-sm text-on-surface-variant">Showing 1-5 of 124 products</span>
-<div class="flex gap-1">
-<button class="p-1 rounded text-on-surface-variant hover:bg-surface-container disabled:opacity-50" disabled="">
-<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
-</button>
-<button class="p-1 rounded text-on-surface-variant hover:bg-surface-container">
-<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
-</button>
-</div>
-</div>
-</div>
-</div>
-</main>
-</div>
-</body></html>
+                </td>
+            `;
+
+            // Live bindings back to array
+            tr.querySelector(".size-input").addEventListener("input", (e) => rowObj.size = e.target.value);
+            tr.querySelector(".color-input").addEventListener("input", (e) => rowObj.color = e.target.value);
+            tr.querySelector(".sku-input").addEventListener("input", (e) => rowObj.sku = e.target.value);
+            tr.querySelector(".price-input").addEventListener("input", (e) => rowObj.priceOverride = e.target.value);
+            tr.querySelector(".stock-input").addEventListener("input", (e) => rowObj.stock = parseInt(e.target.value) || 0);
+            tr.querySelector(".image-input").addEventListener("input", (e) => rowObj.imageUrl = e.target.value);
+
+            // Remove row action
+            tr.querySelector(".btn-remove-row").addEventListener("click", () => {
+                modalVariantRowsData.splice(index, 1);
+                renderModalVariantRows();
+            });
+
+            variantsModalTableBody.appendChild(tr);
+        });
+    }
+
+    // Save Product + Variants (Combines createProduct + individual variants logic)
+    async function handleSaveProduct() {
+        modalErrorBanner.classList.add("hidden");
+
+        // 1. Basic Form Validations
+        const name = inputName.value.trim();
+        const sku = inputSku.value.trim();
+        const categoryId = parseInt(inputCategory.value);
+        const brand = inputBrand.value.trim() || null;
+        const basePrice = Math.round(parseFloat(inputPrice.value) * 100);
+        const description = inputDescription.value.trim() || null;
+
+        if (!name || !sku || !categoryId || isNaN(basePrice)) {
+            showModalError("Please complete all required fields correctly.");
+            return;
+        }
+
+        // Validate variants contain SKU
+        const invalidVariants = modalVariantRowsData.some(v => !v.sku.trim());
+        if (invalidVariants) {
+            showModalError("All variants must have a valid SKU.");
+            return;
+        }
+
+        try {
+            btnSaveProduct.disabled = true;
+            btnSaveProduct.innerText = "Saving Product...";
+
+            let savedProductObj = null;
+
+            if (currentEditingProduct) {
+                // UPDATE Mode
+                savedProductObj = await apiBridge.updateProduct(currentEditingProduct.id, {
+                    name, sku, categoryId, brand, description, basePrice
+                });
+
+                // Sync individual variants
+                // A. Delete removed variants
+                const originalVariants = currentEditingProduct.variants;
+                for (const orig of originalVariants) {
+                    const remains = modalVariantRowsData.some(row => row.isExisting && row.id === orig.id);
+                    if (!remains) {
+                        await apiBridge.deleteVariant(orig.id);
+                    }
+                }
+
+                // B. Add new or Update existing variants
+                for (const row of modalVariantRowsData) {
+                    const priceVal = row.priceOverride ? Math.round(parseFloat(row.priceOverride) * 100) : null;
+                    if (row.isExisting) {
+                        // Update
+                        await apiBridge.updateVariant(row.id, {
+                            sku: row.sku,
+                            priceOverride: priceVal,
+                            size: row.size || null,
+                            color: row.color || null,
+                            imageUrl: row.imageUrl || null
+                        });
+                    } else {
+                        // Create new variant
+                        await apiBridge.createVariant({
+                            productId: currentEditingProduct.id,
+                            sku: row.sku,
+                            priceOverride: priceVal,
+                            stock: row.stock || 0,
+                            size: row.size || null,
+                            color: row.color || null,
+                            imageUrl: row.imageUrl || null
+                        });
+                    }
+                }
+            } else {
+                // CREATE Mode
+                savedProductObj = await apiBridge.createProduct({
+                    name, sku, categoryId, brand, description, basePrice
+                });
+
+                // Create all variants for the newly created product
+                for (const row of modalVariantRowsData) {
+                    const priceVal = row.priceOverride ? Math.round(parseFloat(row.priceOverride) * 100) : null;
+                    await apiBridge.createVariant({
+                        productId: savedProductObj.id,
+                        sku: row.sku,
+                        priceOverride: priceVal,
+                        stock: row.stock || 0,
+                        size: row.size || null,
+                        color: row.color || null,
+                        imageUrl: row.imageUrl || null
+                    });
+                }
+            }
+
+            // Close modal & refresh view
+            productModal.classList.add("hidden");
+            await loadInitialData();
+
+        } catch (error) {
+            console.error("Failed to save product:", error);
+            showModalError(error.message);
+        } finally {
+            btnSaveProduct.disabled = false;
+            btnSaveProduct.innerText = "Save Product";
+        }
+    }
+
+    function showModalError(msg) {
+        modalErrorText.innerText = msg;
+        modalErrorBanner.classList.remove("hidden");
+        productModal.scrollTop = 0; // scroll up to see error
+    }
+
+    // Handle Delete product (with explicit confirmation)
+    async function handleDeleteProduct(prod) {
+        const confirmMsg = `Are you absolutely sure you want to delete "${prod.name}"?\n\nThis will permanently delete the product and all of its ${prod.variants.length} associated variants. This action is irreversible!`;
+        if (window.confirm(confirmMsg)) {
+            try {
+                await apiBridge.deleteProduct(prod.id);
+                await loadInitialData();
+            } catch (error) {
+                alert("Failed to delete product: " + error.message);
+            }
+        }
+    }
+
+    // -----------------------------------------------------
+    // 5. Category Deletion & List Modal Manager
+    // -----------------------------------------------------
+    function openCategoriesModal() {
+        categoryErrorBanner.classList.add("hidden");
+        renderCategoriesList();
+        categoriesModal.classList.remove("hidden");
+    }
+
+    function renderCategoriesList() {
+        categoriesListContainer.innerHTML = "";
+
+        if (categoriesList.length === 0) {
+            categoriesListContainer.innerHTML = `<p class="text-xs text-on-surface-variant py-4 text-center">No categories exist.</p>`;
+            return;
+        }
+
+        categoriesList.forEach((cat) => {
+            const div = document.createElement("div");
+            div.className = "flex justify-between items-center p-3 bg-surface-container rounded-none border-b border-outline-variant";
+            div.innerHTML = `
+                <div>
+                    <p class="font-semibold text-sm text-on-surface">${cat.name}</p>
+                    <p class="text-xs text-on-surface-variant uppercase tracking-wider">${cat.type}</p>
+                </div>
+                <button class="text-on-surface-variant hover:text-error transition-colors p-2 rounded hover:bg-error-container/50 btn-delete-cat" title="Delete Category">
+                    <span class="material-symbols-outlined text-[18px]">delete</span>
+                </button>
+            `;
+
+            div.querySelector(".btn-delete-cat").addEventListener("click", () => handleDeleteCategory(cat));
+            categoriesListContainer.appendChild(div);
+        });
+    }
+
+    async function handleDeleteCategory(cat) {
+        categoryErrorBanner.classList.add("hidden");
+        if (window.confirm(`Are you sure you want to delete category "${cat.name}"?`)) {
+            try {
+                await apiBridge.deleteCategory(cat.id);
+                // Refresh both lists
+                await loadInitialData();
+                renderCategoriesList();
+            } catch (error) {
+                console.error("Failed to delete category:", error);
+                categoryErrorText.innerText = "Cannot delete category: " + error.message;
+                categoryErrorBanner.classList.remove("hidden");
+            }
+        }
+    }
+
+    // -----------------------------------------------------
+    // 6. Global Event Bindings
+    // -----------------------------------------------------
+    function setupEventListeners() {
+        // Search & filter
+        searchInput.addEventListener("input", renderProductsTable);
+        filterCategory.addEventListener("change", renderProductsTable);
+
+        // Header actions
+        btnManageCategories.addEventListener("click", openCategoriesModal);
+        btnAddProduct.addEventListener("click", () => openProductModal(null));
+
+        // Form cancel/closes
+        btnCloseProductModal.addEventListener("click", () => productModal.classList.add("hidden"));
+        btnCancelProductModal.addEventListener("click", () => productModal.classList.add("hidden"));
+        btnSaveProduct.addEventListener("click", handleSaveProduct);
+
+        // Add variant option row button
+        btnAddVariantRow.addEventListener("click", () => {
+            modalVariantRowsData.push({
+                id: Date.now(),
+                size: "",
+                sizeType: "one_size",
+                color: "",
+                sku: "",
+                priceOverride: "",
+                stock: 0,
+                imageUrl: "",
+                isExisting: false
+            });
+            renderModalVariantRows();
+        });
+
+        // Category closes
+        btnCloseCategoriesModal.addEventListener("click", () => categoriesModal.classList.add("hidden"));
+        btnCloseCategoriesOk.addEventListener("click", () => categoriesModal.classList.add("hidden"));
+    }
+
+    // Fire off initialization!
+    window.addEventListener("DOMContentLoaded", init);
+</script>
+</body>
+</html>
