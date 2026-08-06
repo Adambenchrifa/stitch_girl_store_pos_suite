@@ -1,4 +1,4 @@
-import { eq, and } from 'drizzle-orm';
+import { eq, and, or, like } from 'drizzle-orm';
 import { db } from '../index';
 import { products, productVariants, categories } from '../schema';
 
@@ -129,4 +129,93 @@ export async function deleteProduct(id: number) {
     throw new Error(`Product with ID ${id} not found`);
   }
   return deleted;
+}
+
+/**
+ * Searches product variants by name (on product), SKU (on product), or SKU (on variant).
+ * Case-insensitive in SQLite (using LIKE).
+ * Calculates the effective price as variant's priceOverride, or product's basePrice as fallback.
+ */
+export async function searchVariantsByNameOrSku(query: string) {
+  const searchTerm = `%${query}%`;
+
+  const results = await db
+    .select({
+      id: productVariants.id,
+      productId: productVariants.productId,
+      sku: productVariants.sku,
+      priceOverride: productVariants.priceOverride,
+      stock: productVariants.stock,
+      size: productVariants.size,
+      sizeType: productVariants.sizeType,
+      color: productVariants.color,
+      imageUrl: productVariants.imageUrl,
+      createdAt: productVariants.createdAt,
+      product: {
+        id: products.id,
+        name: products.name,
+        sku: products.sku,
+        basePrice: products.basePrice,
+        brand: products.brand,
+        description: products.description,
+        categoryId: products.categoryId,
+      },
+    })
+    .from(productVariants)
+    .innerJoin(products, eq(productVariants.productId, products.id))
+    .where(
+      or(
+        like(products.name, searchTerm),
+        like(productVariants.sku, searchTerm),
+        like(products.sku, searchTerm)
+      )
+    )
+    .all();
+
+  return results.map((row) => ({
+    ...row,
+    price: row.priceOverride !== null && row.priceOverride !== undefined ? row.priceOverride : row.product.basePrice,
+  }));
+}
+
+/**
+ * Lists product variants, optionally filtered by product ID.
+ * Calculates the effective price as variant's priceOverride, or product's basePrice as fallback.
+ */
+export async function listVariants(productId?: number) {
+  let queryBuilder = db
+    .select({
+      id: productVariants.id,
+      productId: productVariants.productId,
+      sku: productVariants.sku,
+      priceOverride: productVariants.priceOverride,
+      stock: productVariants.stock,
+      size: productVariants.size,
+      sizeType: productVariants.sizeType,
+      color: productVariants.color,
+      imageUrl: productVariants.imageUrl,
+      createdAt: productVariants.createdAt,
+      product: {
+        id: products.id,
+        name: products.name,
+        sku: products.sku,
+        basePrice: products.basePrice,
+        brand: products.brand,
+        description: products.description,
+        categoryId: products.categoryId,
+      },
+    })
+    .from(productVariants)
+    .innerJoin(products, eq(productVariants.productId, products.id));
+
+  if (productId !== undefined) {
+    queryBuilder = queryBuilder.where(eq(productVariants.productId, productId)) as any;
+  }
+
+  const results = await queryBuilder.all();
+
+  return results.map((row) => ({
+    ...row,
+    price: row.priceOverride !== null && row.priceOverride !== undefined ? row.priceOverride : row.product.basePrice,
+  }));
 }
