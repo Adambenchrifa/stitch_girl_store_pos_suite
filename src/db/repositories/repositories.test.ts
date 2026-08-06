@@ -1,6 +1,18 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { db } from '../index';
-import { categories as categoriesTable, products as productsTable, productVariants as productVariantsTable } from '../schema';
+import {
+  categories as categoriesTable,
+  products as productsTable,
+  productVariants as productVariantsTable,
+  posSessions as posSessionsTable,
+  posTerminals as posTerminalsTable,
+  sales as salesTable,
+  saleItems as saleItemsTable,
+  stockMovements as stockMovementsTable,
+  returns as returnsTable,
+  returnItems as returnItemsTable,
+  stockAlerts as stockAlertsTable,
+} from '../schema';
 import {
   createCategory,
   listCategories,
@@ -26,6 +38,14 @@ import {
 describe('CRUD Repositories', () => {
   beforeEach(() => {
     // Clear tables in reverse dependency order
+    db.delete(stockAlertsTable).run();
+    db.delete(returnItemsTable).run();
+    db.delete(returnsTable).run();
+    db.delete(stockMovementsTable).run();
+    db.delete(saleItemsTable).run();
+    db.delete(salesTable).run();
+    db.delete(posSessionsTable).run();
+    db.delete(posTerminalsTable).run();
     db.delete(productVariantsTable).run();
     db.delete(productsTable).run();
     db.delete(categoriesTable).run();
