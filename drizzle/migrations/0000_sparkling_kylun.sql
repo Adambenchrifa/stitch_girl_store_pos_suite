@@ -1,3 +1,9 @@
+CREATE TABLE `categories` (
+	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
+	`name` text NOT NULL,
+	`type` text NOT NULL
+);
+--> statement-breakpoint
 CREATE TABLE `pos_sessions` (
 	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
 	`terminal_id` integer NOT NULL,
@@ -24,7 +30,9 @@ CREATE TABLE `product_variants` (
 	`price_override` integer,
 	`stock` integer DEFAULT 0 NOT NULL,
 	`size` text,
+	`size_type` text,
 	`color` text,
+	`image_url` text,
 	`created_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
 	FOREIGN KEY (`product_id`) REFERENCES `products`(`id`) ON UPDATE no action ON DELETE cascade
 );
@@ -34,10 +42,12 @@ CREATE TABLE `products` (
 	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
 	`name` text NOT NULL,
 	`sku` text NOT NULL,
-	`category` text,
+	`category_id` integer NOT NULL,
 	`brand` text,
 	`description` text,
-	`created_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL
+	`base_price` integer NOT NULL,
+	`created_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
+	FOREIGN KEY (`category_id`) REFERENCES `categories`(`id`) ON UPDATE no action ON DELETE no action
 );
 --> statement-breakpoint
 CREATE UNIQUE INDEX `products_sku_unique` ON `products` (`sku`);--> statement-breakpoint

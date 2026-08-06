@@ -1,14 +1,24 @@
 import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
 import { sql } from 'drizzle-orm';
 
+// 0. CATEGORIES
+export const categories = sqliteTable('categories', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  name: text('name').notNull(),
+  type: text('type').notNull(), // 'clothing' | 'accessory'
+});
+
 // 1. PRODUCTS
 export const products = sqliteTable('products', {
   id: integer('id').primaryKey({ autoIncrement: true }),
   name: text('name').notNull(),
   sku: text('sku').unique().notNull(),
-  category: text('category'),
+  categoryId: integer('category_id')
+    .notNull()
+    .references(() => categories.id),
   brand: text('brand'),
   description: text('description'),
+  basePrice: integer('base_price').notNull(), // stored in cents — fallback price used when a variant's price_override is null
   createdAt: text('created_at').default(sql`(CURRENT_TIMESTAMP)`).notNull(),
 });
 
@@ -25,7 +35,9 @@ export const productVariants = sqliteTable('product_variants', {
    */
   stock: integer('stock').notNull().default(0),
   size: text('size'),
+  sizeType: text('size_type'), // 'letter' | 'numeric' | 'one_size' — display/filter hint only, does not constrain the `size` value
   color: text('color'),
+  imageUrl: text('image_url'), // one image per color/variant
   createdAt: text('created_at').default(sql`(CURRENT_TIMESTAMP)`).notNull(),
 });
 
