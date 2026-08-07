@@ -2,9 +2,12 @@
   "name": "app",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vitest run",
+    "build": "tsc",
+    "dev": "tsc && electron .",
+    "start": "electron ."
   },
   "repository": {
     "type": "git",
@@ -26,6 +29,8 @@
     "@types/node": "^26.1.2",
     "better-sqlite3": "^13.0.3",
     "drizzle-kit": "^0.31.10",
+    "electron": "^43.3.0",
+    "electron-builder": "^26.15.3",
     "tsx": "^4.23.8",
     "typescript": "^7.0.2",
     "vitest": "^4.1.10"
